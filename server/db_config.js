@@ -16,23 +16,23 @@ var Resource = db.define('Resource', {
   link: Sequelize.STRING
 });
 
-Resources.belongsTo(Project, {foreignKey: 'project_id'});
+Resource.belongsTo(Project, {foreignKey: 'project_id'});
 
 var Deliverable = db.define('Deliverable', {
   id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
   project_id: Sequelize.INTEGER,
   owner: Sequelize.STRING,
-  status: Seqeulize.STRING,
+  status: Sequelize.STRING,
   due_date: Sequelize.STRING,
   progress: Sequelize.STRING,
   points: Sequelize.INTEGER
 });
 
-Deliverables.belongsTo(Project, {foreignKey: 'project_id'});
+Deliverable.belongsTo(Project, {foreignKey: 'project_id'});
 
 var User = db.define('User', {
   id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
-  github_handle: Sequelize.'STRING'
+  github_handle: Sequelize.STRING
 });
 
 db.sync();
