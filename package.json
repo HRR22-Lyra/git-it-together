@@ -54,6 +54,7 @@
     "mocha": "^2.3.4",
     "phantomjs-prebuilt": "^2.1.7",
     "sinon": "1.17.3",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
   }
 }
