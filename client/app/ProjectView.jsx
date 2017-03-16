@@ -16,7 +16,6 @@ var Project = ({project}) => (
 
     </div>
 
-  </div>
 
 );
 
