@@ -1,0 +1,15 @@
+# Logs
+logs
+*.logs
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Compiled directories
+build/
+dist/
+
+# Dependency directories
+node_modules/
