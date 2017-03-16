@@ -10,7 +10,7 @@ exports.addResource = function (req, res) {
   res.end();
 };
 
-exports.getProject = function (res, res) {
+exports.getProject = function (req, res) {
   console.log('getProject ran! Request:', req.body);
   res.end();
 };
