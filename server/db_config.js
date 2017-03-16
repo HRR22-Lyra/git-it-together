@@ -4,13 +4,13 @@ var Sequelize = require('sequelize');
 var db = new Sequelize("postgres://xhzrrvvawqzqov:1c2ac54a72b223e5d603ce03d8195194ac39336f544c04b266758f083aea4a15@ec2-23-23-228-115.compute-1.amazonaws.com:5432/d5lfn726hf4pp6");
 
 var Project = db.define('Project', {
-  id: {Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
   owner: Sequelize.STRING,
   get_repo: Sequelize.STRING
 });
 
 var Resource = db.define('Resource', {
-  id: {Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
   project_id: Sequelize.INTEGER,
   user: Sequelize.STRING,
   link: Sequelize.STRING
@@ -19,7 +19,7 @@ var Resource = db.define('Resource', {
 Resources.belongsTo(Project, {foreignKey: 'project_id'});
 
 var Deliverable = db.define('Deliverable', {
-  id: {Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
   project_id: Sequelize.INTEGER,
   owner: Sequelize.STRING,
   status: Seqeulize.STRING,
@@ -31,7 +31,7 @@ var Deliverable = db.define('Deliverable', {
 Deliverables.belongsTo(Project, {foreignKey: 'project_id'});
 
 var User = db.define('User', {
-  id: {Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
   github_handle: Sequelize.'STRING'
 });
 
