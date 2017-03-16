@@ -1,18 +1,21 @@
-var Project = ({project}) => (
+var VideoPlayer = ({video}) => (
 
-  !project ? <div class="project-view">No project found</div> :
+  !video ? <div class="video-player">No video found</div> :
 
-  <div className="project-view">
+  <div className="video-player">
 
-      <div className="show-project-item" src={`https://github.com/HRR22-Lyra/git-it-together`} allowFullScreen></div>
+    <div className="embed-responsive embed-responsive-16by9">
+
+      <iframe className="embed-responsive-item" src={`https://
+        www.youtube.com/embed/${video.id.videoId}`} allowFullScreen></iframe>
 
     </div>
 
-    <div className="project-details">
+    <div className="video-player-details">
 
-      <h3>{project.snippet.title}</h3>
+      <h3>{video.snippet.title}</h3>
 
-      <div>{project.snippet.description}</div>
+      <div>{video.snippet.description}</div>
 
     </div>
 
@@ -22,10 +25,10 @@ var Project = ({project}) => (
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
-Project.propTypes = {
-  project: React.PropTypes.object.isRequired
+VideoPlayer.propTypes = {
+  video: React.PropTypes.object.isRequired
 };
 
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
-window.Project = Project;
+window.VideoPlayer = VideoPlayer;
