@@ -17,6 +17,7 @@ var Project = ({project}) => (
     </div>
 
 
+
 );
 
 // PropTypes tell other developers what `props` a component expects
