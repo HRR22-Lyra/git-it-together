@@ -10,7 +10,9 @@ var Project = ({project}) => (
     //divs for repo properties
     <div className="project-details">
 
-      <h3>{project.title}</h3>
+      <div className="repo-nav">{project.repohead}</div>
+
+      <div className="repo-content">{project.repository-content}</div>
 
       <div>{project.description}</div>
 
