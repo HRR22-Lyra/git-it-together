@@ -2,34 +2,29 @@
 
 var db = require('./db_config.js');
 var http = require('http');
+var request = require('request');
 
 exports.addProject = function (req, res) {
   console.log('addProjects ran! Request:', req.body);
-  //https://api.github.com/repos/HRR22-Lyra/git-it-together
-  //var handle = req.body.githubHandle;
-  //var repo = req.body.repoName;
-  //var path = '/repos/' + handle + 'repo';
-  //var options = {
-    //host: 'api.github.com'
-    //path: path;
-  //}
+  var handle = req.body.githubHandle;
+  var repo = req.body.repoName;
+  var githubURL = 'https://api.github.com/repos/' + handle + '/' + repo;
+  request({url: githubURL, headers:{'User-Agent': handle}}, function (err, res, body) {
+    if (!err) {
+      db.Project.create({owner: handle, get_repo: githubURL})
+      .then(function() {
+        console.log(db.Project.findAll({ where: {owner: handle} }));
+      });
+    } else {
+      console.log('Error: ', err)
+    }
+  })
   res.end();
 };
-/*
-req.body: {githubHandle: 'Example', repoName: 'example_repo}
-if error - res: {exists: false} < -- trigger message to try again
-if success - res: {exists: true}  < -- trigger refresh
-*/
 
 exports.listProjects = function (req, res) {
   console.log('listProjects ran! Request:', req.body);
   res.end();
-
-/*
-req.body: {githubHandle: 'Example', repoName: 'example_repo}
-if error - res: {exists: false} < -- trigger message to try again
-if success - res: {exists: true}  < -- trigger refresh
-*/
 };
 
 exports.addResource = function (req, res) {

@@ -38,4 +38,7 @@ var User = db.define('User', {
 db.sync();
 //can add force:true to drop tables before recreating them
 
-module.exports = db;
+module.exports.Project = Project;
+module.exports.Deliverable = Deliverable;
+module.exports.User = User;
+module.exports.Resource = Resource;
