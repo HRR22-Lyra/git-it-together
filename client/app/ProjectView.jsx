@@ -7,12 +7,12 @@ var Project = ({project}) => (
       <div className="show-project-item" src={`https://github.com/HRR22-Lyra/git-it-together`} allowFullScreen></div>
 
     </div>
-
+    //divs for repo properties
     <div className="project-details">
 
-      <h3>{project.snippet.title}</h3>
+      <h3>{project.title}</h3>
 
-      <div>{project.snippet.description}</div>
+      <div>{project.description}</div>
 
     </div>
 

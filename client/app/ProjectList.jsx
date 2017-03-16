@@ -1,5 +1,5 @@
 var ProjectList = ({projects, handleProjectListEntryClick}) => (
-  <div className="video-list media">
+  <div className="project-list">
 
     {projects.map((video) =>
       <ProjectListEntry
