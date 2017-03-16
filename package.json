@@ -24,12 +24,14 @@
   },
   "homepage": "https://github.com/HRR22-Lyra/git-it-together#readme",
   "dependencies": {
+    "babel-core": "^6.23.1",
+    "body-parser": "^1.17.1",
     "bootstrap": "^4.0.0-alpha.2",
+    "express": "^4.15.2",
     "jquery": "^2.2.1",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7",
     "morgan": "^1.1.1",
-    "babel-core": "^6.23.1"
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
@@ -37,7 +39,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-watch": "^2.0.6",
     "chai": "^3.5.0",
-    "mocha": "2.3.3",
+    "mocha": "^2.3.4",
     "sinon": "1.17.3",
     "karma": "^0.13.15",
     "karma-babel-preprocessor": "^6.0.1",
@@ -47,8 +49,6 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sinon": "^1.0.4",
     "karma-unicorn-reporter": "^0.1.4",
-    "mocha": "^2.3.4",
     "phantomjs-prebuilt": "^2.1.7"
   }
-
 }
