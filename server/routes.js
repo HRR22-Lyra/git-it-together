@@ -1,5 +1,5 @@
 var requestHandler = require('./request-handler.js');
-var express = require('express')
+var express = require('express');
 
 module.exports = function (app, express) {
   app.post('/api/projectList', requestHandler.addProject);
