@@ -29,4 +29,4 @@ class App extends React.Component {
   }
 }
 
-//window.App = App;
+module.exports = App;
