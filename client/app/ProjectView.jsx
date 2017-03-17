@@ -1,11 +1,7 @@
 import React from 'react';
 
-<<<<<<< HEAD
-var Project = ({project}) => (
-
-=======
 var project = ({project}) => (
->>>>>>> c53185e3c60f4fcf013713cbe890d02f8b9d5f3a
+
 
   !project ? <div class="project-view">No project found</div> :
 
