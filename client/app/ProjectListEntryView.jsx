@@ -1,20 +1,16 @@
 var ProjectListEntry = ({project, handleProjectListEntryClick}) => (
   <div className="project-list-entry">
-
-    <div className="media-left media-middle">
-
-      <img className="project-object" src={project.snippet.thumbnails.default.url} alt="" />
-
-    </div>
-
     <div className="project-body">
-
-      <div className="project-list-entry-title" onClick={() => handleProjectListEntryClick(project)} >{project.title}</div>
-
-      <div className="project-list-entry-detail">{project.description}</div>
-
+      <div className="row">
+        <div className="col-md-1">
+          <div className="project-list-entry-title">Project Title</div>
+          <div className="project-list-entry-detail">Project Description</div>
+        </div>
+        <div className="col-md-2">
+          <span className="right glyphicon glyphicon-chevron-right"></span>
+        </div>
+      </div>
     </div>
-
   </div>
 );
 
