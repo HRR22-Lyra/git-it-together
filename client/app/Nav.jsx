@@ -1,4 +1,3 @@
-
 import React from 'react'
 
 var Nav = () => (
@@ -11,7 +10,7 @@ var Nav = () => (
         <span className='icon-bar'></span>
         <span className='icon-bar'></span>
       </button>
-      <a className="navbar-brand" href="#/"><img src="assets/logo.png" />Git It Together</a>
+      <a className="navbar-brand" href="#/"><img src="client/assets/logo.png" />Git It Together</a>
     </div>
 
     <div className='collapse navbar-collapse' id='nav-collapse-1'>
