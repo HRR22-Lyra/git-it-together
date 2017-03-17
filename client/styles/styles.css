@@ -1,3 +1,7 @@
+body {
+  background: #ebebeb;
+}
+
 .project-list-entry {
   padding: 7px 10px;
   margin: 15px;
@@ -10,7 +14,7 @@
 
 .project-list-entry:hover {
   font-size: 1.1em;
-  color: #0043E4;
+  color: #006DFF;
   cursor: pointer;
 }
 
@@ -25,4 +29,11 @@
 
 .right {
   float: right;
+}
+
+.panel-heading {
+  background-color: #006DFF;
+  padding: 0 0 5px 0;
+  border: 1px solid #D1D1D1;
+  cursor: pointer;
 }

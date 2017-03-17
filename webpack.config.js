@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   entry: './client/app/index.js',
@@ -19,4 +20,4 @@ module.exports = {
       }
     ]
   }
-}
+};

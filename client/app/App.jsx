@@ -3,8 +3,8 @@ import Login from './Login.jsx';
 import AuthService from '../config/AuthService.js'
 import ProfileEntryView from './ProfileEntryView.jsx'
 import {Button} from 'react-bootstrap'
-
-
+import Nav from './Nav.jsx';
+import ProjectList from './ProjectList.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -37,6 +37,7 @@ class App extends React.Component {
     //this.context.router.push('/login');//
   }
 
+
   render() {
             const { profile } = this.state
             const { auth } = this.props
@@ -53,6 +54,7 @@ class App extends React.Component {
 
     return (
       <div>
+        <Nav />
         <p>git it together fam</p>
 
         <ProfileEntryView profile={profile}></ProfileEntryView>
@@ -61,6 +63,11 @@ class App extends React.Component {
 
 
 
+        <div className="col-md-3"></div>
+        <div className="col-md-6">
+          {/* <ProjectList projects={this.state.projects} handleProjectListEntryClick={this._handleProjectListEntryClick.bind(this)} /> */}
+        </div>
+        <div className="col-md-3"></div>
       </div>
 
 
