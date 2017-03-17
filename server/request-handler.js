@@ -5,19 +5,22 @@ var request = require('request');
 //---------------------------------------------------------------------------
 // addProject Request Format: {githubHandle: 'handle, repoName: 'reponame'}
 // addProject Reponse Format: 201 status only
+  // if NOT a valid user will return string: status 400 / empty
 
 exports.addProject = function (req, res) {
   var handle = req.body.githubHandle;
   var repo = req.body.repoName;
   var githubURL = 'https://api.github.com/repos/' + handle + '/' + repo;
   request({url: githubURL, headers:{'User-Agent': handle}}, function (err, response, body) {
-    if (!err) {
+    console.log('resp.stat', response.statusCode);
+    if (JSON.parse(response.statusCode) !== 404) {
       db.Project.create({owner: handle, get_repo: githubURL})
       .then(function() {
         res.status(201).send();
       });
     } else {
       console.log('Error: ', err)
+      res.status(400).send();
     }
   });
 };
@@ -56,6 +59,7 @@ exports.addResource = function (req, res) {
 
 //---------------------------------------------------------------------------
 // fetchProject Request Format: {projectID: 123}
+// fetchProject Request Fromat: if no project matches ID - status 404 and empty response
 // fetchProject Response Format: { name: 'git-it-together',
 // description: 'Git it Together consolidates the tools you need to implement agile scrum on existing Git Hub repositories.',
 // owner: 'HRR22-Lyra',
@@ -81,12 +85,15 @@ exports.fetchProject = function (req, res) {
   var projectID = req.body.projectID;
   db.Project.findOne({ where: {id: projectID} })
     .then(function(project) {
+    if (project === null) {
+      res.status(400).send();
+    }
     var githubURL = project.get_repo;
     var handle = project.owner;
     var projectData = {};
     console.log('URL ---> ', githubURL, 'Handle ---->', handle)
     request({url: githubURL, headers:{'User-Agent': handle}}, function (err, response, body) {
-      if (!err) {
+      if (JSON.parse(response.statusCode) !== 404) {
         response = JSON.parse(response.body);
         projectData.name = response.name;
         projectData.description = response.description;
@@ -104,6 +111,7 @@ exports.fetchProject = function (req, res) {
         });
       } else {
         console.log('Error: ', err)
+        res.status(400).send();
       }
     });
   });
