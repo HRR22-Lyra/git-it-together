@@ -1,6 +1,7 @@
 import React from 'react';
+import projectList from '.ProjectList.jsx'
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { projects: [], currentProject: null }
@@ -11,11 +12,13 @@ class App extends React.Component {
   }
 
   getGitHubProjects(query) {
-    //responsible for grabbing projects
+
     var options = {
       key: '',
       query: query
-    }
+    };
+
+    this.props.searchGitHub()
   }
   render() {
     return (
