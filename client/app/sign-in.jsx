@@ -1,6 +1,8 @@
+
 import React from 'react';
 
 export default class SignIn extends React.Component {
+
 
   constructor(props) {
     super(props);
@@ -8,6 +10,7 @@ export default class SignIn extends React.Component {
       show: false
     };
   }
+
 
   toggleSignIn = () => {
     if(!this.state.show) {
@@ -23,4 +26,5 @@ export default class SignIn extends React.Component {
         <input type="button" className="sign-in-button" onCLick={this.toggleSignIn} value="login"/>
     )
   }
+
 }
