@@ -88,14 +88,6 @@ Project.propTypes = {
 
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> c53185e3c60f4fcf013713cbe890d02f8b9d5f3a
 module.exports = Project;
 
-
-=======
-window.Project = Project;
->>>>>>> no new change
