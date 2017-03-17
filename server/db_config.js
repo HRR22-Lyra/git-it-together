@@ -32,15 +32,15 @@ var Deliverable = db.define('Deliverable', {
 
 Deliverable.belongsTo(Project, {foreignKey: 'project_id'});
 
-var User = db.define('User', {
-  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
-  github_handle: Sequelize.STRING
-});
+// var User = db.define('User', {
+//   id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+//   github_handle: Sequelize.STRING
+// });
 
 db.sync();
 //can add force:true to drop tables before recreating them
 
 module.exports.Project = Project;
 module.exports.Deliverable = Deliverable;
-module.exports.User = User;
+// module.exports.User = User;
 module.exports.Resource = Resource;
