@@ -6,9 +6,8 @@ import {Button} from 'react-bootstrap'
 import Nav from './Nav.jsx';
 import ProjectList from './ProjectList.jsx';
 
+export default class App extends React.Component {
 
-
-class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { projects: this.props.projects, currentProject: null, profile: props.auth.getProfile() }
@@ -28,11 +27,13 @@ class App extends React.Component {
   }
 
   getGitHubProjects(query) {
-    //responsible for grabbing projects
+
     var options = {
       key: '',
       query: query
-    }
+    };
+
+    this.props.searchGitHub()
   }
   logout(){
     this.props.auth.logout()//add props.auth.on('logged-out') event which should be triggered in authservice.js which refreshes page. and same for logged in or authenticated events rather than the use of routes in authservice and here.

@@ -1,6 +1,7 @@
 import React from 'react';
 import ProjectListEntry from './ProjectListEntryView.jsx';
 
+
 var ProjectList = ({projects, handleProjectListEntryClick}) => (
 
   <div className="project-list">

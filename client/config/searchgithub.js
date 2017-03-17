@@ -9,10 +9,14 @@ var getProjectList = ({key, query, max = 5}, callback) => {
     name: string,
     description: string,
     createdAt: integer,
+<<<<<<< HEAD
     updatedAt: integer,
     type: ''
     updatedAt: integer
 
+=======
+    updatedAt: integer
+>>>>>>> c53185e3c60f4fcf013713cbe890d02f8b9d5f3a
   })
   .done(({items}) => {
     if (callback) {

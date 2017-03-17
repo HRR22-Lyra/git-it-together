@@ -1,6 +1,10 @@
 import React from 'react'
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c53185e3c60f4fcf013713cbe890d02f8b9d5f3a
 var Nav = () => (
 <nav className='navbar navbar-inverse'>
   <div className='container-fluid'>
