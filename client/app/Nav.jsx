@@ -24,4 +24,4 @@ var Nav = () => (
 </nav>
 );
 
-window.Nav = Nav;
+module.exports = Nav;
