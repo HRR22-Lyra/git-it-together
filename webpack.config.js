@@ -6,7 +6,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'client/dist'),
     publicPath: '/client/dist',
-    filename: 'bundle.min.js'
+    filename: 'bundle.js'
   },
   module: {
     loaders: [
@@ -19,8 +19,5 @@ module.exports = {
         query: { presets: ['es2015', 'react'] }
       }
     ]
-  },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({minimize: true})
-  ]
+  }
 };
