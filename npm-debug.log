@@ -7,6 +7,8 @@
 6 silly lifecycle git-it-together@1.0.0~prebuild: no script for prebuild, continuing
 7 info lifecycle git-it-together@1.0.0~build: git-it-together@1.0.0
 8 verbose lifecycle git-it-together@1.0.0~build: unsafe-perm in lifecycle true
+9 verbose lifecycle git-it-together@1.0.0~build: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/simondemoor/Desktop/git-it-together/node_modules/.bin:/Users/simondemoor/exec -l /bin/bash/google-cloud-sdk/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+10 verbose lifecycle git-it-together@1.0.0~build: CWD: /Users/simondemoor/Desktop/git-it-together
 9 verbose lifecycle git-it-together@1.0.0~build: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/jamesmitchell/Desktop/hrr22/Seniorphase/git-it-together/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 10 verbose lifecycle git-it-together@1.0.0~build: CWD: /Users/jamesmitchell/Desktop/hrr22/Seniorphase/git-it-together
 11 silly lifecycle git-it-together@1.0.0~build: Args: [ '-c', 'webpack --config webpack.config.js' ]
@@ -23,6 +25,8 @@
 14 verbose stack     at maybeClose (internal/child_process.js:877:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
 15 verbose pkgid git-it-together@1.0.0
+16 verbose cwd /Users/simondemoor/Desktop/git-it-together
+17 error Darwin 16.1.0
 16 verbose cwd /Users/jamesmitchell/Desktop/hrr22/Seniorphase/git-it-together
 17 error Darwin 16.4.0
 18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "build"
