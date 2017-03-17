@@ -6,4 +6,5 @@ module.exports = function (app, express) {
   app.get('/api/projectList', requestHandler.listProjects);
   app.post('/api/resources', requestHandler.addResource);
   app.post('/api/project', requestHandler.fetchProject);
+  app.post('/api/deliverables', requestHandler.addDeliverable);
 };
