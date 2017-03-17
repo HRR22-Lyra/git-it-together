@@ -9,11 +9,13 @@ class App extends React.Component {
   }
 
   getGitHubProjects(query) {
-    //responsible for grabbing projects
+
     var options = {
       key: //
       query: query
-    }
+    };
+
+    this.props.searchGitHub()
   }
   render() {
     return (
