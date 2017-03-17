@@ -1,3 +1,5 @@
+import React from 'react';
+
 var Nav = () => (
 <nav className='navbar navbar-inverse'>
   <div className='container-fluid'>
