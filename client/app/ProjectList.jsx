@@ -1,12 +1,13 @@
 import React from 'react';
+import ProjectListEntry from './ProjectListEntryView.jsx';
 
 var ProjectList = ({projects, handleProjectListEntryClick}) => (
   <div className="project-list">
 
     {projects.map((video) =>
       <ProjectListEntry
-        key={}
-        project={project}
+        key = {project.id}
+        project = {project}
       handleProjectListEntryClick={handleProjectListEntryClick} />
     )}
   </div>
