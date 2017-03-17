@@ -43,6 +43,8 @@
     "react-dom": "^0.14.7",
     "request": "^2.81.0",
     "sequelize": "^3.30.2",
+    "react-bootstrap": "^0.30.0-rc.1",
+    "auth0-lock": "^10.13.0",
     "webpack": "^2.2.1"
   },
   "devDependencies": {
