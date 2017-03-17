@@ -1,11 +1,12 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   entry: './client/app/index.js',
   output: {
     path: path.resolve(__dirname, 'client/dist'),
     publicPath: '/client/dist',
-    filename: 'bundle.js'
+    filename: 'bundle.min.js'
   },
   module: {
     loaders: [
@@ -18,5 +19,8 @@ module.exports = {
         query: { presets: ['es2015', 'react'] }
       }
     ]
-  }
-}
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({minimize: true})
+  ]
+};
