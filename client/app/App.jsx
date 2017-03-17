@@ -20,7 +20,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <p>hi fam</p>
+        <p>git it together fam</p>
       </div>
 
 

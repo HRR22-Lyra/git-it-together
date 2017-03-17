@@ -1,3 +1,5 @@
+import React from 'react';
+
 var ProjectListEntry = ({project, handleProjectListEntryClick}) => (
   <div className="project-list-entry">
     <div className="project-body">
@@ -22,4 +24,4 @@ ProjectListEntry.propTypes = {
 
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
-window.ProjectListEntry = ProjectListEntry;
+module.exports = ProjectListEntry;
