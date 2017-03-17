@@ -26,11 +26,13 @@ class App extends React.Component {
   }
 
   getGitHubProjects(query) {
-    //responsible for grabbing projects
+
     var options = {
       key: '',
       query: query
-    }
+    };
+
+    this.props.searchGitHub()
   }
   logout(){
     this.props.auth.logout()//add props.auth.on('logged-out') event which should be triggered in authservice.js which refreshes page. and same for logged in or authenticated events rather than the use of routes in authservice and here.
