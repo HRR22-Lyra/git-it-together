@@ -28,15 +28,26 @@ exports.addProject = (req, res) => {
 //---------------------------------------------------------------------------
 // listProjects Request Format: no request data needed
 // listProjects Reponse Format:
-// { id: 1, owner: 'HRR22-Lyra', get_repo: 'https://api.github.com/repos/HRR22-Lyra/git-it-together',
+// [{ id: 1, owner: 'HRR22-Lyra', get_repo: 'https://api.github.com/repos/HRR22-Lyra/git-it-together',
 // name: 'Git It Together', description: 'Greatest App of All Time', createdAt: 2017-03-17T00:01:37.433Z,
-// updatedAt: 2017-03-17T00:01:37.433Z }
+// updatedAt: 2017-03-17T00:01:37.433Z }, { id: 2,
+// owner: 'notvalid',
+// get_repo: 'https://api.github.com/repos/notvalid/invalidUser',
+// name: null,
+// description: null,
+// createdAt: 2017-03-17T17:15:49.954Z,
+// updatedAt: 2017-03-17T17:15:49.954Z }
+// ]
 
 exports.listProjects = (req, res) => {
   console.log('listProjects ran! Request:', req.body);
   db.Project.findAll()
     .then( (projects) => {
-      var projectData = projects[0].dataValues;
+      projectData = [];
+      projects.forEach((project) => {
+        projectData.push(project.dataValues);
+      })
+      console.log('projects ----->', projectData)
       res.status(200).send(projectData);
     });
 };
