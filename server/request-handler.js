@@ -7,7 +7,7 @@ exports.addProject = function (req, res) {
   var handle = req.body.githubHandle;
   var repo = req.body.repoName;
   var githubURL = 'https://api.github.com/repos/' + handle + '/' + repo;
-  request({url: githubURL, headers:{'User-Agent': handle}}, function (err, res, body) {
+  request({url: githubURL, headers:{'User-Agent': handle}}, function (err, response, body) {
     if (!err) {
       db.Project.create({owner: handle, get_repo: githubURL})
       .then(function() {
@@ -51,24 +51,23 @@ exports.addResource = function (req, res) {
   };
 
 // Sample request body for getProject: {projectID: 123} -------------------------------------------------
-exports.getProject = function (req, res) {
+exports.fetchProject = function (req, res) {
   db.Project.findOne({ where: {id: req.body.projectID} })
     .then(function(project) {
-
-    })
-  var githubURL = 'https://api.github.com/repos/' + handle + '/' + repo;
-  request({url: githubURL, headers:{'User-Agent': handle}}, function (err, res, body) {
-    if (!err) {
-      db.Project.create({owner: handle, get_repo: githubURL})
-      .then(function() {
-        console.log(db.Project.findAll({ where: {owner: handle} }));
-      });
-    } else {
-      console.log('Error: ', err)
-    }
+    var githubURL = project.get_repo;
+    var handle = project.owner;
+    request({url: githubURL, headers:{'User-Agent': handle}}, function (err, response, body) {
+      if (!err) {
+        var projectData = {};
+        projectData.
+        console.log('git hub response: ', response);
+        console.log('')
+      } else {
+        console.log('Error: ', err)
+      }
+    });
   });
 };
-
 //Sample response object from getProject:
 //{ { id: 9,
   //project_id: null,
