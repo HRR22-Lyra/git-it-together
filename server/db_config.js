@@ -6,7 +6,9 @@ var db = new Sequelize("postgres://xhzrrvvawqzqov:1c2ac54a72b223e5d603ce03d81951
 var Project = db.define('Project', {
   id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
   owner: Sequelize.STRING,
-  get_repo: Sequelize.STRING
+  get_repo: Sequelize.STRING,
+  name: Sequelize.STRING,
+  description: Sequelize.STRING
 });
 
 var Resource = db.define('Resource', {
@@ -38,4 +40,7 @@ var User = db.define('User', {
 db.sync();
 //can add force:true to drop tables before recreating them
 
-module.exports = db;
+module.exports.Project = Project;
+module.exports.Deliverable = Deliverable;
+module.exports.User = User;
+module.exports.Resource = Resource;

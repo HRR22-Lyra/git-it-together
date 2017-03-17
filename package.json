@@ -29,12 +29,14 @@
     "body-parser": "^1.17.1",
     "bootstrap": "^4.0.0-alpha.2",
     "express": "^4.15.2",
+    "http": "0.0.0",
     "jquery": "^2.2.1",
     "morgan": "^1.1.1",
     "path": "^0.12.7",
     "pg": "^6.1.4",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
+    "request": "^2.81.0",
     "sequelize": "^3.30.2"
   },
   "devDependencies": {
