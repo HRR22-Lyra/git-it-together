@@ -30,3 +30,10 @@ body {
 .right {
   float: right;
 }
+
+.panel-heading {
+  background-color: #006DFF;
+  padding: 0 0 5px 0;
+  border: 1px solid #D1D1D1;
+  cursor: pointer;
+}
