@@ -9,7 +9,8 @@ var searchGitHub = ({key, query, max = 5}, callback) => {
     name: string,
     description: string,
     createdAt: integer,
-    updatedAt: integer
+    updatedAt: integer,
+    type: ''
   })
   .done(({items}) => {
     if (callback) {
