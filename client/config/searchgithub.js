@@ -1,8 +1,8 @@
-import requestHandler from '../server/request-handler.js';
+import React from 'react'
 
 
-var searchGitHub = ({key, query, max = 5}, callback) => {
-  $.get('https://www.github.com', {
+var getProjectList = ({key, query, max = 5}, callback) => {
+  $.get('/api/projectlist', {
     id: 1,
     owner: string,
     get_repo: string,
@@ -34,5 +34,26 @@ var searchGitHub = ({key, query, max = 5}, callback) => {
 // createdAt: 2017-03-17T00:01:37.433Z,
 // updatedAt: 2017-03-17T00:01:37.433Z
 //}
+
+var postProject = ({key, query, max = 5}, callback) => {
+  $.post('/api/project', {
+    id: 1,
+    owner: string,
+    get_repo: string,
+    name: string,
+    description: string,
+    createdAt: integer,
+    updatedAt: integer
+  })
+  .done(({items}) => {
+    if (callback) {
+      callback(items);
+    }
+  })
+  .fail(({responseJSON}) => {
+    responseJSON.error.errors.forEach((err) =>
+      console.log(err));
+  });
+};
 
 module.exports = searchGitHub;
