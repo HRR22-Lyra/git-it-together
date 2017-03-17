@@ -18,7 +18,7 @@ exports.addProject = function (req, res) {
     } else {
       console.log('Error: ', err)
     }
-  })
+  });
   res.end();
 };
 
