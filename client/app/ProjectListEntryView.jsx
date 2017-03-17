@@ -22,4 +22,3 @@ ProjectListEntry.propTypes = {
 
 
 module.exports = ProjectListEntry;
-window.ProjectListEntry = ProjectListEntry;
