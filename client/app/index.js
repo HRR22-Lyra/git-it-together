@@ -3,7 +3,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
 import AuthService from '../config/AuthService';
-const auth = new AuthService('X5MiErhjYO21MdTVoiLZccQA123jBgla', 'sdm.auth0.com');
+
+
+const auth = new AuthService('L02x425Vda4YLpr7ejSs63dUihl3lyxn', 'sdm.auth0.com');
 console.log(auth);
 
 ReactDOM.render(
