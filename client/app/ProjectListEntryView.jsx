@@ -1,13 +1,13 @@
 var ProjectListEntry = ({project, handleProjectListEntryClick}) => (
-  <div class="project-list-entry">
-    <div class="project-body">
-      <div class="row">
-        <div class="col-md-1">
-          <div class="project-list-entry-title">Project Title</div>
-          <div class="project-list-entry-detail">Project Description</div>
+  <div className="project-list-entry">
+    <div className="project-body">
+      <div className="row">
+        <div className="col-md-1">
+          <div className="project-list-entry-title">Project Title</div>
+          <div className="project-list-entry-detail">Project Description</div>
         </div>
-        <div class="col-md-2">
-          <span class="right glyphicon glyphicon-chevron-right"></span>
+        <div className="col-md-2">
+          <span className="right glyphicon glyphicon-chevron-right"></span>
         </div>
       </div>
     </div>
