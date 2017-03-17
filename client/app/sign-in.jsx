@@ -9,7 +9,6 @@ export default class SignIn extends React.Component {
     };
   }
 
-
   toggleSignIn = () => {
     if(!this.state.show) {
       this.setSate({show: true});
