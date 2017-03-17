@@ -11,6 +11,8 @@ var searchGitHub = ({key, query, max = 5}, callback) => {
     createdAt: integer,
     updatedAt: integer,
     type: ''
+    updatedAt: integer
+
   })
   .done(({items}) => {
     if (callback) {
