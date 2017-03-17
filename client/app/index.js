@@ -7,5 +7,5 @@ const auth = new AuthService('X5MiErhjYO21MdTVoiLZccQA123jBgla', 'sdm.auth0.com'
 console.log(auth);
 
 ReactDOM.render(
-  <App searchGitHub={searchGitHub} auth={auth}/>, document.getElementById('app')
+  <App />, document.getElementById('app')
   );
