@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 import React from 'react';
 
+=======
+>>>>>>> 572cf908ae0d53c747c6248542fa0cd7378a97ae
 var Project = ({project}) => (
   !project ? <div class="project-view">No project found</div> :
   <div className="project-view">
