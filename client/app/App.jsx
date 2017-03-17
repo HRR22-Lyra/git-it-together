@@ -6,7 +6,8 @@ import {Button} from 'react-bootstrap'
 import Nav from './Nav.jsx';
 import ProjectList from './ProjectList.jsx';
 
-class App extends React.Component {
+
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { projects: [], currentProject: null, profile: props.auth.getProfile() }
