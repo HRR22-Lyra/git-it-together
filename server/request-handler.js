@@ -93,12 +93,12 @@ exports.fetchProject = function (req, res) {
         projectData.owner = response.owner.login;
         projectData.repoUrl = response.url;
         projectData.ownerAvatar = response.owner.avatar_url;
-        projectData.private = response.private //boolean value
+        projectData.private = response.private; //boolean value
         db.Resource.findAll({project_id: projectID})
         .then(function(resources) {
           projectData.resources = [];
           resources.forEach(function (resource) {
-            projectData.resources.push(resource.dataValues)
+            projectData.resources.push(resource.dataValues);
           })
           res.status(200).send(projectData);
         });
