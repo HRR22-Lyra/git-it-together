@@ -1,4 +1,3 @@
-import searchGitHub from '../config/searchGitHub';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
@@ -7,5 +6,8 @@ const auth = new AuthService('X5MiErhjYO21MdTVoiLZccQA123jBgla', 'sdm.auth0.com'
 console.log(auth);
 
 ReactDOM.render(
+
   <App />, document.getElementById('app')
+=======
+
   );
