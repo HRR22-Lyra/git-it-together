@@ -1,4 +1,11 @@
-class Search extends React.Component {
+import React from 'react';
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> c53185e3c60f4fcf013713cbe890d02f8b9d5f3a
+export default class Search extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = { value: '' };
