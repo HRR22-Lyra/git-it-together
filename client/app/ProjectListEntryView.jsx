@@ -7,8 +7,10 @@ var ProjectListEntry = ({project, handleProjectListEntryClick}) => (
     <div className="project-body">
       <div className="row">
         <div className="col-md-1">
-          <div className="project-list-entry-title">Project Title</div>
-          <div className="project-list-entry-detail">Project Description</div>
+          <div className="project-list-entry-title" onClick={() =>
+            handleProjectListEntryClick(project)}>{project.name}</div>
+          <div className="project-list-entry-owner">{project.owner}</div>
+          <div className="project-list-entry-detail">{project.description}</div>
         </div>
         <div className="col-md-2">
           <span className="right glyphicon glyphicon-chevron-right"></span>
@@ -24,3 +26,13 @@ ProjectListEntry.propTypes = {
 
 
 module.exports = ProjectListEntry;
+
+//listProjects sample response:
+//{ id: 1,
+// owner: 'HRR22-Lyra',
+// get_repo: 'https://api.github.com/repos/HRR22-Lyra/git-it-together',
+// name: 'Git It Together',
+// description: 'Greatest App of All Time',
+// createdAt: 2017-03-17T00:01:37.433Z,
+// updatedAt: 2017-03-17T00:01:37.433Z
+//}

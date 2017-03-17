@@ -2,10 +2,10 @@ import React from 'react';
 import ProjectListEntry from './ProjectListEntryView.jsx';
 
 
-var ProjectList = ({project, handleProjectListEntryClick}) => (
+var ProjectList = ({projects, handleProjectListEntryClick}) => (
   <div className="project-list">
 
-    {projects.app.get('/api/projectList').map((project) =>
+    {projects.map((project) =>
       <ProjectListEntry
         key = {project.id}
         project = {project}
