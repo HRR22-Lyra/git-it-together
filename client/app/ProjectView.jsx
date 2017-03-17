@@ -1,7 +1,9 @@
 import React from 'react';
 
-var Project = ({project}) => (
-  !project ? <div className="project-view">No project found</div> :
+var project = ({project}) => (
+
+  !project ? <div class="project-view">No project found</div> :
+
   <div className="project-view">
       <div className="show-project-item" src={`https://github.com/HRR22-Lyra/git-it-together`} allowFullScreen></div>
     </div>
@@ -85,6 +87,10 @@ Project.propTypes = {
 
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
+<<<<<<< HEAD
 module.exports = Project;
 
 
+=======
+window.Project = Project;
+>>>>>>> no new change
