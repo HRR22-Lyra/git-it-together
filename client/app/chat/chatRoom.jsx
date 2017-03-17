@@ -1,7 +1,8 @@
 import React from 'react';
 import messages from './chatRoom.jsx';
 
-export default class chatRoom extends React.Component {
+
+class chatRoom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
