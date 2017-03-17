@@ -17,4 +17,4 @@ var searchGitHub = ({key, query, max = 5}, callback) => {
   });
 };
 
-window.searchGitHub = searchGitHub;
+module.exports = searchGitHub;

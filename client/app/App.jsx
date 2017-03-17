@@ -1,3 +1,5 @@
+import React from 'react';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -11,13 +13,14 @@ class App extends React.Component {
   getGitHubProjects(query) {
     //responsible for grabbing projects
     var options = {
-      key: //
+      key: '',
       query: query
     }
   }
   render() {
     return (
       <div>
+        <p>hi fam</p>
       </div>
 
 
@@ -26,4 +29,4 @@ class App extends React.Component {
   }
 }
 
-window.App = App;
+//window.App = App;
