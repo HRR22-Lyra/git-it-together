@@ -1,10 +1,12 @@
 import React from 'react';
 import ProjectListEntry from './ProjectListEntryView.jsx';
 
+
 var ProjectList = ({projects, handleProjectListEntryClick}) => (
+
   <div className="project-list">
 
-    {projects.map((video) =>
+    {projects.map((project) =>
       <ProjectListEntry
         key = {project.id}
         project = {project}
@@ -22,4 +24,6 @@ ProjectList.propTypes = {
 // In the ES6 spec, files are "modules" and do not share a top-level scope.
 // `var` declarations will only exist globally where explicitly defined.
 module.exports = ProjectList;
+
+
 
