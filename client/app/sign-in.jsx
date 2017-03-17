@@ -28,6 +28,8 @@ export default class SignIn extends React.Component {
     return(
       <div className="sign-in-form">
         <input type="button" className="sign-in-button" onCLick={this.toggleSignIn} value="login"/>
+
+      <div className="newDiv"</div>
     )
   }
 
