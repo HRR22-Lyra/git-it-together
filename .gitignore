@@ -8,8 +8,8 @@ pids
 *.seed
 *.env
 .env
+.git
 .DS_Store
-
 
 # Compiled directories
 build/
