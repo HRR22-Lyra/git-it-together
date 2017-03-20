@@ -2,6 +2,37 @@ body {
   background: #ebebeb;
 }
 
+.profile-picture-nav-thumb {
+  width: 60px;
+  margin: 10px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.card-block {
+  padding: 12px 16px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.caption {
+  color: #AAA;
+  margin-top: -10px;
+}
+
 .project-list-entry {
   padding: 7px 10px;
   margin: 15px;

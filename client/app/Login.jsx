@@ -12,9 +12,11 @@ export class Login extends React.Component {
     return (
       <div >
         <h2>Login</h2>
-        <ButtonToolbar >
-          <Button bsStyle="primary" onClick={auth.login.bind(this)}>Login</Button>
-        </ButtonToolbar>
+        <div className="jumbtron">
+          <ButtonToolbar >
+            <Button bsStyle="primary" onClick={auth.login.bind(this)}>Login</Button>
+          </ButtonToolbar>
+        </div>
       </div>
     )
   }
