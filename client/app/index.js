@@ -6,8 +6,6 @@ import AuthService from '../config/AuthService';
 const auth = new AuthService('X5MiErhjYO21MdTVoiLZccQA123jBgla', 'sdm.auth0.com');
 console.log(auth);
 
-ReactDOM.render(
-
-  <App auth={auth}/>, document.getElementById('app')
-
+  ReactDOM.render(
+    <App auth={auth}/>, document.getElementById('app')
   );

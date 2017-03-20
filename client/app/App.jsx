@@ -10,7 +10,7 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { projects: this.props.projects, currentProject: null, profile: props.auth.getProfile() }
+    this.state = { projects: null, currentProject: null, profile: props.auth.getProfile() }
 
     props.auth.on('profile_updated', (newProfile) => {
       this.setState({profile: newProfile})
@@ -42,41 +42,25 @@ export default class App extends React.Component {
 
 
   render() {
-            const { profile } = this.state
-            const { auth } = this.props
-            //const requireAuth = (nextState, replace) => {
-              if (!auth.loggedIn()) {
-                 //replace({ pathname: '/login' })
-                 return (
-                  <div>
-                    <Login auth={auth}/>
-                  </div>
-                  )
-              // }
-             } else {
-
-    return (
-      <div>
-        <Nav />
-        <p>git it together fam</p>
-
-        <ProfileEntryView profile={profile}></ProfileEntryView>
-
-        <Button onClick={this.logout.bind(this)}>Logout</Button>
-
-
-
-        <div className="col-md-3"></div>
-        <div className="col-md-6">
-          {/* <ProjectList projects={this.state.projects} handleProjectListEntryClick={this._handleProjectListEntryClick.bind(this)} /> */}
+    const { profile } = this.state
+    const { auth } = this.props
+    //const requireAuth = (nextState, replace) => {
+      if (!auth.loggedIn()) {
+       //replace({ pathname: '/login' })
+       return (
+        <div>
+          <Login auth={auth}/>
         </div>
-        <div className="col-md-3"></div>
-      </div>
-
-
-
-
-      );}
+        )
+      // }
+     } else {
+     return (
+       <div>
+         <Nav profile={profile} logout={this.logout.bind(this)} />
+         {/* <ProjectList handleProjectListEntryClick={this.handleProjectListEntryClick}></ProjectList> */}
+       </div>
+     );
+    }
   }
 }
 
