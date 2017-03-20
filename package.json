@@ -45,6 +45,7 @@
     "react-bootstrap": "^0.30.0-rc.1",
     "request": "^2.81.0",
     "sequelize": "^3.30.2",
+    "socket.io": "^1.7.3",
     "webpack": "^2.2.1"
   },
   "devDependencies": {
