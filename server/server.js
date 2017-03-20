@@ -7,6 +7,7 @@ var morgan = require('morgan');
 var path = require('path');
 var http = require('http').Server(app);
 var app = express();
+var requestHandler = require('./request-handler.js');
 //a new instance of socket.io is initialized by passing the http object
 var io = require ('socket.io')(http);
 
@@ -24,7 +25,7 @@ var port = process.env.PORT || 3000;
 app.listen(port);
 console.log('Listening on port:', port);
 
-//Socket.io ----------------------------------------------
+//Soc
 
 //Listen for connections to io
 io.on('connection', (socket) => {
@@ -38,12 +39,14 @@ io.on('connection', (socket) => {
     console.log('A user has connected to ' + room);
     //When a message is sent, emit only to the current room
     socket.on('message', (message) => {
-      io.to(room).emit(message):
+      io.to(room).emit(message);
+      //save message to database
+      requestHandler.saveMessage(message);
     });
-  });
-  //Listen for disconnects from socket
-  socket.on('disconnect', () => {
-    console.log ('A user disconnected');
+    //Listen for disconnects from socket
+    socket.on('disconnect', () => {
+      console.log ('A user disconnected');
+    });
   });
 });
 
