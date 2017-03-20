@@ -1,11 +1,7 @@
 import React from 'react';
 
-<<<<<<< HEAD
-class Search extends React.Component {
-=======
 export default class Search extends React.Component {
 
->>>>>>> f5a9ecab0d2b8e9dd19c9be17ef960898711ad98
   constructor(props) {
     super(props);
     this.state = { value: '' };
