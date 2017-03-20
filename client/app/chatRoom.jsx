@@ -1,69 +1,127 @@
+// Resources http://beatscodeandlife.ghost.io/react-socket-io-part-i-real-time-chat-application/
+// http://danialk.github.io/blog/2013/06/16/reactjs-and-socket-dot-io-chat-application/
 import React from 'react';
-import messages from './chatRoom.jsx';
+// import Socket from 'socket.io';
 
-export default class chatRoom extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      users: [],
-      messages: [],
-      text: ''
-    };
+var socket = io.connect();
 
-    initialize = (data) => {
-      let {users, name} = data;
-      this.setState({users, user:name});
-    };
+//Get room/project name from project view
+var room = "Project Name (room name)";
 
-    userJoined = (data) => {
-      let {users, messages} = this.state;
-      let {name} = data;
-      users.push(name);
-      messages.push({
-        user: 'anonymous',
-        text: name + ' joined!'
-      });
-      this.setState({users, messages});
-    };
-
-    addMessage = (messages) => {
-      const messages = this.state.messages;
-      messages.push(message);
-      this.setState({ messages })
-    };
-
-    //functionality to connect to server
-
-    //functionality to listen for messages from the server
-
-    handleMessageSubmit = (message) => {
-      var {messages} = this.state;
-        messages.push(message);
-        this.setState({messages});
-    };
-
-    sendHandler = (message) => {
-      const messageObject = {
-        username: this.props.username,
-        message
-      }
-
-      //send message to server
-
-      this.addmessage(messageObject);
-    }
+var Message = React.createClass({
+  render() {
+    return (
+      <div className="message">
+        <strong>{this.props.user} :</strong>
+        <span>{this.props.text}</span>
+      </div>
+    );
   }
+});
+
+var MessageList = React.createClass({
+  render() {
+    return (
+      <div className='messages'>
+        <h2> Discussion: </h2>
+        {
+          this.props.messages.map((message, i) => {
+            return (
+              <Message
+                key={i}
+                user={message.user}
+                text={message.text}
+              />
+            );
+          })
+        }
+      </div>
+    );
+  }
+});
+
+var MessageForm = React.createClass({
+
+  getInitialState() {
+    return {text: ''};
+  },
+
+  handleSubmit(e) {
+    e.preventDefault();
+    var message = {
+      user : this.props.user,
+      text : this.state.text,
+      project: room
+    }
+    this.props.onMessageSubmit(message);
+    this.setState({ text: '' });
+  },
+
+  changeHandler(e) {
+    this.setState({ text : e.target.value });
+  },
+
+  render() {
+    return(
+      <div className='message_form'>
+        <h3>Join the conversation:</h3>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            onChange={this.changeHandler}
+            value={this.state.text}
+          />
+        </form>
+      </div>
+    );
+  }
+});
+
+
+var ChatApp = React.createClass({
+
+  getInitialState() {
+    return {users: [], messages:[], text: ''};
+  },
+
+  componentDidMount() {
+    socket.on('init', this._initialize);
+    socket.on('message', this._messageRecieve);
+    socket.on('connect', function() {
+       socket.emit('room', room);
+    });
+  },
+
+  _initialize(data) {
+    var {users, name} = data;
+    this.setState({users, user: name});
+  },
+
+  _messageRecieve(message) {
+    var {messages} = this.state;
+    messages.push(message);
+    this.setState({messages});
+  },
+
+  handleMessageSubmit(message) {
+    var {messages} = this.state;
+    messages.push(message);
+    this.setState({messages});
+    socket.emit('message', message);
+  },
 
   render() {
     return (
       <div>
-        <UserList
-          users={this.state.users}
-      />
-      <MessageList
-        messages={this.state.messages}
-      />
+        <MessageList
+          messages={this.state.messages}
+        />
+        <MessageForm
+          onMessageSubmit={this.handleMessageSubmit}
+          user={this.state.user}
+        />
       </div>
     );
   }
-}
+});
+
+// React.render(<ChatApp/>, document.getElementById('app'));

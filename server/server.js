@@ -1,15 +1,16 @@
 // Resources: https://gist.github.com/crtr0/2896891
 // https://github.com/socketio/chat-example/blob/master/index.js
+// http://stackoverflow.com/questions/19426882/node-js-socket-io-socket-io-js-not-found
 
 var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var path = require('path');
-var http = require('http').Server(app);
+var http = require('http');
 var app = express();
 var requestHandler = require('./request-handler.js');
-//a new instance of socket.io is initialized by passing the http object
-var io = require ('socket.io')(http);
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);
 
 // Middleware
 app.use(morgan('dev'));
@@ -19,11 +20,6 @@ app.use(express.static(path.join(__dirname, '../')));
 
 // Routes
 require('./routes.js')(app);
-
-// Listen
-var port = process.env.PORT || 3000;
-app.listen(port);
-console.log('Listening on port:', port);
 
 //Soc
 
@@ -41,7 +37,7 @@ io.on('connection', (socket) => {
     socket.on('message', (message) => {
       io.to(room).emit(message);
       //save message to database
-      requestHandler.saveMessage(message);
+      // requestHandler.saveMessage(message);
     });
     //Listen for disconnects from socket
     socket.on('disconnect', () => {
@@ -50,22 +46,9 @@ io.on('connection', (socket) => {
   });
 });
 
+// Listen
+var port = process.env.PORT || 8080;
+server.listen(port);
+console.log('Listening on port:', port);
 
-/* Client-side code for dynamic room names by project:
 
-set-up a connection between the client and the server
-var socket = io.connect();
-
-// let's assume that the client page, once rendered, knows what room it wants to join
-var room = "abc123";
-
-socket.on('connect', function() {
-   // Connected, let's sign-up for to receive messages for this room
-   socket.emit('room', room);
-});
-
-socket.on('message', function(data) {
-   console.log('Incoming message:', data);
-});
-
-*/
