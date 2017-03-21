@@ -77,7 +77,7 @@ var MessageForm = React.createClass({
 });
 
 
-var ChatApp = React.createClass({
+export class ChatApp extends React.Component {
 
   getInitialState() {
     return {users: [], messages:[], text: ''};
@@ -122,6 +122,6 @@ var ChatApp = React.createClass({
       </div>
     );
   }
-});
+};
 
 // React.render(<ChatApp/>, document.getElementById('app'));
