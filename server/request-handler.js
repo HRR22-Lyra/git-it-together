@@ -167,3 +167,11 @@ exports.fetchProject = (req, res) => {
     }
   });
 };
+
+//---------------------------------------------------------------------------
+// saveMessage input format: {user: 'gitHub handle', projectID: 123, message: 'this is message text'}
+exports.saveMessage = (message) => {
+  console.log('This message will be save: ', message);
+  //Save messages to database
+  //Emit last 10 messages when a user connected to a room?
+}
