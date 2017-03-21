@@ -77,10 +77,10 @@ var MessageForm = React.createClass({
 });
 
 
-export class ChatApp extends React.Component {
+var ChatApp = React.createClass({
 
   getInitialState() {
-    return {users: [], messages:[], text: ''};
+    return {messages:[], text: ''};
   },
 
   componentDidMount() {
@@ -89,11 +89,6 @@ export class ChatApp extends React.Component {
     socket.on('connect', function() {
        socket.emit('room', room);
     });
-  },
-
-  _initialize(data) {
-    var {users, name} = data;
-    this.setState({users, user: name});
   },
 
   _messageRecieve(message) {
@@ -117,11 +112,12 @@ export class ChatApp extends React.Component {
         />
         <MessageForm
           onMessageSubmit={this.handleMessageSubmit}
-          user={this.state.user}
+          user={this.props.user}
         />
       </div>
     );
   }
-};
+});
 
+module.exports = ChatApp;
 // React.render(<ChatApp/>, document.getElementById('app'));
