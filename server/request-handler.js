@@ -5,17 +5,33 @@ var request = require('request');
 //---------------------------------------------------------------------------
 // addProject Request Format: {githubHandle: 'handle, repoName: 'reponame'}
 // addProject Reponse Format: 201 status only
-  // if NOT a valid user will return string: status 400 / empty
+  // if NOT a valid repo will return string: status 400 / empty
 
 exports.addProject = (req, res) => {
   var handle = req.body.githubHandle;
   var repo = req.body.repoName;
-  var githubURL = 'https://api.github.com/repos/' + handle + '/' + repo;
+  var gitHubApi = 'https://api.github.com/repos/';
+  var githubURL =  gitHubApi + handle + '/' + repo;
   request({url: githubURL, headers:{'User-Agent': handle}}, function (err, response, body) {
+    var body = JSON.parse(response.body);
     if (JSON.parse(response.statusCode) !== 404) {
-      db.Project.create({owner: handle, get_repo: githubURL})
-      .then( () => {
-        res.status(201).send();
+      //Check to see if repo was forked from another source. If so, add forked repo.
+      if (body.hasOwnProperty("parent")) {
+        githubURL = gitHubApi + body.parent.full_name;
+        handle = body.parent.owner.login;
+      }
+      var name = body.name;
+      var description = body.description;
+
+      db.Project.findOne({where: {get_repo: githubURL}})
+      //Check if repo already exists in database.
+      .then( (project) => {
+        if (project) {
+          res.status(201).send();
+        //If repo does not exist, add it.
+        } else {
+          db.Project.create({get_repo: githubURL, owner: handle, name: name, description: description})
+        }
       });
     } else {
       console.log('Error: ', err)
@@ -25,7 +41,7 @@ exports.addProject = (req, res) => {
 };
 
 //---------------------------------------------------------------------------
-// listProjects Request Format: no request data needed
+// listProjects Request Format: {username: 'git_handle'}
 // listProjects Reponse Format:
 // [{ id: 1, owner: 'HRR22-Lyra', get_repo: 'https://api.github.com/repos/HRR22-Lyra/git-it-together',
 // name: 'Git It Together', description: 'Greatest App of All Time', createdAt: 2017-03-17T00:01:37.433Z,
@@ -39,6 +55,7 @@ exports.addProject = (req, res) => {
 // ]
 
 exports.listProjects = (req, res) => {
+  //Only find projects that belong to user
   db.Project.findAll()
     .then( (projects) => {
       projectData = [];
@@ -85,7 +102,7 @@ exports.addDeliverable = (req, res) => {
   };
 
 //---------------------------------------------------------------------------
-// fetchProject Request Format: {projectID: 123}
+// fetchProject Request Format: {projectID: 123, username: git_handle}
 // fetchProject Request Fromat: if no project matches ID - status 404 and empty response
 // fetchProject Response Format: { name: 'git-it-together',
 // description: 'Git it Together consolidates the tools you need to implement agile scrum on existing Git Hub repositories.',
@@ -124,7 +141,7 @@ exports.addDeliverable = (req, res) => {
 
 exports.fetchProject = (req, res) => {
   var projectID = req.body.projectID;
-  //Query database for project URL
+  //Query database for project URL + username
   db.Project.findOne({ where: {id: projectID} })
     .then( (project) => {
     if (!project) {
