@@ -1,19 +1,18 @@
 // Resources http://beatscodeandlife.ghost.io/react-socket-io-part-i-real-time-chat-application/
 // http://danialk.github.io/blog/2013/06/16/reactjs-and-socket-dot-io-chat-application/
 
-// Insert into outer componenet to render:   <ChatApp user={this.state.profile.nickname} room={this.state.currentProject}></ChatApp>
+// Insert into outer componenet to render:   <ChatApp user={this.state.profile.nickname} room={this.state.}></ChatApp>
 
 //TO DO: Set limit on number of messages to display
 
 import React from 'react';
-// import Socket from 'socket.io';
-
 var socket = io.connect();
+
 var Message = React.createClass({
   render() {
     return (
       <div className="message">
-        <strong>{this.props.user} :</strong>
+        <strong>{this.props.user}: </strong>
         <span>{this.props.text}</span>
       </div>
     );
@@ -42,7 +41,6 @@ var MessageList = React.createClass({
 });
 
 var MessageForm = React.createClass({
-
   getInitialState() {
     return {text: ''};
   },
@@ -67,7 +65,7 @@ var MessageForm = React.createClass({
       <div className='message_form'>
         <h3>Chat about {this.props.room}</h3>
         <form onSubmit={this.handleSubmit}>
-          <input
+          <input placeholder='Add to the conversation!'
             onChange={this.changeHandler}
             value={this.state.text}
           />
@@ -77,19 +75,21 @@ var MessageForm = React.createClass({
   }
 });
 
-
+// Main component:
 var ChatApp = React.createClass({
 
   getInitialState() {
-    return {messages:[], text: ''};
+    return {messages:[{
+      user : "Welcome",
+      text : "Git the conversation started.",
+      room: this.props.room
+    }], text: ''};
   },
 
   componentDidMount() {
     socket.on('init', this._initialize);
     socket.on('message', this._messageRecieve);
-    socket.on('connect', function() {
-       socket.emit('room', this.props.room);
-    });
+    socket.emit('room', this.props.room);
   },
 
   _messageRecieve(message) {
@@ -122,4 +122,3 @@ var ChatApp = React.createClass({
 });
 
 module.exports = ChatApp;
-// React.render(<ChatApp/>, document.getElementById('app'));

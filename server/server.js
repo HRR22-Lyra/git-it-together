@@ -21,29 +21,29 @@ app.use(express.static(path.join(__dirname, '../')));
 // Routes
 require('./routes.js')(app);
 
-//Soc
-
 //Listen for connections to io
 io.on('connection', (socket) => {
+  var currentRoom = 'lobby';
   socket.on('room', (room) => {
-    //if user is already in a room, leave room
-    if (socket.room) {
-      socket.leave(socket.room);
-      socket.room = room;
-    }
+    // if user is already in a room, leave room
+    // if (socket.room) {
+    //   socket.leave(socket.room);
+    // }
     socket.join(room);
     console.log('A user has connected to ' + room);
-    //When a message is sent, emit only to the current room
-    socket.on('message', (message) => {
-      io.to(room).emit(message);
-      //save message to database
-      // requestHandler.saveMessage(message);
+    currentRoom = room;
+    // When a message is sent, emit only to the current room
     });
+
+    socket.on('message', (message) => {
+      console.log('Room Message: ', message);
+      io.to(currentRoom).emit(message);
+    });
+
     //Listen for disconnects from socket
     socket.on('disconnect', () => {
       console.log ('A user disconnected');
     });
-  });
 });
 
 // Listen

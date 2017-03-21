@@ -84,3 +84,36 @@ body h2 {
   border: 1px solid #D1D1D1;
   cursor: pointer;
 }
+
+/*Chat Room Styles ------------------------------------------------------------------*/
+.messages {
+  padding: 7px 10px;
+  margin: 15px ;
+  background: #fff;
+  font-size: 1em;
+  width: 50%;
+  line-height: 1.3em;
+  box-shadow: 0 0 0 4px #fff, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  font-weight: normal;
+  width: 25%;
+}
+
+.message_form h3 {
+  font-size: 20px;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+  margin: 0px 15px ;
+}
+
+.message_form input {
+  padding: 7px 10px;
+  margin: 15px ;
+  background: #fff;
+  font-size: 1em;
+  width: 25%;
+  line-height: 1.3em;
+  box-shadow: 0 0 0 4px #fff, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  font-weight: normal;
+}

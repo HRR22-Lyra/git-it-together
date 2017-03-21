@@ -12,7 +12,6 @@ exports.addProject = (req, res) => {
   var repo = req.body.repoName;
   var githubURL = 'https://api.github.com/repos/' + handle + '/' + repo;
   request({url: githubURL, headers:{'User-Agent': handle}}, function (err, response, body) {
-    console.log('resp.stat', response.statusCode);
     if (JSON.parse(response.statusCode) !== 404) {
       db.Project.create({owner: handle, get_repo: githubURL})
       .then( () => {
@@ -40,14 +39,12 @@ exports.addProject = (req, res) => {
 // ]
 
 exports.listProjects = (req, res) => {
-  console.log('listProjects ran! Request:', req.body);
   db.Project.findAll()
     .then( (projects) => {
       projectData = [];
       projects.forEach((project) => {
         projectData.push(project.dataValues);
       })
-      console.log('projects ----->', projectData)
       res.status(200).send(projectData);
     });
 };
@@ -170,11 +167,3 @@ exports.fetchProject = (req, res) => {
     }
   });
 };
-
-//---------------------------------------------------------------------------
-// saveMessage input format: {user: 'gitHub handle', projectID: 123, message: 'this is message text'}
-exports.saveMessage = (message) => {
-  console.log('This message will be save: ', message);
-  //Save messages to database
-  //Emit last 10 messages when a user connected to a room?
-}
