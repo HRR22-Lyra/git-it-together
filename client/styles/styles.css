@@ -117,3 +117,10 @@ body h2 {
   box-shadow: 0 0 0 4px #fff, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
   font-weight: normal;
 }
+
+.searchBar input {
+  padding: 7px 10px;
+  margin: 15px ;
+  width: 97%;
+  font-weight: normal;
+}
