@@ -12,7 +12,6 @@ exports.addProject = (req, res) => {
   var repo = req.body.repoName;
   var githubURL = 'https://api.github.com/repos/' + handle + '/' + repo;
   request({url: githubURL, headers:{'User-Agent': handle}}, function (err, response, body) {
-    console.log('resp.stat', response.statusCode);
     if (JSON.parse(response.statusCode) !== 404) {
       db.Project.create({owner: handle, get_repo: githubURL})
       .then( () => {
@@ -40,14 +39,12 @@ exports.addProject = (req, res) => {
 // ]
 
 exports.listProjects = (req, res) => {
-  console.log('listProjects ran! Request:', req.body);
   db.Project.findAll()
     .then( (projects) => {
       projectData = [];
       projects.forEach((project) => {
         projectData.push(project.dataValues);
       })
-      console.log('projects ----->', projectData)
       res.status(200).send(projectData);
     });
 };

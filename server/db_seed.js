@@ -17,7 +17,9 @@ var Deliverable = db.models.Deliverable;
 // Seed data
 var githubUrl = 'https://api.github.com/repos/';
 var projectSeed = [
-  {owner: 'HRR22-Lyra', get_repo: githubUrl + 'HRR22-Lyra/git-it-together'}
+  {id: 1, owner: 'HRR22-Lyra', name: 'Git It Together', description: 'Project management organized around git repos',  createdAt: "2017-03-21T00:54:00.011Z", updatedAt: "2017-03-21T00:54:00.011Z",  get_repo: githubUrl + 'HRR22-Lyra/git-it-together'},
+  {id: 2, owner: 'github', name: 'Visual Studio', description: 'The GitHub Extension for Visual Studio provides GitHub integration in Visual Studio 2015. Most of the extension UI lives in the Team Explorer pane, which is available from the View menu!', createdAt: "2017-03-18T00:54:00.011Z", updatedAt: "2017-03-19T00:54:00.011Z", get_repo: githubUrl + 'github/VisualStudio'},
+  {id: 3, owner: 'github', name: 'Orchestrator', description: 'MySQL replication topology management and HA',  createdAt: "2017-03-21T00:54:00.011Z", updatedAt: "2017-03-21T00:54:00.011Z",  get_repo: githubUrl + 'github/orchestrator'}
 ];
 var resourceSeed = [
   {project_id: 1, user: 'mega_man', link: 'https://www.google.com/'},

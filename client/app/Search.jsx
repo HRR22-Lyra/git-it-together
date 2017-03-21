@@ -1,36 +1,36 @@
+// Resources: http://jsfiddle.net/martinaglv/3N6D3/
+
 import React from 'react';
+import ProjectList from './ProjectList.jsx';
 
-export default class Search extends React.Component {
+//To render in app: <Search projects={this.state.projects} handleProjectListEntryClick={this.handleProjectListEntryClick}></Search>
 
-  constructor(props) {
-    super(props);
-    this.state = { value: '' };
-  }
+var Search = React.createClass({
 
-  //create click event
-  handleInputChange(e) {
-    this.props.handleSearchInputChange(e.target.value);
-    this.setState({
-      value: e.target.value
-    });
-  }
-  render () {
-    return (
-      <div className="search-bar form-inline">
-        <input
-        className="form-control"
-        type='text'
-        value={this.state.value}
-        onChange={this.handleInputChange.bind(this)}
-        />
-        <button className="btn hidden-sm-down">
-          <span className="glyphicon glyphicon-search"></span>
-        </button>
-      </div>
-    );
-  }
-}
+    getInitialState: function(){
+        return { searchString: '' };
+    },
 
-// In the ES6 spec, files are "modules" and do not share a top-level scope
-// `var` declarations will only exist globally where explicitly defined
+    handleChange: function(e){
+        this.setState({searchString:e.target.value});
+    },
+
+    render: function() {
+        var projects = this.props.projects,
+            searchString = this.state.searchString.trim().toLowerCase();
+
+        if(searchString.length > 0){
+            projects = projects.filter(function(project){
+                return project.name.toLowerCase().match( searchString );
+            });
+        }
+
+        return <div>
+          <div className="searchBar"> <input type="text" value={this.state.searchString} onChange={this.handleChange} placeholder="Search by repo name" />
+          </div>
+          <ProjectList projects={projects} handleProjectListEntryClick={this.handleProjectListEntryClick}></ProjectList>
+          </div>
+    }
+});
+
 module.exports = Search;
