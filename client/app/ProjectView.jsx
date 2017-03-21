@@ -1,6 +1,6 @@
 import React from 'react';
 
-var project = ({project}) => (
+var Project = ({project}) => (
 
 
   !project ? <div class="project-view">No project found</div> :
@@ -9,28 +9,27 @@ var project = ({project}) => (
       <div className="show-project-item" src={`https://github.com/HRR22-Lyra/git-it-together`} allowFullScreen></div>
 
     <div className="project-details">
-      <div className="repo-nav">{project.repohead}</div>
-      <div className="repo-content">{project.repository-content}</div>
-      <div>{project.description}</div>
+      <div className="repo-nav">{project.name}</div>
+      <div className="repo-content">{project.description}</div>
     </div>
 
     <div className="deliverables-section">
-      <form class="form-inline">
-        <label class="sr-only" for="deliverable-input-task">Task</label>
-        <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="deliverable-input-task" placeholder="Task" />
-        <label class="sr-only" for="deliverable-input-assignment">Assigned To</label>
-        <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="deliverable-input-assignment" placeholder="Asignment" />
-        <label class="sr-only" for="deliverable-input-fibbonaci">Task Complexity</label>
-        <input type="number" class="form-control mb-2 mr-sm-2 mb-sm-0" id="deliverable-input-fibbonaci" placeholder="Complexity" />
-        <label class="sr-only" for="deliverable-input-status">Status</label>
-        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="deliverable-input-status">
-          <option selected>Where...</option>
+      <form className="form-inline">
+        <label className="sr-only" htmlFor="deliverable-input-task">Task</label>
+        <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="deliverable-input-task" placeholder="Task" />
+        <label className="sr-only" htmlFor="deliverable-input-assignment">Assigned To</label>
+        <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="deliverable-input-assignment" placeholder="Asignment" />
+        <label className="sr-only" htmlFor="deliverable-input-fibbonaci">Task Complexity</label>
+        <input type="number" className="form-control mb-2 mr-sm-2 mb-sm-0" id="deliverable-input-fibbonaci" placeholder="Complexity" />
+        <label className="sr-only" htmlFor="deliverable-input-status">Status</label>
+        <select className="custom-select mb-2 mr-sm-2 mb-sm-0" id="deliverable-input-status">
+          <option defaultValue="Where">Where...</option>
           <option value="current">Current Sprint</option>
           <option value="backlog">Backlog</option>
           <option value="icebox">Icebox</option>
           <option value="complete">Completed Sprints</option>
         </select>
-        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="submit" className="btn btn-primary">Add</button>
       </form>
 
       <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -100,12 +99,12 @@ var project = ({project}) => (
     </div>
 
     <div className="resources-section">
-      <form class="form-inline">
-        <label class="sr-only" for="resource-input-name">Resource Name</label>
-        <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="resource-input-name" placeholder="Name" />
-        <label class="sr-only" for="resource-input-url">Resource Url</label>
-        <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="resource-input-url" placeholder="Url" />
-        <button type="submit" class="btn btn-primary">Add</button>
+      <form className="form-inline">
+        <label className="sr-only" htmlFor="resource-input-name">Resource Name</label>
+        <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="resource-input-name" placeholder="Name" />
+        <label className="sr-only" htmlFor="resource-input-url">Resource Url</label>
+        <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="resource-input-url" placeholder="Url" />
+        <button type="submit" className="btn btn-primary">Add</button>
       </form>
     </div>
 

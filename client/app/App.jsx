@@ -24,8 +24,11 @@ export default class App extends React.Component {
   }
 
   handleProjectListEntryClick(project) {
+    // setState is async so the render will fire before the currentProject is changed
+    // this forces the state to wait until it is updated to rerender
+    console.log(project)
     this.state.currentProject = project;
-    this.setState();
+    this.forceUpdate();
   }
 
   getGitHubProjects(query) {
