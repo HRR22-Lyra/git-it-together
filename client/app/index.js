@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
 import AuthService from '../config/AuthService';
+import services from '../config/services.js';
+
+console.log('service', services.getProjectList);
+
 
 const auth = new AuthService('X5MiErhjYO21MdTVoiLZccQA123jBgla', 'sdm.auth0.com');
 console.log(auth);
