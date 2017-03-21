@@ -38,7 +38,7 @@ body {
 }
 
 .project-list-entry {
-  padding: 7px 10px;
+  padding: 7px 20px;
   margin: 15px 0;
   background: #fff;
   font-size: 1em;
@@ -70,7 +70,7 @@ body {
 }
 
 .panel-heading {
-  background-color: #0269c2;
+  background-color: #24292e;
   padding: 0 0 5px 0;
   border: 1px solid #D1D1D1;
   cursor: pointer;

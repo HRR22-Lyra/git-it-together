@@ -6,6 +6,13 @@ var ProjectList = ({projects, handleProjectListEntryClick}) => (
 
   <div className="project-list">
     <h2>Projects</h2>
+    <div className="input-group">
+      <input type="text" className="form-control" placeholder="Enter repo handle to add project..." />
+      <span className="input-group-btn">
+        <button className="btn btn-default" type="button"><span className="glyphicon glyphicon-plus"></span></button>
+      </span>
+    </div>
+
     {projects.map((project) =>
       <ProjectListEntry
         key = {project.id}
