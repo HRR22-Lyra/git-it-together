@@ -20,6 +20,8 @@ var project = ({project}) => (
         <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="deliverable-input-task" placeholder="Task" />
         <label class="sr-only" for="deliverable-input-assignment">Assigned To</label>
         <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="deliverable-input-assignment" placeholder="Asignment" />
+        <label class="sr-only" for="deliverable-input-fibbonaci">Task Complexity</label>
+        <input type="number" class="form-control mb-2 mr-sm-2 mb-sm-0" id="deliverable-input-fibbonaci" placeholder="Complexity" />
         <label class="sr-only" for="deliverable-input-status">Status</label>
         <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="deliverable-input-status">
           <option selected>Where...</option>
