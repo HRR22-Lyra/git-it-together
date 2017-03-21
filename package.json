@@ -8,7 +8,8 @@
     "start": "node server/server.js",
     "live-server": "webpack-dev-server",
     "build": "node_modules/.bin/webpack --config webpack.config.js",
-    "heroku-postbuild": "node_modules/.bin/webpack -p --config webpack.config.js"
+    "heroku-postbuild": "node_modules/.bin/webpack -p --config webpack.config.js",
+    "quick": "npm run build && npm start"
   },
   "repository": {
     "type": "git",
