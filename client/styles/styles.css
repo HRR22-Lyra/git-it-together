@@ -21,7 +21,7 @@ body {
 }
 
 .card-block {
-  padding: 12px 16px;
+  padding: 12px 10px;
 }
 
 .dropdown:hover .dropdown-content {
@@ -33,9 +33,13 @@ body {
   margin-top: -10px;
 }
 
+.project-list {
+  padding: 10px;
+}
+
 .project-list-entry {
   padding: 7px 10px;
-  margin: 15px;
+  margin: 15px 0;
   background: #fff;
   font-size: 1em;
   line-height: 1.3em;
@@ -43,9 +47,12 @@ body {
   font-weight: normal;
 }
 
+.project-list-entry span{
+  top: 50%;
+}
+
 .project-list-entry:hover {
   font-size: 1.1em;
-  color: #006DFF;
   cursor: pointer;
 }
 

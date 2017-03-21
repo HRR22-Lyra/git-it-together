@@ -10,7 +10,7 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { projects: null, currentProject: null, profile: props.auth.getProfile() }
+    this.state = { projects: this.props.projects, currentProject: null, profile: props.auth.getProfile() }
 
     props.auth.on('profile_updated', (newProfile) => {
       this.setState({profile: newProfile})
@@ -57,7 +57,7 @@ export default class App extends React.Component {
      return (
        <div>
          <Nav profile={profile} logout={this.logout.bind(this)} />
-         {/* <ProjectList handleProjectListEntryClick={this.handleProjectListEntryClick}></ProjectList> */}
+         <ProjectList projects={this.state.projects} handleProjectListEntryClick={this.handleProjectListEntryClick}></ProjectList>
        </div>
      );
     }
