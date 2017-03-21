@@ -1,20 +1,67 @@
 body {
-  background: #ebebeb;
+  background: #2d2d2d;
+}
+
+body h2 {
+  color: white;
+}
+
+.profile-picture-nav-thumb {
+  width: 60px;
+  margin: 10px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  float: left;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
+  border-top: 1px solid #fff;
+  z-index: 2;
+}
+
+.card-block {
+  padding: 12px 10px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.caption {
+  color: #AAA;
+  margin-top: -10px;
+}
+
+.project-list {
+  padding: 10px 25px;
+}
+
+.add-project-input {
+  z-index: 1;
 }
 
 .project-list-entry {
   padding: 7px 10px;
-  margin: 15px;
+  margin: 15px 5px;
   background: #fff;
   font-size: 1em;
   line-height: 1.3em;
-  box-shadow: 0 0 0 4px #fff, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  -moz-box-shadow:    3px 3px 0 0 #ccc;
+  -webkit-box-shadow: 3px 3px 0 0 #ccc;
+  box-shadow:         3px 3px 0 0 #ccc;
   font-weight: normal;
 }
 
 .project-list-entry:hover {
-  font-size: 1.1em;
-  color: #006DFF;
   cursor: pointer;
 }
 
@@ -32,7 +79,7 @@ body {
 }
 
 .panel-heading {
-  background-color: #006DFF;
+  background-color: #24292e;
   padding: 0 0 5px 0;
   border: 1px solid #D1D1D1;
   cursor: pointer;

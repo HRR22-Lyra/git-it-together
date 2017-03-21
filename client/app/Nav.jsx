@@ -1,26 +1,22 @@
-import React from 'react'
+import React from 'react';
+import {Row, Col, Image} from 'react-bootstrap';
 
-var Nav = () => (
-<nav className='navbar navbar-inverse'>
+var Nav = ({profile, logout}) => (
+<nav className='navbar navbar-default'>
   <div className='container-fluid'>
     <div className='navbar-header'>
-      <button type='button' className='navbar-toggle collapsed' data-toggle='collapse' data-target='#nav-collapse-1' aria-expanded='false'>
-        <span className='sr-only'>Toggle navigation</span>
-        <span className='icon-bar'></span>
-        <span className='icon-bar'></span>
-        <span className='icon-bar'></span>
-      </button>
-      <a className="navbar-brand" href="#/"><img src="client/assets/logo.png" />Git It Together</a>
-    </div>
-
-    <div className='collapse navbar-collapse' id='nav-collapse-1'>
-      <ul className='nav navbar-nav'>
-      {/*
-        <li><Link to="/dashboard" activeClassName="active sr-only">Dashboard</Link></li>
-        <li><Link to="/projects" activeClassName="active sr-only">Projects</Link></li>
-        <li><Link to="/logout">Sign Out</Link></li>
-      */}
-      </ul>
+      <div className="dropdown">
+        <Image src={profile.picture} circle className="profile-picture-nav-thumb" />
+        <div className="card dropdown-content">
+          <Image className="card-img-top" src={profile.picture} alt="Card image cap" />
+          <div className="card-block">
+            <h4 className="card-title">{profile.name}</h4>
+            <p className="caption"><small>{profile.nickname}</small></p>
+            <hr />
+            <button onClick={logout} className="btn btn-primary">Sign Out</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </nav>

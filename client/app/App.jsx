@@ -42,41 +42,25 @@ export default class App extends React.Component {
 
 
   render() {
-            const { profile } = this.state
-            const { auth } = this.props
-            //const requireAuth = (nextState, replace) => {
-              if (!auth.loggedIn()) {
-                 //replace({ pathname: '/login' })
-                 return (
-                  <div>
-                    <Login auth={auth}/>
-                  </div>
-                  )
-              // }
-             } else {
-
-    return (
-      <div>
-        <Nav />
-        <p>git it together fam</p>
-
-        <ProfileEntryView profile={profile}></ProfileEntryView>
-
-        <Button onClick={this.logout.bind(this)}>Logout</Button>
-
-
-
-        <div className="col-md-3"></div>
-        <div className="col-md-6">
-          {/* <ProjectList projects={this.state.projects} handleProjectListEntryClick={this._handleProjectListEntryClick.bind(this)} /> */}
+    const { profile } = this.state
+    const { auth } = this.props
+    //const requireAuth = (nextState, replace) => {
+      if (!auth.loggedIn()) {
+       //replace({ pathname: '/login' })
+       return (
+        <div>
+          <Login auth={auth}/>
         </div>
-        <div className="col-md-3"></div>
-      </div>
-
-
-
-
-      );}
+        )
+      // }
+     } else {
+     return (
+       <div>
+         <Nav profile={profile} logout={this.logout.bind(this)} />
+         <ProjectList projects={this.state.projects} handleProjectListEntryClick={this.handleProjectListEntryClick}></ProjectList>
+       </div>
+     );
+    }
   }
 }
 
