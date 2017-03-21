@@ -5,6 +5,7 @@ import ProfileEntryView from './ProfileEntryView.jsx'
 import {Button} from 'react-bootstrap'
 import Nav from './Nav.jsx';
 import ProjectList from './ProjectList.jsx';
+import Project from './ProjectView.jsx';
 
 export default class App extends React.Component {
 
@@ -23,7 +24,11 @@ export default class App extends React.Component {
   }
 
   handleProjectListEntryClick(project) {
-    this.setState({ currentProject: project})
+    // setState is async so the render will fire before the currentProject is changed
+    // this forces the state to wait until it is updated to rerender
+    console.log(project)
+    this.state.currentProject = project;
+    this.forceUpdate();
   }
 
   getGitHubProjects(query) {
@@ -54,12 +59,21 @@ export default class App extends React.Component {
         )
       // }
      } else {
-     return (
-       <div>
-         <Nav profile={profile} logout={this.logout.bind(this)} />
-         <ProjectList projects={this.state.projects} handleProjectListEntryClick={this.handleProjectListEntryClick}></ProjectList>
-       </div>
-     );
+      if (this.state.currentProject === null) {
+        return (
+          <div>
+            <Nav profile={profile} logout={this.logout.bind(this)} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} />
+            <ProjectList projects={this.state.projects} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)}></ProjectList>
+          </div>
+        );
+      } else {
+        return (
+          <div>
+            <Nav profile={profile} logout={this.logout.bind(this)} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} />
+            <Project project={this.state.currentProject} />
+          </div>
+        );
+      }
     }
   }
 }

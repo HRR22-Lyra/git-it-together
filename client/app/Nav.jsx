@@ -1,12 +1,14 @@
 import React from 'react';
 import {Row, Col, Image} from 'react-bootstrap';
 
-var Nav = ({profile, logout}) => (
+var Nav = ({profile, logout, handleProjectListEntryClick}) => (
 <nav className='navbar navbar-default'>
   <div className='container-fluid'>
     <div className='navbar-header'>
       <div className="dropdown">
+        <div onClick={() => handleProjectListEntryClick(null)}>
         <Image src={profile.picture} circle className="profile-picture-nav-thumb" />
+        </div>
         <div className="card dropdown-content">
           <Image className="card-img-top" src={profile.picture} alt="Card image cap" />
           <div className="card-block">
