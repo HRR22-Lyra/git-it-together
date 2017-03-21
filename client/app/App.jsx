@@ -6,6 +6,8 @@ import {Button} from 'react-bootstrap'
 import Nav from './Nav.jsx';
 import ProjectList from './ProjectList.jsx';
 import Project from './ProjectView.jsx';
+import Search from './Search.jsx';
+import ChatApp from './chatRoom.jsx';
 
 export default class App extends React.Component {
 
@@ -63,7 +65,7 @@ export default class App extends React.Component {
         return (
           <div>
             <Nav profile={profile} logout={this.logout.bind(this)} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} />
-            <ProjectList projects={this.state.projects} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)}></ProjectList>
+            <Search projects={this.state.projects} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} />
           </div>
         );
       } else {
