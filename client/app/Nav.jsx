@@ -2,7 +2,7 @@ import React from 'react';
 import {Row, Col, Image} from 'react-bootstrap';
 
 var Nav = ({profile, logout}) => (
-<nav className='navbar navbar-default'>
+<nav className='navbar navbar-inverse'>
   <div className='container-fluid'>
     <div className='navbar-header'>
       <div className="dropdown">

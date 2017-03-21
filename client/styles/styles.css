@@ -5,11 +5,13 @@ body {
 .profile-picture-nav-thumb {
   width: 60px;
   margin: 10px;
+  border: 1px solid #4f4f4f;
 }
 
 .dropdown {
   position: relative;
   display: inline-block;
+  float: left;
 }
 
 .dropdown-content {
@@ -34,12 +36,16 @@ body {
 }
 
 .project-list {
-  padding: 10px;
+  padding: 10px 25px;
+}
+
+.add-project-input {
+  z-index: -1;
 }
 
 .project-list-entry {
-  padding: 7px 20px;
-  margin: 15px 0;
+  padding: 7px 10px;
+  margin: 15px 5px;
   background: #fff;
   font-size: 1em;
   line-height: 1.3em;
@@ -47,12 +53,7 @@ body {
   font-weight: normal;
 }
 
-.project-list-entry span{
-  top: 50%;
-}
-
 .project-list-entry:hover {
-  font-size: 1.1em;
   cursor: pointer;
 }
 
