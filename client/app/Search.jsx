@@ -35,7 +35,7 @@ var Search = React.createClass({
         </div>
           <div className="searchBar"> <input type="text" value={this.state.searchString} onChange={this.handleChange} placeholder="Search by repo name" />
           </div>
-          <ProjectList projects={projects} handleProjectListEntryClick={this.handleProjectListEntryClick}></ProjectList>
+          <ProjectList projects={projects} handleProjectListEntryClick={this.props.handleProjectListEntryClick}></ProjectList>
           </div>
     }
 });

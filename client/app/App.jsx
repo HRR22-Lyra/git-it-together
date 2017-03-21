@@ -13,7 +13,7 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { projects: this.props.projects, currentProject: null, profile: props.auth.getProfile() }
+    this.state = { projects: this.props.projects, currentProject: null, profile: props.auth.getProfile(),  }
 
     props.auth.on('profile_updated', (newProfile) => {
       this.setState({profile: newProfile})
