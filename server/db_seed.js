@@ -13,6 +13,7 @@ var db = require('./db.js');
 var Project = db.models.Project;
 var Resource = db.models.Resource;
 var Deliverable = db.models.Deliverable;
+var UserProjects = db.models.UserProjects;
 
 // Seed data
 var githubUrl = 'https://api.github.com/repos/';

@@ -8,12 +8,15 @@ var request = require('request');
   // if NOT a valid repo will return string: status 400 / empty
 
 exports.addProject = (req, res) => {
+
   var handle = req.body.githubHandle;
   var repo = req.body.repoName;
   var gitHubApi = 'https://api.github.com/repos/';
   var githubURL =  gitHubApi + handle + '/' + repo;
+
   request({url: githubURL, headers:{'User-Agent': handle}}, function (err, response, body) {
     var body = JSON.parse(response.body);
+    //Make sure the requested repo is valie.
     if (JSON.parse(response.statusCode) !== 404) {
       //Check to see if repo was forked from another source. If so, add forked repo.
       if (body.hasOwnProperty("parent")) {
@@ -22,16 +25,29 @@ exports.addProject = (req, res) => {
       }
       var name = body.name;
       var description = body.description;
-
-      db.Project.findOne({where: {get_repo: githubURL}})
+      var projectID = null;
       //Check if repo already exists in database.
+      db.Project.findOne({where: {get_repo: githubURL}})
       .then( (project) => {
         if (project) {
-          res.status(201).send();
+          projectID = project.dataValues.id;
         //If repo does not exist, add it.
         } else {
           db.Project.create({get_repo: githubURL, owner: handle, name: name, description: description})
+          .then ( (project) => {
+            projectID = project.dataValues.id;
+          });
         }
+        db.UserProjects.findOne({where: {user: handle, project_id: projectID}})
+        .then( (project) => {
+          if (!project) {
+            //Add association between project and current user
+            db.UserProjects.create({user: handle, project_id: projectID})
+            .then ( (userProjects) => {
+            });
+           }
+          res.status(201).send();
+        });
       });
     } else {
       console.log('Error: ', err)
@@ -56,8 +72,13 @@ exports.addProject = (req, res) => {
 
 exports.listProjects = (req, res) => {
   //Only find projects that belong to user
-  db.Project.findAll()
+  var user = req.body.username;
+  //Find all projects associated with user
+  // db.UserProjects.findAll({where: {user: user} })
+  db.UserProjects.findAll({where: {user: user} })
     .then( (projects) => {
+      console.log('List project project: ', projects);
+      var userProjects = projects.dataValues;
       projectData = [];
       projects.forEach((project) => {
         projectData.push(project.dataValues);
@@ -102,7 +123,7 @@ exports.addDeliverable = (req, res) => {
   };
 
 //---------------------------------------------------------------------------
-// fetchProject Request Format: {projectID: 123, username: git_handle}
+// fetchProject Request Format: {projectID: 123}
 // fetchProject Request Fromat: if no project matches ID - status 404 and empty response
 // fetchProject Response Format: { name: 'git-it-together',
 // description: 'Git it Together consolidates the tools you need to implement agile scrum on existing Git Hub repositories.',
