@@ -215,9 +215,18 @@ exports.fetchProject = (req, res) => {
 };
 
 //---------------------------------------------------------------------------
-// saveMessage input format: {user: 'gitHub handle', projectID: 123, message: 'this is message text'}
-exports.saveMessage = (message) => {
-  console.log('This message will be save: ', message);
-  //Save messages to database
-  //Emit last 10 messages when a user connected to a room?
-}
+// listRepos input format: {username: 'github_handle}
+exports.listRepos = (req, res) => {
+  var user = req.body.username;
+  var githubURL = 'https://api.github.com/users/' + user + '/repos';
+  request({url: githubURL, headers:{'User-Agent': user}}, (err, response, body) => {
+    if (JSON.parse(response.statusCode) !== 404) {
+      console.log('Response: ', response.body);
+      var repos = [];
+      JSON.parse(response.body).forEach( (repo) => {
+        repos.push(repo.name);
+      })
+      res.status(200).send(repos);
+    }
+  });
+};
