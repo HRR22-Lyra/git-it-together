@@ -15,11 +15,12 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { projects: [], currentProject: null, profile: props.auth.getProfile() }
+    this.state = { projects: props.repod.getProjects(), currentProject: null, profile: props.auth.getProfile() }
 
     props.auth.on('profile_updated', (newProfile) => {
       this.setState({profile: newProfile})
       props.repod.getthem();
+
       //this.repod = new repoService();
     })
     props.repod.on('list_updated', (items) => {
@@ -36,8 +37,9 @@ export default class App extends React.Component {
     props.repod.getthem();
   }
 
-
-
+  addNewProject(newProjectName) { // assign this to add project click event with the repo name as newProjectName argument
+    props.repod.addOne(newProjectName);
+  }
 
   handleProjectListEntryClick(project) {
     // setState is async so the render will fire before the currentProject is changed
@@ -76,6 +78,7 @@ export default class App extends React.Component {
       // }
      } else {
       if (this.state.currentProject === null) {
+
         return (
           <div>
             <Nav profile={profile} logout={this.logout.bind(this)} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} />

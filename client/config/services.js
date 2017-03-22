@@ -2,16 +2,17 @@ import React from 'react'
 import $ from 'jquery';
 import { EventEmitter } from 'events'
 
-var getPros = function(callback) {
+var getPros = function(callback, callback2) {
   $.get('/api/projectlist', {})
   .done( function(items) {
     console.log('got items', items);
+    callback2(items);
     callback(items);
       //this.emit('list_updated', items)  //return items;
   });
 };
 var addProject = function(newProject, callback) {
-  $.post('/api/project', newProject)
+  $.post('/api/projectList', newProject)
   .done( function(resp) {
     console.log('post response', resp);
     if (callback) {
@@ -24,36 +25,34 @@ var addProject = function(newProject, callback) {
 export default class repoService extends EventEmitter {
   constructor() {
     super()
-    const profile = localStorage.getItem('profile')
+    const profile = localStorage.getItem('profile');
     this.userHandle = profile ? JSON.parse(localStorage.profile).nickname : {}
     console.log('profile fromserv', this.userHandle);
+    //localStorage.setItem('projects', JSON.stringify([]))
 
     //this.pList = getPros(this.makeit.bind(this));
   }
 
   getthem () {
-    getPros(this.makeit.bind(this))
+    getPros(this.makeit.bind(this), this.setProjects.bind(this))
   }
 
   addOne(newProjectName) {
     var newProjectObj ={githubHandle: JSON.parse(localStorage.profile).nickname, repoName: newProjectName}
-    addProject(newProjectObj, this.getthem);
+    console.log('input', newProjectObj);
+    addProject(newProjectObj, this.getthem.bind(this));
 
   }
+  setProjects(projects){
+    // Saves profile data to localStorage
+    localStorage.setItem('projects', JSON.stringify(projects))
+    // Triggers profile_updated event to update the UI
+  }
 
-
-
-
-  // getPros (callback) {
-  //   var handler = JSON.parse(localStorage.profile).nickname
-  //   $.get('/api/projectlist', {})
-  //   .done( function(items) {
-  //     console.log('got items', items);
-  //     this.makeit(items);
-  //   //this.emit('list_updated', items)  //return items;
-  //   });
-  // }
-
+  getProjects() {
+    const projects = localStorage.getItem('projects')
+    return projects ? JSON.parse(localStorage.projects) : []
+  }
 
   makeit(items) {
     //console.log('gotpassed', items);
