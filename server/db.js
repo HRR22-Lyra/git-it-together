@@ -32,9 +32,12 @@ var Deliverable = db.define('Deliverable', {
 
 Deliverable.belongsTo(Project, {foreignKey: 'project_id'});
 
-// var User = db.define('User', {
-//   id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
-//   github_handle: Sequelize.STRING
-// });
+var UserProjects = db.define('UserProjects', {
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+  user: Sequelize.STRING,
+  project_id: Sequelize.INTEGER
+});
+
+UserProjects.belongsTo(Project, {foreignKey: 'project_id'});
 
 module.exports = db;
