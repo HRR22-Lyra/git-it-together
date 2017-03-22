@@ -37,6 +37,7 @@ var Search = React.createClass({
               <div className="row">
                 <div className="col">
                   <div className="searchBar"> <input type="text" value={this.state.searchString} onChange={this.handleChange} placeholder="Search by repo name" />
+                  </div>
                 </div>
                 <div className="col">
                   <input type="text" className="form-control" placeholder="Enter repo handle to add project..." />
@@ -54,7 +55,6 @@ var Search = React.createClass({
                 </div>
               </div>
             </div>
-          </div>
         );
     }
 });
