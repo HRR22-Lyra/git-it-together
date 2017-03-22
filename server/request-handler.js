@@ -5,17 +5,51 @@ var request = require('request');
 //---------------------------------------------------------------------------
 // addProject Request Format: {githubHandle: 'handle, repoName: 'reponame'}
 // addProject Reponse Format: 201 status only
-  // if NOT a valid user will return string: status 400 / empty
+  // if NOT a valid repo will return string: status 400 / empty
 
 exports.addProject = (req, res) => {
+
   var handle = req.body.githubHandle;
+  //save username in case user is not the owner of parent repo
+  var user = req.body.githubHandle;
   var repo = req.body.repoName;
-  var githubURL = 'https://api.github.com/repos/' + handle + '/' + repo;
+  var gitHubApi = 'https://api.github.com/repos/';
+  var githubURL =  gitHubApi + handle + '/' + repo;
+
   request({url: githubURL, headers:{'User-Agent': handle}}, function (err, response, body) {
+    var body = JSON.parse(response.body);
+    //Make sure the requested repo is valie.
     if (JSON.parse(response.statusCode) !== 404) {
-      db.Project.create({owner: handle, get_repo: githubURL})
-      .then( () => {
-        res.status(201).send();
+      //Check to see if repo was forked from another source. If so, add forked repo.
+      if (body.hasOwnProperty("parent")) {
+        githubURL = gitHubApi + body.parent.full_name;
+        handle = body.parent.owner.login;
+      }
+      var name = body.name;
+      var description = body.description;
+      var projectID = null;
+      //Check if repo already exists in database.
+      db.Project.findOne({where: {get_repo: githubURL}})
+      .then( (project) => {
+        if (project) {
+          projectID = project.dataValues.id;
+        //If repo does not exist, add it.
+        } else {
+          db.Project.create({get_repo: githubURL, owner: handle, name: name, description: description})
+          .then ( (project) => {
+            projectID = project.dataValues.id;
+          });
+        }
+        db.UserProjects.findOne({where: {user: user, project_id: projectID}})
+        .then( (project) => {
+          if (!project) {
+            //Add association between project and current user
+            db.UserProjects.create({user: user, project_id: projectID})
+            .then ( (userProjects) => {
+            });
+           }
+          res.status(201).send();
+        });
       });
     } else {
       console.log('Error: ', err)
@@ -25,7 +59,7 @@ exports.addProject = (req, res) => {
 };
 
 //---------------------------------------------------------------------------
-// listProjects Request Format: no request data needed
+// listProjects Request Format: {username: 'git_handle'}
 // listProjects Reponse Format:
 // [{ id: 1, owner: 'HRR22-Lyra', get_repo: 'https://api.github.com/repos/HRR22-Lyra/git-it-together',
 // name: 'Git It Together', description: 'Greatest App of All Time', createdAt: 2017-03-17T00:01:37.433Z,
@@ -39,14 +73,31 @@ exports.addProject = (req, res) => {
 // ]
 
 exports.listProjects = (req, res) => {
-  db.Project.findAll()
-    .then( (projects) => {
-      projectData = [];
-      projects.forEach((project) => {
-        projectData.push(project.dataValues);
-      })
-      res.status(200).send(projectData);
-    });
+  //Only find projects that belong to user.
+  var user = req.body.username;
+  var projectData = [];
+  //Find all projects associated with user.
+  db.UserProjects.findAll({where: {user: user} })
+  .then( (projects) => {
+    //Iterate over projects associated with user.
+    console.log('Projects: ---->', projects);
+    projects.forEach((project, index) => {
+      console.log('Project: ---->', project);
+      var id = project.dataValues.project_id;
+      //Get details on all projects associated with user.
+      db.Project.findOne({where: {id: id}})
+      .then ((project) => {
+        if(project) {
+          projectData.push(project.dataValues);
+          console.log('Project Data: ', projectData);
+        //Send project data once all projects have been added
+        }
+        if (index === projects.length - 1) {
+          res.status(200).send(projectData);
+        }
+      });
+    })
+  })
 };
 
 //---------------------------------------------------------------------------
@@ -124,7 +175,7 @@ exports.addDeliverable = (req, res) => {
 
 exports.fetchProject = (req, res) => {
   var projectID = req.body.projectID;
-  //Query database for project URL
+  //Query database for project URL + username
   db.Project.findOne({ where: {id: projectID} })
     .then( (project) => {
     if (!project) {
@@ -169,9 +220,23 @@ exports.fetchProject = (req, res) => {
 };
 
 //---------------------------------------------------------------------------
-// saveMessage input format: {user: 'gitHub handle', projectID: 123, message: 'this is message text'}
-exports.saveMessage = (message) => {
-  console.log('This message will be save: ', message);
-  //Save messages to database
-  //Emit last 10 messages when a user connected to a room?
-}
+// listRepos input format: {username: 'github_handle}
+// Example response: [ 'algo-time-complexity-review', 'git-it-together', 'recursion-prompts',]
+
+exports.listRepos = (req, res) => {
+  var user = req.body.username;
+  var githubURL = 'https://api.github.com/users/' + user + '/repos';
+  request({url: githubURL, headers:{'User-Agent': user}}, (err, response, body) => {
+    if (JSON.parse(response.statusCode) !== 404) {
+      console.log('Response: ', response.body);
+      var repos = [];
+      JSON.parse(response.body).forEach( (repo) => {
+        repos.push(repo.name);
+      })
+      res.status(200).send(repos);
+    } else {
+        console.log('Error: ', err)
+        res.status(400).send();
+      }
+  });
+};

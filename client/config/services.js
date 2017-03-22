@@ -3,10 +3,10 @@ import $ from 'jquery';
 import { EventEmitter } from 'events';
 
 // enable scrollspy for the deliverables section
-$('#deliverables-section').scrollspy({ target: '#deliverables-nav' });
+//$('#deliverables-section').scrollspy({ target: '#deliverables-nav' });
 
-var getPros = function(callback, callback2) {
-  $.get('/api/projectlist', {})
+var getPros = function(input, callback, callback2) {
+  $.post('/api/listProjects', input)
   .done( function(items) {
     console.log('got items', items);
     callback2(items);
@@ -15,7 +15,7 @@ var getPros = function(callback, callback2) {
   });
 };
 var addProject = function(newProject, callback) {
-  $.post('/api/projectList', newProject)
+  $.post('/api/addProject', newProject)
   .done( function(resp) {
     console.log('post response', resp);
     if (callback) {
@@ -23,6 +23,10 @@ var addProject = function(newProject, callback) {
     }
   })
 };
+
+// var projectID = req.body.projectID;
+//   var link = req.body.link;
+//   var user = req.body.user;
 
 
 export default class repoService extends EventEmitter {
@@ -37,7 +41,7 @@ export default class repoService extends EventEmitter {
   }
 
   getthem () {
-    getPros(this.makeit.bind(this), this.setProjects.bind(this))
+    getPros({username: 'lmegviar'}, this.makeit.bind(this), this.setProjects.bind(this))
   }
 
   addOne(newProjectName) {
