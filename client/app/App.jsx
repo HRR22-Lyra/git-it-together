@@ -14,17 +14,17 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { projects: props.projects, currentProject: null, profile: props.auth.getProfile(), repos: props.repos }
+    this.state = { projects: props.repod.getProjects(), currentProject: null, profile: props.auth.getProfile() }
 
     props.auth.on('profile_updated', (newProfile) => {
       this.setState({profile: newProfile})
-      // props.repod.getthem();
+      props.repod.getthem();
 
       //this.repod = new repoService();
     })
-    // props.repod.on('list_updated', (items) => {
-    //   this.setState({projects: items})//.bind(this)
-    // })
+    props.repod.on('list_updated', (items) => {
+      this.setState({projects: items})//.bind(this)
+    })
     props.auth.on('logged_out', (bye) => {
       this.setState({profile: this.props.auth.getProfile()})
       //this.render();
@@ -32,13 +32,13 @@ export default class App extends React.Component {
 
   }
 
-  // refreshProjectList() { //bind this to button if we want a refresh button,
-  //   props.repod.getthem();
-  // }
+  refreshProjectList() { //bind this to button if we want a refresh button,
+    props.repod.getthem();
+  }
 
-  // addNewProject(newProjectName) { // assign this to add project click event with the repo name as newProjectName argument
-  //   props.repod.addOne(newProjectName);
-  // }
+  addNewProject(newProjectName) { // assign this to add project click event with the repo name as newProjectName argument
+    props.repod.addOne(newProjectName);
+  }
 
   handleProjectListEntryClick(project) {
     // setState is async so the render will fire before the currentProject is changed
@@ -48,10 +48,20 @@ export default class App extends React.Component {
     this.forceUpdate();
   }
 
+  getGitHubProjects(query) {
+
+    var options = {
+      key: '',
+      query: query
+    };
+
+    this.props.searchGitHub()
+  }
   logout(){
     this.props.auth.logout()//add props.auth.on('logged-out') event which should be triggered in authservice.js which refreshes page. and same for logged in or authenticated events rather than the use of routes in authservice and here.
     //this.context.router.push('/login');//
   }
+
 
   render() {
     const { profile } = this.state

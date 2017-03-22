@@ -3,8 +3,30 @@ import $ from 'jquery';
 import { EventEmitter } from 'events';
 
 // enable scrollspy for the deliverables section
-$('#deliverables-section').scrollspy({ target: '#deliverables-nav' });
+//$('#deliverables-section').scrollspy({ target: '#deliverables-nav' });
 
+var getPros = function(input, callback, callback2) {
+  $.post('/api/listProjects', input)
+  .done( function(items) {
+    console.log('got items', items);
+    callback2(items);
+    callback(items);
+      //this.emit('list_updated', items)  //return items;
+  });
+};
+var addProject = function(newProject, callback) {
+  $.post('/api/addProject', newProject)
+  .done( function(resp) {
+    console.log('post response', resp);
+    if (callback) {
+      callback();
+    }
+  })
+};
+
+// var projectID = req.body.projectID;
+//   var link = req.body.link;
+//   var user = req.body.user;
 
 
 export default class repoService extends EventEmitter {
@@ -13,36 +35,19 @@ export default class repoService extends EventEmitter {
     const profile = localStorage.getItem('profile');
     this.userHandle = profile ? JSON.parse(localStorage.profile).nickname : {}
     console.log('profile fromserv', this.userHandle);
-    localStorage.setItem('projects', JSON.stringify([]))
-    this.pList = this.getPros(this.makeit.bind(this));
+    //localStorage.setItem('projects', JSON.stringify([]))
+
+    //this.pList = getPros(this.makeit.bind(this));
   }
 
-  getPros () {
-    $.post('/api/listProjects', {username: "lmegviar"})
-    .done( function(items) {
-      console.log('got items', items);
-      this.emit('list_updated', items)  //return items;
-    });
-  };
-
-  addProject (newProject, callback) {
-    $.post('/api/addProject', newProject)
-    .done( function(resp) {
-      console.log('post response', resp);
-      if (callback) {
-        callback();
-      }
-    })
-  };
-
   getthem () {
-    this.getPros(this.makeit.bind(this), this.setProjects.bind(this))
+    getPros({username: 'lmegviar'}, this.makeit.bind(this), this.setProjects.bind(this))
   }
 
   addOne(newProjectName) {
     var newProjectObj ={githubHandle: JSON.parse(localStorage.profile).nickname, repoName: newProjectName}
     console.log('input', newProjectObj);
-    this.addProject(newProjectObj, this.getthem.bind(this));
+    addProject(newProjectObj, this.getthem.bind(this));
 
   }
   setProjects(projects){
