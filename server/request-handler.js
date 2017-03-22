@@ -135,6 +135,17 @@ exports.addDeliverable = (req, res) => {
     });
   };
 
+exports.listDeliverables = (req, res) => {
+  db.Deliverable.findAll()
+    .then((deliverables) => {
+      deliverableData = [];
+      deliverables.forEach((deliverable) => {
+        deliverableData.push(deliverable);
+      });
+      res.status(200).send(deliverableData);
+    });
+};
+
 //---------------------------------------------------------------------------
 // fetchProject Request Format: {projectID: 123}
 // fetchProject Request Fromat: if no project matches ID - status 404 and empty response

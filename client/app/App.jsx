@@ -44,9 +44,33 @@ export default class App extends React.Component {
   handleProjectListEntryClick(project) {
     // setState is async so the render will fire before the currentProject is changed
     // this forces the state to wait until it is updated to rerender
-    console.log(project)
-    this.state.currentProject = project;
-    this.forceUpdate();
+    if (project !== null) {
+      var context = this;
+      axios.get('/api/deliverables')
+      .then(function(response) {
+        console.log(response.data)
+        project.currSprint = [];
+        project.backlog = [];
+        project.ready = [];
+        project.icebox = [];
+        project.done = [];
+        response.data.forEach(function(deliverable) {
+          if (deliverable.status === 'Done') {
+            project.done.push(deliverable);
+          } else if (deliverable.status === 'Backlog') {
+            project.backlog.push(deliverable);
+          } else if (deliverable.status === 'Ready') {
+            project.ready.push(deliverable);
+          } else if (deliverable.status === 'In Progress') {
+            project.currSprint.push(deliverable);
+          }
+        });
+        context.state.currentProject = project;
+        context.forceUpdate();
+      });
+    } else {
+      this.setState({currentProject: project});
+    }
   }
 
   getGitHubProjects(query) {
