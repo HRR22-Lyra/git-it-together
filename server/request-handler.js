@@ -73,20 +73,26 @@ exports.addProject = (req, res) => {
 // ]
 
 exports.listProjects = (req, res) => {
-  //Only find projects that belong to user
+  //Only find projects that belong to user.
   var user = req.body.username;
-  //Find all projects associated with user
-  // db.UserProjects.findAll({where: {user: user} })
-  db.UserProjects.findAll()
-    .then( (projects) => {
-      console.log('List project project: ', projects);
-      var userProjects = projects.dataValues;
-      projectData = [];
-      projects.forEach((project) => {
+  var projectData = [];
+  //Find all projects associated with user.
+  db.UserProjects.findAll({where: {user: user} })
+  .then( (projects) => {
+    //Iterate over projects associated with user.
+    projects.forEach((project, index) => {
+      var id = project.dataValues.id;
+      //Get details on all projects associated with user.
+      db.Project.findOne({where: {id: id}})
+      .then ((project) => {
         projectData.push(project.dataValues);
-      })
-      res.status(200).send(projectData);
-    });
+        //Send project data once all projects have been added
+        if (index === projects.length - 1) {
+          res.status(200).send(projectData);
+        }
+      });
+    })
+  })
 };
 
 //---------------------------------------------------------------------------
