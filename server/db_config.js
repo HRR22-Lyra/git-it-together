@@ -5,5 +5,6 @@ db.sync();
 
 module.exports.Project = db.models.Project;
 module.exports.Deliverable = db.models.Deliverable;
-// module.exports.User = User;
+module.exports.UserProjects = db.models.UserProjects;
 module.exports.Resource = db.models.Resource;
+
