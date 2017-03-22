@@ -1,17 +1,8 @@
 import React from 'react'
-
+//Can this file be deleted?
 var getProjectList = ({key, query, max = 5}, callback) => {
-  $.get('/api/projectlist', {
-    id: 1,
-    owner: string,
-    get_repo: string,
-    name: string,
-    description: string,
-    createdAt: integer,
-    updatedAt: integer,
-    type: '',
-    updatedAt: integer,
-    updatedAt: integer
+  $.post('/api/listProjects', {
+    username: "lmegviar"
   })
   .done(({items}) => {
     if (callback) {
