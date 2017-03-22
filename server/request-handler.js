@@ -80,13 +80,18 @@ exports.listProjects = (req, res) => {
   db.UserProjects.findAll({where: {user: user} })
   .then( (projects) => {
     //Iterate over projects associated with user.
+    console.log('Projects: ---->', projects);
     projects.forEach((project, index) => {
-      var id = project.dataValues.id;
+      console.log('Project: ---->', project);
+      var id = project.dataValues.project_id;
       //Get details on all projects associated with user.
       db.Project.findOne({where: {id: id}})
       .then ((project) => {
-        projectData.push(project.dataValues);
+        if(project) {
+          projectData.push(project.dataValues);
+          console.log('Project Data: ', projectData);
         //Send project data once all projects have been added
+        }
         if (index === projects.length - 1) {
           res.status(200).send(projectData);
         }
