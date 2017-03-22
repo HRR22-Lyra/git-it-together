@@ -18,3 +18,5 @@ console.log(auth);
     console.log(error);
   });
 })();
+
+$('#deliverables-section').scrollspy({ target: '#deliverables-nav' });

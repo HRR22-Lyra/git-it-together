@@ -3,111 +3,89 @@ import React from 'react';
 var Project = ({project}) => (
 
 
-  !project ? <div class="project-view">No project found</div> :
+  !project ? <div className="project-view">No project found</div> :
+  <div className="container-fluid">
+    <div className="project-view">
+      <div className="row">
+        <div className="col project-details">
+          <h3 className="repo-nav">{project.name}</h3>
+          <hr />
+          <p className="repo-content">{project.description}</p>
+        </div>
+      </div>
 
-  <div className="project-view">
-      <div className="show-project-item" src={`https://github.com/HRR22-Lyra/git-it-together`} allowFullScreen></div>
-
-    <div className="project-details">
-      <div className="repo-nav">{project.name}</div>
-      <div className="repo-content">{project.description}</div>
-    </div>
-
-    <div className="deliverables-section">
-      <form className="form-inline">
-        <label className="sr-only" htmlFor="deliverable-input-task">Task</label>
-        <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="deliverable-input-task" placeholder="Task" />
-        <label className="sr-only" htmlFor="deliverable-input-assignment">Assigned To</label>
-        <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="deliverable-input-assignment" placeholder="Asignment" />
-        <label className="sr-only" htmlFor="deliverable-input-fibbonaci">Task Complexity</label>
-        <input type="number" className="form-control mb-2 mr-sm-2 mb-sm-0" id="deliverable-input-fibbonaci" placeholder="Complexity" />
-        <label className="sr-only" htmlFor="deliverable-input-status">Status</label>
-        <select className="custom-select mb-2 mr-sm-2 mb-sm-0" id="deliverable-input-status">
-          <option defaultValue="Where">Where...</option>
-          <option value="current">Current Sprint</option>
-          <option value="backlog">Backlog</option>
-          <option value="icebox">Icebox</option>
-          <option value="complete">Completed Sprints</option>
-        </select>
-        <button type="submit" className="btn btn-primary">Add</button>
-      </form>
-
-      <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div className="panel panel-inverse">
-          <div className="panel-heading" role="tab" id="headingOne">
-            <h4 className="panel-title">
-              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                <h2>Current Sprint</h2>
-              </a>
-            </h4>
-          </div>
-          <div id="collapseOne" className="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-            <div className="panel-body">
-
+      <div className="row">
+        <div className="col">
+          <div className="deliverables-section">
+            <h2>Deliverables</h2>
+            <hr />
+            <form className="form-inline">
+              <div className="col-5">
+                <label className="sr-only" htmlFor="deliverable-input-task">Task</label>
+                <input type="text" className="form-control" id="deliverable-input-task" placeholder="Task" />
+              </div>
+              <div className="col-7">
+                <label className="sr-only" htmlFor="deliverable-input-assignment">Assigned To</label>
+                <input type="text" className="form-control" id="deliverable-input-assignment" placeholder="Asignment" />
+              </div>
+              <div className="col-5">
+                <label className="sr-only" htmlFor="deliverable-input-fibbonaci">Task Complexity</label>
+                <input type="number" className="form-control" id="deliverable-input-fibbonaci" placeholder="Complexity" />
+              </div>
+              <div className="col-5">
+                <label className="sr-only" htmlFor="deliverable-input-status">Status</label>
+                <select className="custom-select" id="deliverable-input-status">
+                  <option value="current">Current Sprint</option>
+                  <option value="backlog">Backlog</option>
+                  <option value="icebox">Icebox</option>
+                  <option value="complete">Completed Sprints</option>
+                </select>
+              </div>
+              <div className="col-2">
+                <button type="submit" className="btn btn-primary">Add</button>
+              </div>
+            </form>
+            <hr />
+            <nav id="deliverables-nav" className="navbar navbar-light bg-faded">
+              <ul className="nav nav-pills">
+                <li className="nav-item"><a className="nav-link active" href="#current">Current</a></li>
+                <li className="nav-item" href="#backlog"><a className="nav-link">Backlog</a></li>
+                <li className="nav-item" href="#icebox"><a className="nav-link">Icebox</a></li>
+                <li className="nav-item" href="#completed"><a className="nav-link">Completed</a></li>
+              </ul>
+            </nav>
+            <div id="deliverables" data-spy="scroll" data-target="#deliverables-nav" data-offset="5">
+              <div className="deliverables-section-header">
+                <h3 id="current">Current Sprint</h3>
+              </div>
+              <div className="deliverables-section-header">
+                <h3 id="backlog">Backlog</h3>
+              </div>
+              <div className="deliverables-section-header">
+                <h3 id="icebox">Icebox</h3>
+              </div>
+              <div className="deliverables-section-header">
+                <h3 id="completed">Completed Sprints</h3>
+              </div>
             </div>
           </div>
         </div>
-        <div className="panel panel-inverse">
-          <div className="panel-heading" role="tab" id="headingTwo">
-            <h4 className="panel-title">
-              <a className="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                <div className="deliverables-section-header">
-                  <h2>Backlog</h2>
-                </div>
-              </a>
-            </h4>
-          </div>
-          <div id="collapseTwo" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-            <div className="panel-body">
-
-            </div>
-          </div>
-        </div>
-        <div className="panel panel-inverse">
-          <div className="panel-heading" role="tab" id="headingThree">
-            <h4 className="panel-title">
-              <a className="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                <div className="deliverables-section-header">
-                  <h2>Icebox</h2>
-                </div>
-              </a>
-            </h4>
-          </div>
-          <div id="collapseThree" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-            <div className="panel-body">
-
-            </div>
-          </div>
-        </div>
-        <div className="panel panel-inverse">
-          <div className="panel-heading" role="tab" id="headingFour">
-            <h4 className="panel-title">
-              <a className="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                <div className="deliverables-section-header">
-                  <h2>Completed Sprints</h2>
-                </div>
-              </a>
-            </h4>
-          </div>
-          <div id="collapseFour" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-            <div className="panel-body">
-
-            </div>
+        <div classname="col">
+          <div className="resources-section">
+            <h2>Resources</h2>
+            <hr />
+            <form className="form-inline">
+              <label className="sr-only" htmlFor="resource-input-name">Resource Name</label>
+              <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="resource-input-name" placeholder="Name" />
+              <label className="sr-only" htmlFor="resource-input-url">Resource Url</label>
+              <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="resource-input-url" placeholder="Url" />
+              <button type="submit" className="btn btn-primary">Add</button>
+            </form>
+            <hr />
           </div>
         </div>
       </div>
     </div>
-
-    <div className="resources-section">
-      <form className="form-inline">
-        <label className="sr-only" htmlFor="resource-input-name">Resource Name</label>
-        <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="resource-input-name" placeholder="Name" />
-        <label className="sr-only" htmlFor="resource-input-url">Resource Url</label>
-        <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="resource-input-url" placeholder="Url" />
-        <button type="submit" className="btn btn-primary">Add</button>
-      </form>
-    </div>
-
   </div>
 );
 

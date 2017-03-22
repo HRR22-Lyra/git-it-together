@@ -1,21 +1,23 @@
 body {
   background: #2d2d2d;
   color: grey;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 body h2 {
   color: white;
 }
 
+/*Profile thumb dropdown ------------------------------------------------------------------*/
+
 .profile-picture-nav-thumb {
   width: 60px;
-  margin: 10px;
+  border-radius: 50%;
 }
 
 .dropdown {
   position: relative;
   display: inline-block;
-  float: left;
 }
 
 .dropdown-content {
@@ -41,6 +43,8 @@ body h2 {
   color: #AAA;
   margin-top: -10px;
 }
+
+/*Project list ------------------------------------------------------------------*/
 
 .project-list {
   padding: 10px 25px;
@@ -79,11 +83,50 @@ body h2 {
   float: right;
 }
 
-.panel-heading {
-  background-color: #24292e;
-  padding: 0 0 5px 0;
-  border: 1px solid #D1D1D1;
-  cursor: pointer;
+/*Project View ------------------------------------------------------------------*/
+
+.deliverables-section, .resources-section, .project-details {
+  position: relative;
+  padding: 1.5rem;
+  border: .2rem solid #f7f7f9;
+  color: #292b2c;
+  background-color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.project-details {
+  margin: 1rem;
+}
+
+.deliverables-section input {
+  width: 0 auto;
+  margin: 5px 0;
+}
+
+.deliverables-section-header {
+  margin: 10px 0;
+}
+
+.deliverables-section h2, .deliverables-section h3, .resources-section h2 {
+  text-align: center;
+  color: #2d2d2d;
+}
+
+.deliverables {
+  height: 100%;
+  max-height: 150px;
+  overflow-y: scroll;
+}
+
+.resources-section {
+  margin-right: 1rem;
+}
+
+.deliverables-section::after, .resources-section::after {
+  display: block;
+  clear: both;
 }
 
 /*Chat Room Styles ------------------------------------------------------------------*/
