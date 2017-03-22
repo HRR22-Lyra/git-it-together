@@ -19,5 +19,8 @@ console.log(repod);
 ReactDOM.render(
       <App auth={auth} repod={repod}/>, document.getElementById('app')
     );
-
-
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+})();
