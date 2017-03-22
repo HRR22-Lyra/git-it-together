@@ -216,6 +216,8 @@ exports.fetchProject = (req, res) => {
 
 //---------------------------------------------------------------------------
 // listRepos input format: {username: 'github_handle}
+// Example response: [ 'algo-time-complexity-review', 'git-it-together', 'recursion-prompts',]
+
 exports.listRepos = (req, res) => {
   var user = req.body.username;
   var githubURL = 'https://api.github.com/users/' + user + '/repos';
