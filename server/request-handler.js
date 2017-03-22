@@ -227,6 +227,9 @@ exports.listRepos = (req, res) => {
         repos.push(repo.name);
       })
       res.status(200).send(repos);
-    }
+    } else {
+        console.log('Error: ', err)
+        res.status(400).send();
+      }
   });
 };
