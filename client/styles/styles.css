@@ -24,10 +24,6 @@ body h2 {
   display: none;
   position: absolute;
   background-color: #fff;
-  -moz-box-shadow:    inset 0 0 10px #000000;
-  -webkit-box-shadow: inset 0 0 10px #000000;
-  box-shadow:         inset 0 0 10px #000000;
-  border-top: 1px solid #fff;
   z-index: 2;
 }
 
@@ -84,7 +80,12 @@ body h2 {
 }
 
 /*Project View ------------------------------------------------------------------*/
-
+/*
+I'll save you some google-time here:
+rem = root-em. 1rem = the value of the root font-size. So if the html element has a font-size of 16px, 10 rem = 160px anywhere in the site.
+em. 1em = the value of the font-size of the element on which it is applied. So if the div font-size is 18px, even if the root is 16px, 10em = 180px.
+benefit: their scalability and you don't have to adjust the px value of everything if you want to scale up or down.
+*/
 .deliverables-section, .resources-section, .project-details {
   position: relative;
   padding: 1.5rem;
@@ -101,17 +102,20 @@ body h2 {
 }
 
 .deliverables-section input {
-  width: 0 auto;
+  width: 100%;
   margin: 5px 0;
 }
 
 .deliverables-section-header {
-  margin: 10px 0;
+  margin: 1rem 0;
 }
 
-.deliverables-section h2, .deliverables-section h3, .resources-section h2 {
-  text-align: center;
+.project-view h1, .project-view h2, .project-view h3, .project-view h4, .project-view h5 {
   color: #2d2d2d;
+}
+
+.project-view h2, .project-view h3 {
+  text-align: center;
 }
 
 .deliverables {

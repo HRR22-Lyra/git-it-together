@@ -8,9 +8,9 @@ var Project = ({project}) => (
     <div className="project-view">
       <div className="row">
         <div className="col project-details">
-          <h3 className="repo-nav">{project.name}</h3>
+          <h1 className="repo-nav">{project.name}</h1>
           <hr />
-          <p className="repo-content">{project.description}</p>
+          <h5 className="repo-content">{project.description}</h5>
         </div>
       </div>
 
@@ -28,6 +28,7 @@ var Project = ({project}) => (
                 <label className="sr-only" htmlFor="deliverable-input-assignment">Assigned To</label>
                 <input type="text" className="form-control" id="deliverable-input-assignment" placeholder="Asignment" />
               </div>
+              <div class="w-100"></div>
               <div className="col-5">
                 <label className="sr-only" htmlFor="deliverable-input-fibbonaci">Task Complexity</label>
                 <input type="number" className="form-control" id="deliverable-input-fibbonaci" placeholder="Complexity" />
