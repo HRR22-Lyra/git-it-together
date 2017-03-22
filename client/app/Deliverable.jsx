@@ -1,7 +1,7 @@
 import React from 'react';
 
 var Deliverable = ({deliverable}) => (
-  <div class="deliverable">
+  <div className="deliverable">
     {deliverable.id} Owner: {deliverable.owner} Status: {deliverable.status} Points: {deliverable.points}
   </div>
 );

@@ -48,7 +48,7 @@ export default class App extends React.Component {
       var context = this;
       axios.get('/api/deliverables')
       .then(function(response) {
-        console.log(response.data)
+        console.log(context.state)
         project.currSprint = [];
         project.backlog = [];
         project.ready = [];
@@ -114,7 +114,7 @@ export default class App extends React.Component {
         return (
           <div>
             <Nav profile={profile} logout={this.logout.bind(this)} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} />
-            <Project project={this.state.currentProject} />
+            <Project project={this.state.currentProject} profile={this.state.profile} />
           </div>
         );
       }
