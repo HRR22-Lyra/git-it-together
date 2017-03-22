@@ -10,6 +10,8 @@ var request = require('request');
 exports.addProject = (req, res) => {
 
   var handle = req.body.githubHandle;
+  //save username in case user is not the owner of parent repo
+  var user = req.body.githubHandle;
   var repo = req.body.repoName;
   var gitHubApi = 'https://api.github.com/repos/';
   var githubURL =  gitHubApi + handle + '/' + repo;
@@ -38,11 +40,11 @@ exports.addProject = (req, res) => {
             projectID = project.dataValues.id;
           });
         }
-        db.UserProjects.findOne({where: {user: handle, project_id: projectID}})
+        db.UserProjects.findOne({where: {user: user, project_id: projectID}})
         .then( (project) => {
           if (!project) {
             //Add association between project and current user
-            db.UserProjects.create({user: handle, project_id: projectID})
+            db.UserProjects.create({user: user, project_id: projectID})
             .then ( (userProjects) => {
             });
            }
@@ -75,7 +77,7 @@ exports.listProjects = (req, res) => {
   var user = req.body.username;
   //Find all projects associated with user
   // db.UserProjects.findAll({where: {user: user} })
-  db.UserProjects.findAll({where: {user: user} })
+  db.UserProjects.findAll()
     .then( (projects) => {
       console.log('List project project: ', projects);
       var userProjects = projects.dataValues;
