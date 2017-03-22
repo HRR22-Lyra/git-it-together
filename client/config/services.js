@@ -1,40 +1,122 @@
 import React from 'react'
 import $ from 'jquery';
+import { EventEmitter } from 'events'
 
-
-
-
-module.exports = {
-  getProjectList: function({key, query, max = 5}, callback) {
-    return $.get('/api/projectlist', {
-      maxResults: max,
-    })
-    .done(({items}) => {
-      console.log('got items', items);
-      if (callback) {
-        callback(items);
-        //return items;
-      }
-    })
-    .fail(({responseJSON}) => {
-      responseJSON.error.errors.forEach((err) =>
-        console.log(err));
-    });
-  },
-
-  addProject: function(newProject, callback) {
-    return $.post('/api/project', newProject)
-    .done( function(resp) {
-      if (callback) {
-        callback(items);
-      }
-    })
-    .fail(({responseJSON}) => {
-      responseJSON.error.errors.forEach((err) =>
-      console.log(err));
-    });
-  }
+var getPros = function(callback) {
+  $.get('/api/projectlist', {})
+  .done( function(items) {
+    console.log('got items', items);
+    callback(items);
+      //this.emit('list_updated', items)  //return items;
+  });
 };
+var addProject = function(newProject, callback) {
+  $.post('/api/project', newProject)
+  .done( function(resp) {
+    console.log('post response', resp);
+    if (callback) {
+      callback();
+    }
+  })
+};
+
+
+export default class repoService extends EventEmitter {
+  constructor() {
+    super()
+    const profile = localStorage.getItem('profile')
+    this.userHandle = profile ? JSON.parse(localStorage.profile).nickname : {}
+    console.log('profile fromserv', this.userHandle);
+
+    //this.pList = getPros(this.makeit.bind(this));
+  }
+
+  getthem () {
+    getPros(this.makeit.bind(this))
+  }
+
+  addOne(newProjectName) {
+    var newProjectObj ={githubHandle: JSON.parse(localStorage.profile).nickname, repoName: newProjectName}
+    addProject(newProjectObj, this.getthem);
+
+  }
+
+
+
+
+  // getPros (callback) {
+  //   var handler = JSON.parse(localStorage.profile).nickname
+  //   $.get('/api/projectlist', {})
+  //   .done( function(items) {
+  //     console.log('got items', items);
+  //     this.makeit(items);
+  //   //this.emit('list_updated', items)  //return items;
+  //   });
+  // }
+
+
+  makeit(items) {
+    //console.log('gotpassed', items);
+    this.emit('list_updated', items);  //return items;
+  }
+}
+
+
+
+
+
+//   }
+//   this.getProjectList: function({key, query, max = 5}, callback) {
+//     return $.get('/api/projectlist', {
+//       //maxResults: max,
+//     })
+//     .done(({items}) => {
+//       console.log('got items', items);
+//       if (callback) {
+//         callback(items);
+//         //return items;
+//       }
+//     })
+//     .fail(({responseJSON}) => {
+//       responseJSON.error.errors.forEach((err) =>
+//         console.log(err));
+//     });
+//   },
+// }
+
+// module.exports = {
+//   getProjectList: function({key, query, max = 5}, callback) {
+//    $.get('/api/projectlist', {
+//       //maxResults: max,
+//     })
+//     .done( function(items) {
+//       console.log('got items', items);
+//       if (callback) {
+//         this.emit('list_updated', items)
+
+//         callback(items);
+//         //return items;
+//       }
+//     })
+//     // .fail(({responseJSON}) => {
+//     //   responseJSON.error.errors.forEach((err) =>
+//     //     console.log(err));
+//     // });
+//   },
+//   addProject: function(newProject, callback) {
+//     return $.post('/api/project', newProject)
+//     .done( function(resp) {
+//       if (callback) {
+//         callback(items);
+//       }
+//     })
+//     // .fail(({responseJSON}) => {
+//     //   responseJSON.error.errors.forEach((err) =>
+//     //   console.log(err));
+//     // });
+//   }
+// };
+
 
 // $.post('/api/project', {
 //     id: 1,
@@ -55,8 +137,7 @@ module.exports = {
 //       console.log(err));
 //   });
 // };
-  }
-}
+
 
 // addProject Request Format: {githubHandle: 'handle, repoName: 'reponame'}
 // addProject Reponse Format: 201 status only

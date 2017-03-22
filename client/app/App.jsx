@@ -8,15 +8,22 @@ import ProjectList from './ProjectList.jsx';
 import Project from './ProjectView.jsx';
 import Search from './Search.jsx';
 import ChatApp from './chatRoom.jsx';
+import repoService from '../config/services';
+
 
 export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { projects: this.props.projects, currentProject: null, profile: props.auth.getProfile(),  }
+    this.state = { projects: [], currentProject: null, profile: props.auth.getProfile() }
 
     props.auth.on('profile_updated', (newProfile) => {
       this.setState({profile: newProfile})
+      props.repod.getthem();
+      //this.repod = new repoService();
+    })
+    props.repod.on('list_updated', (items) => {
+      this.setState({projects: items})//.bind(this)
     })
     props.auth.on('logged_out', (bye) => {
       this.setState({profile: this.props.auth.getProfile()})
@@ -24,6 +31,13 @@ export default class App extends React.Component {
     })
 
   }
+
+  refreshProjectList() { //bind this to button if we want a refresh button,
+    props.repod.getthem();
+  }
+
+
+
 
   handleProjectListEntryClick(project) {
     // setState is async so the render will fire before the currentProject is changed
