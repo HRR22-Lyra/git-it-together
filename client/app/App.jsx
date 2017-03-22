@@ -7,21 +7,37 @@ import ProjectList from './ProjectList.jsx';
 import Project from './ProjectView.jsx';
 import Search from './Search.jsx';
 import ChatApp from './chatRoom.jsx';
+import repoService from '../config/services';
+
 
 export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { projects: this.props.projects, currentProject: null, profile: props.auth.getProfile(),  }
+    this.state = { projects: props.repod.getProjects(), currentProject: null, profile: props.auth.getProfile() }
 
     props.auth.on('profile_updated', (newProfile) => {
       this.setState({profile: newProfile})
+      props.repod.getthem();
+
+      //this.repod = new repoService();
+    })
+    props.repod.on('list_updated', (items) => {
+      this.setState({projects: items})//.bind(this)
     })
     props.auth.on('logged_out', (bye) => {
       this.setState({profile: this.props.auth.getProfile()})
       //this.render();
     })
 
+  }
+
+  refreshProjectList() { //bind this to button if we want a refresh button,
+    props.repod.getthem();
+  }
+
+  addNewProject(newProjectName) { // assign this to add project click event with the repo name as newProjectName argument
+    props.repod.addOne(newProjectName);
   }
 
   handleProjectListEntryClick(project) {
@@ -61,6 +77,7 @@ export default class App extends React.Component {
       // }
      } else {
       if (this.state.currentProject === null) {
+
         return (
           <div>
             <Nav profile={profile} logout={this.logout.bind(this)} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} />
