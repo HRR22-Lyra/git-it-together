@@ -9,4 +9,5 @@ module.exports = function (app, express) {
   app.post('/api/deliverables', requestHandler.addDeliverable);
   app.get('/api/deliverables', requestHandler.listDeliverables);
   app.post('/api/listRepos', requestHandler.listRepos);
+  app.delete('/api/projectList', requestHandler.deleteUserProject)
 };
