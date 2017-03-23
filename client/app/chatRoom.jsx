@@ -80,17 +80,14 @@ var MessageForm = React.createClass({
 var ChatApp = React.createClass({
 
   getInitialState() {
-    return {messages:[{
-      user : "Welcome",
-      text : "Git the conversation started.",
-      room: this.props.room
-    }], text: ''};
+    return {messages:[], text: ''};
   },
 
   componentDidMount() {
     socket.on('init', this._initialize);
-    socket.on('message', this._messageRecieve);
     socket.emit('room', this.props.room);
+    socket.on('message', this._messageRecieve);
+    socket.on('savedMessages', this._savedMessagesReceive);
   },
 
   _messageRecieve(message) {
@@ -99,9 +96,13 @@ var ChatApp = React.createClass({
     this.setState({messages});
   },
 
+  _savedMessagesReceive(messages) {
+    console.log('Messages: ', messages);
+    this.setState({messages});
+  },
+
   handleMessageSubmit(message) {
     var {messages} = this.state;
-    // messages.push(message);
     this.setState({messages});
     socket.emit('message', message);
   },
