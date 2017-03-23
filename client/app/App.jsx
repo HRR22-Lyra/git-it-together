@@ -26,7 +26,6 @@ export default class App extends React.Component {
       this.setState({projects: items})//.bind(this)
       //this.addNewProject('assignment_jq_ee_sprint');
       //console.log('projects:', this.state.projects)
-
     })
 
     props.auth.on('logged_out', (bye) => {

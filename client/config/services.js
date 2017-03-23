@@ -25,6 +25,7 @@ var deleteProject = function(project, callback) {
   $.ajax({
     url: '/api/projectList',
     type: 'DELETE',
+    data: project,
     success: function(result) {
       console.log('response status: ');
       callback();
