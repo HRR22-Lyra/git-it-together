@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ProjectList from './ProjectList.jsx';
+import UserRepos from './UserRepos.jsx';
 
 //To render in app: <Search projects={this.state.projects} handleProjectListEntryClick={this.handleProjectListEntryClick}></Search>
 
@@ -44,10 +45,7 @@ var Search = React.createClass({
                 </div>
                 <div className="col">
                     <form className="form-inline">
-                      <div className="input-group">
-                        <input type="text" className="form-control" id="add-repo" placeholder="Add repo" />
-                        <button type="submit" className="input-group-addon"><i className="fa fa-plus"></i></button>
-                      </div>
+                       <UserRepos />
                     </form>
                 </div>
               </div>
