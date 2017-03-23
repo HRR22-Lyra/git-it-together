@@ -25,18 +25,40 @@ var Search = React.createClass({
             });
         }
 
-        return <div>
-        <h2>Projects</h2>
-        <div className="input-group add-project-input">
-          <input type="text" className="form-control" placeholder="Enter repo handle to add project..." />
-          <span className="input-group-btn">
-            <button className="btn btn-default" type="button"><span className="glyphicon glyphicon-plus"></span></button>
-          </span>
+        return (
+          <div className="container-fluid">
+            <div className="project-list-header">
+              <div className="row">
+                <div className="col">
+                  <h1>Projects</h1>
+                  <hr />
+                </div>
+              </div>
+              <div className="row search-add-repo">
+                <div className="col">
+                    <form className="form">
+                      <div className="input-group">
+                        <input type="text" value={this.state.searchString} onChange={this.handleChange}  className="form-control" id="searchg-repo" placeholder="Search by repo name" />
+                      </div>
+                    </form>
+                </div>
+                <div className="col">
+                    <form className="form-inline">
+                      <div className="input-group">
+                        <input type="text" className="form-control" id="add-repo" placeholder="Add repo" />
+                        <button type="submit" className="input-group-addon"><i className="fa fa-plus"></i></button>
+                      </div>
+                    </form>
+                </div>
+              </div>
+              <div className="project-list">
+                <div className="col">
+                  <ProjectList projects={projects} handleProjectListEntryClick={this.props.handleProjectListEntryClick}></ProjectList>
+                </div>
+              </div>
+            </div>
         </div>
-          <div className="searchBar"> <input type="text" value={this.state.searchString} onChange={this.handleChange} placeholder="Search by repo name" />
-          </div>
-          <ProjectList projects={projects} handleProjectListEntryClick={this.props.handleProjectListEntryClick}></ProjectList>
-          </div>
+        );
     }
 });
 

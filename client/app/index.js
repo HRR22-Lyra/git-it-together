@@ -17,5 +17,7 @@ console.log(repod);
 
 
 ReactDOM.render(
-      <App auth={auth} repod={repod}/>, document.getElementById('app')
-    );
+    <App auth={auth} repod={repod}/>, document.getElementById('app')
+  );
+
+$('#deliverables-section').scrollspy({ target: '#deliverables-nav' });
