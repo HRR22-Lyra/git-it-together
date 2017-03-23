@@ -191,10 +191,11 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 
 /*Breakpoints (for responsive design) ------------------------------------------------------------------*/
 
-/*Super small devices (landscape phones, 350px and up) Is this one necessary? Not even a little bit*/
-@media (min-width: 350px) {
+/*Super small devices (potatoes, up to 575px) Is this one necessary? It's debatable*/
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575px) {
   .container, .container-fluid {
-    max-width: 350px;
+    max-width: 575px;
     margin: 0 auto;
     padding: 1rem;
   }
@@ -213,7 +214,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   }
 
   .deliverables-section {
-    min-width: 300px;
+    min-width: 400px;
   }
 
   .resources-section {
