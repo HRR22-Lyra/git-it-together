@@ -32,6 +32,8 @@ var addProject = function(newProject, callback) {
 export default class repoService extends EventEmitter {
   constructor() {
     super()
+    //localStorage.removeItem('projects');
+
     const profile = localStorage.getItem('profile');
     this.userHandle = profile ? JSON.parse(localStorage.profile).nickname : {}
     console.log('profile fromserv', this.userHandle);
@@ -41,15 +43,17 @@ export default class repoService extends EventEmitter {
   }
 
   getthem () {
-    getPros({username: 'lmegviar'}, this.makeit.bind(this), this.setProjects.bind(this))
+    var username = JSON.parse(localStorage.profile).nickname
+    getPros({username: username}, this.makeit.bind(this), this.setProjects.bind(this))
   }
 
   addOne(newProjectName) {
-    var newProjectObj ={githubHandle: JSON.parse(localStorage.profile).nickname, repoName: newProjectName}
+    var username = JSON.parse(localStorage.profile).nickname
+    var newProjectObj ={githubHandle: username, repoName: newProjectName}
     console.log('input', newProjectObj);
     addProject(newProjectObj, this.getthem.bind(this));
-
   }
+
   setProjects(projects){
     // Saves profile data to localStorage
     localStorage.setItem('projects', JSON.stringify(projects))
@@ -58,6 +62,8 @@ export default class repoService extends EventEmitter {
 
   getProjects() {
     const projects = localStorage.getItem('projects')
+    var test = projects ? JSON.parse(localStorage.projects) : [];
+    console.log('test', test)
     return projects ? JSON.parse(localStorage.projects) : []
   }
 

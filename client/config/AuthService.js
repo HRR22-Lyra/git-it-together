@@ -51,6 +51,7 @@ export default class AuthService extends EventEmitter {
 
   setProfile(profile){
     // Saves profile data to localStorage
+    console.log('profile', profile)
     localStorage.setItem('profile', JSON.stringify(profile))
     // Triggers profile_updated event to update the UI
     this.emit('profile_updated', profile)
@@ -76,6 +77,8 @@ export default class AuthService extends EventEmitter {
     // Clear user token and profile data from local storage
     localStorage.removeItem('id_token');
         localStorage.removeItem('profile');
+            localStorage.removeItem('projects');
+
             this.emit('logged_out', 'bye');
 
 
