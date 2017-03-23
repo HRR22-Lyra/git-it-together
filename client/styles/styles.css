@@ -1,11 +1,7 @@
 body {
   background: #2d2d2d;
-  color: grey;
+  color: #2d2d2d;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-}
-
-body h2 {
-  color: white;
 }
 
 .fa {
@@ -70,13 +66,17 @@ body h2 {
   padding: 10px 25px;
 }
 
-.search-add-repo {
-  margin-bottom: 1rem;
-}
-
-.search-add-repo .input-group {
+.project-list-search input {
   width: 100%;
   z-index: 1;
+}
+
+#add-repo {
+  width: 85%;
+}
+
+#add-button {
+  margin-left: .5rem;
 }
 
 .project-list-entry {
@@ -116,7 +116,7 @@ rem = root-em. 1rem = the value of the root font-size. So if the html element ha
 em. 1em = the value of the font-size of the element on which it is applied. So if the div font-size is 18px, even if the root is 16px, 10em = 180px.
 benefit: their scalability and you don't have to adjust the px value of everything if you want to scale up or down.
 */
-.deliverables-section, .resources-section, .project-details, .chat-section, .project-list-header, .project-list {
+.deliverables-section, .resources-section, .project-details, .chat-section, .project-list-header, .projects-section {
   position: relative;
   padding: 1.5rem;
   border: .2rem solid #f7f7f9;
@@ -131,7 +131,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   margin: 1rem;
 }
 
-.deliverables-section input {
+.deliverables-section input, .project-list-header input {
   width: 100%;
   margin: 5px 0;
 }
@@ -166,7 +166,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   margin-bottom: 1rem;
 }
 
-.deliverables-section::after, .resources-section::after {
+.deliverables-section::after, .resources-section::after, .project-list-header::after, .projects-section::after {
   display: block;
   clear: both;
 }
