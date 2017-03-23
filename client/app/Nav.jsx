@@ -5,11 +5,9 @@ var Nav = ({profile, logout, handleProjectListEntryClick}) => (
 <nav className='navbar navbar-light bg-faded'>
   <div className='navbar-header'>
     <div className="dropdown">
-      <div onClick={() => handleProjectListEntryClick(null)}>
-      <Image src={profile.picture} circle className="profile-picture-nav-thumb" />
-      </div>
+      <img src="/client/assets/unicorn-head-silhouette.png" className="navbar-brand dropdown" alt="unicorn head" onClick={() => handleProjectListEntryClick(null)} />
       <div className="card dropdown-content">
-        <Image className="card-img-top" src={profile.picture} alt="Card image cap" />
+        {/* <img className="card-img-top" src={profile.picture} alt="profile picture" /> */}
         <div className="card-block">
           <h4 className="card-title">{profile.name}</h4>
           <p className="caption"><small>{profile.nickname}</small></p>

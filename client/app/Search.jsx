@@ -28,30 +28,33 @@ var Search = React.createClass({
 
         return (
           <div className="container-fluid">
-            <div className="project-list-header">
+            <div className="project-list">
               <div className="row">
-                <div className="col">
+                <div className="col project-list-header">
                   <h1>Projects</h1>
                   <hr />
+                  <div className="project-list-search">
+                    <div className="row">
+                    <div className="col">
+                      <form className="form search-repo">
+                          <input type="text" value={this.state.searchString} onChange={this.handleChange}  className="form-control" id="search-repo" placeholder="Search your project list" />
+                      </form>
+                    </div>
+                    <div className="col">
+                          <form className="form-inline search-repo">
+                              <UserRepos handleRepoClick={this.props.handleRepoClick.bind(this)}/>
+                          </form>
+                    </div>
+                  </div>
+                  </div>
                 </div>
               </div>
-              <div className="row search-add-repo">
-                <div className="col">
-                    <form className="form">
-                      <div className="input-group">
-                        <input type="text" value={this.state.searchString} onChange={this.handleChange}  className="form-control" id="searchg-repo" placeholder="Search your project list" />
-                      </div>
-                    </form>
-                </div>
-                <div className="col">
-                    <form className="form-inline">
-                       <UserRepos handleRepoClick={this.props.handleRepoClick.bind(this)}/>
-                    </form>
-                </div>
-              </div>
-              <div className="project-list">
-                <div className="col">
-                  <ProjectList projects={projects} handleProjectListEntryClick={this.props.handleProjectListEntryClick}></ProjectList>
+              <div class="row">
+                <div className="projects-section">
+                  <div className="col">
+                    <ProjectList projects={projects} handleProjectListEntryClick={this.props.handleProjectListEntryClick}></ProjectList>
+                  </div>
+
                 </div>
               </div>
             </div>
