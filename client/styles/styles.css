@@ -191,47 +191,62 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 
 /*Breakpoints (for responsive design) ------------------------------------------------------------------*/
 
-/*Super small devices (potatoes, up to 575px) Is this one necessary? It's debatable*/
-/*Extra small devices (portrait phones, less than 576px)*/
-@media (max-width: 575px) {
+/*Super small devices (Galaxy S5, iPhone 5/SE, potatoes, up to 360px)*/
+@media (max-width: 360px) {
   .container, .container-fluid {
-    max-width: 575px;
+    max-width: 320px;
     margin: 0 auto;
     padding: 1rem;
   }
-
   #add-repo {
     width: 60%;
   }
-
   .resources-section, .chat-section {
     margin: 1em auto;
   }
-
   #deliverables {
     max-height: 25rem;
     overflow-y: scroll;
   }
-
   .deliverables-section {
-    min-width: 400px;
+    max-width: 320px;
   }
-
   .resources-section {
     height: 25rem;
     overflow-y: scroll;
   }
-
   .chat-section {
     max-height: 25rem;
   }
-
   .messages {
     overflow-y: scroll;
   }
-
   .resources-section input {
     width: 100%;
+  }
+}
+
+/*Small devices (iPhone 6/6 Plus, 361px and up)*/
+@media (min-width: 361px) {
+  .container, .container-fluid {
+    max-width: 413px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  .chat-section {
+    margin-top: 1rem;
+  }
+  .resources-section {
+    margin: 1rem auto;
+  }
+}
+
+/*Small devices (Nexus 5/6, landscape phones, 414px and up)*/
+@media (min-width: 414px) {
+  .container, .container-fluid {
+    max-width: 414px;
+    margin: 0 auto;
+    padding: 1rem;
   }
 }
 
