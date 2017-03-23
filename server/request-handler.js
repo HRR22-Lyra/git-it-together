@@ -113,6 +113,13 @@ exports.addResource = (req, res) => {
     });
   };
 
+exports.listResources = (req, res) => {
+  db.Resource.findAll({where: {project_id: req.query.id}, raw: true})
+  .then((resources) => {
+    res.status(200).send(resources);
+  });
+};
+
 //---------------------------------------------------------------------------
 // addDeliverable Request Format: {projectID: 123, user: 'mega_man', name: 'string', status: 'string', dueDate: 'string', progress: 'string', points: 5}
 // Note - 'user' should be the user's github handle
