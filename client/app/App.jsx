@@ -48,13 +48,13 @@ export default class App extends React.Component {
 
   handleProjectListEntryClick(project) {
     if (project !== null) {
-      this.prepareProjectView();
+      this.prepareProjectView(project);
     } else {
       this.setState({currentProject: project});
     }
   }
 
-  prepareProjectView() {
+  prepareProjectView(project) {
     // setState is async so the render will fire before the currentProject is changed
     // this forces the state to wait until it is updated to rerender
     var context = this;
