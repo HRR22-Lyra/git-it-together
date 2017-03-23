@@ -39,4 +39,11 @@ var UserProjects = db.define('UserProjects', {
   project_id: Sequelize.INTEGER
 });
 
+var Message = db.define('Message', {
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+  user: Sequelize.STRING,
+  text: Sequelize.STRING,
+  room: Sequelize.STRING
+});
+
 module.exports = db;

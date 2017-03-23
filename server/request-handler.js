@@ -266,3 +266,29 @@ exports.deleteUserProject = (req, res) => {
       res.status(204).send();
     })
 };
+
+//---------------------------------------------------------------------------
+// saveMessage input format: {user 'github_handle, text: 'message text', room: 'projectName'}
+exports.saveMessage = (message) => {
+  db.Message.create(message)
+  .then (() => {
+    console.log('Message saved: ', message);
+  })
+}
+//---------------------------------------------------------------------------
+// getMessages input format: 'roomName'
+exports.getMessages = (room) => {
+  return db.Message.findAll({where: {room: room}})
+  .then ((messages) => {
+    var savedMessages = [];
+    messages.forEach((message) => {
+      savedMessages.unshift(returnMessage = {
+        user: message.user,
+        text: message.text,
+        room: message.room,
+        createdAt: message.createdAt
+      });
+    })
+    return savedMessages;
+  })
+}

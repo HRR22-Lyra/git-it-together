@@ -26,17 +26,19 @@ io.on('connection', (socket) => {
   var currentRoom = 'lobby';
   socket.on('room', (room) => {
     // if user is already in a room, leave room
-    // if (socket.room) {
-    //   socket.leave(socket.room);
-    // }
+    if (socket.room) {
+      socket.leave(socket.room);
+    }
     socket.join(room);
     console.log('A user has connected to ' + room);
     currentRoom = room;
-    // When a message is sent, emit only to the current room
+    requestHandler.getMessages(currentRoom).then((messages) => {
+      io.to(currentRoom).emit('savedMessages', messages);
+    });
     });
 
     socket.on('message', (message) => {
-      console.log('Room Message: ', message, 'current room: ', currentRoom);
+      requestHandler.saveMessage(message);
       io.to(currentRoom).emit('message', message);
     });
 
