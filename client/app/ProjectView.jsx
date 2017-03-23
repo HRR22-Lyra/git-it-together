@@ -57,7 +57,7 @@ var Project = ({project, profile}) => (
                 <li className="nav-item" href="#completed"><a className="nav-link">Completed</a></li>
               </ul>
             </nav>
-            <div id="deliverables" data-spy="scroll" data-target="#deliverables-nav" data-offset="5">
+            <div id="deliverables">
               <div className="deliverables-section-header">
                 <h3 id="current">Current Sprint</h3>
               </div>

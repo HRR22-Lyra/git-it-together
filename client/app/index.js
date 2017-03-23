@@ -15,10 +15,6 @@ console.log(auth);
 const repod = new repoService();
 console.log(repod);
 
-$('#deliverables-section').scrollspy({ target: '#deliverables-nav' });
-
-
 ReactDOM.render(
     <App auth={auth} repod={repod}/>, document.getElementById('app')
   );
-
