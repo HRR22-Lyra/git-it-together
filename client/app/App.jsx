@@ -25,6 +25,7 @@ export default class App extends React.Component {
     })
     props.repod.on('list_updated', (items) => {
       this.setState({projects: items})//.bind(this)
+      //this.addNewProject('assignment_jq_ee_sprint');
     })
     props.auth.on('logged_out', (bye) => {
       this.setState({profile: this.props.auth.getProfile()})
@@ -34,11 +35,11 @@ export default class App extends React.Component {
   }
 
   refreshProjectList() { //bind this to button if we want a refresh button,
-    props.repod.getthem();
+    this.props.repod.getthem();
   }
 
   addNewProject(newProjectName) { // assign this to add project click event with the repo name as newProjectName argument
-    props.repod.addOne(newProjectName);
+    this.props.repod.addOne(newProjectName);
   }
 
   handleProjectListEntryClick(project) {
@@ -112,6 +113,7 @@ export default class App extends React.Component {
       } else {
         return (
           <div>
+
             <Nav profile={profile} logout={this.logout.bind(this)} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} />
             <Project project={this.state.currentProject} profile={this.state.profile} />
           </div>
