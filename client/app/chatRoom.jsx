@@ -63,7 +63,6 @@ var MessageForm = React.createClass({
   render() {
     return(
       <div className='message_form'>
-        <h2>Chat about {this.props.room}</h2>
         <hr />
         <form onSubmit={this.handleSubmit}>
           <input placeholder='Add to the conversation!'
@@ -72,7 +71,6 @@ var MessageForm = React.createClass({
             className="form-control mb-2 mr-sm-2 mb-sm-0"
           />
         </form>
-        <hr />
       </div>
     );
   }
@@ -111,7 +109,7 @@ var ChatApp = React.createClass({
   render() {
     return (
       <div>
-        <h3>Chat about {this.props.room}</h3>
+        <h2>Chat about {this.props.room}</h2>
         <MessageList
           messages={this.state.messages}
         />
