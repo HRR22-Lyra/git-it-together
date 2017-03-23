@@ -228,7 +228,6 @@ exports.listRepos = (req, res) => {
   var githubURL = 'https://api.github.com/users/' + user + '/repos';
   request({url: githubURL, headers:{'User-Agent': user}}, (err, response, body) => {
     if (JSON.parse(response.statusCode) !== 404) {
-      console.log('Response: ', response.body);
       var repos = [];
       JSON.parse(response.body).forEach( (repo) => {
         repos.push(repo.name);

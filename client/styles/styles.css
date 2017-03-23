@@ -172,3 +172,28 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   width: 97%;
   font-weight: normal;
 }
+
+.repoList .searchBar input {
+  padding: 5px 5px;
+  margin: 2px 15px ;
+  width: 97%;
+  font-weight: normal;
+}
+
+.repo-list-entry {
+  padding: 7px 10px;
+  margin: 0px 15px;
+  background: #fff;
+  font-size: 1em;
+  line-height: 1.3em;
+  -moz-box-shadow:    3px 3px 0 0 #ccc;
+  -webkit-box-shadow: 3px 3px 0 0 #ccc;
+  box-shadow:         3px 3px 0 0 #ccc;
+  font-weight: normal;
+  width: 96.8%;
+}
+
+.repoAddMessage {
+  font-size: 14px;
+  font-weight: bold;
+}
