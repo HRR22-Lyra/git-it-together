@@ -94,6 +94,9 @@ var Project = ({project, profile}) => (
           </div>
         </div>
         <div classname="col">
+          <div className="chat-section">
+            <ChatApp user={profile.nickname} room={project.name} />
+          </div>
           <div className="resources-section">
             <h2>Resources</h2>
             <hr />

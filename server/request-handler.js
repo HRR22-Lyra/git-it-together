@@ -136,13 +136,9 @@ exports.addDeliverable = (req, res) => {
   };
 
 exports.listDeliverables = (req, res) => {
-  db.Deliverable.findAll()
+  db.Deliverable.findAll({where: {project_id: req.query.id}, raw: true})
     .then((deliverables) => {
-      deliverableData = [];
-      deliverables.forEach((deliverable) => {
-        deliverableData.push(deliverable);
-      });
-      res.status(200).send(deliverableData);
+      res.status(200).send(deliverables);
     });
 };
 

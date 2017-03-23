@@ -46,9 +46,8 @@ export default class App extends React.Component {
     // this forces the state to wait until it is updated to rerender
     if (project !== null) {
       var context = this;
-      axios.get('/api/deliverables')
+      axios.get('/api/deliverables?id=' + project.id)
       .then(function(response) {
-        console.log(context.state)
         project.currSprint = [];
         project.backlog = [];
         project.ready = [];
