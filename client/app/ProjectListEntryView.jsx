@@ -12,7 +12,8 @@ var ProjectListEntry = ({project, handleProjectListEntryClick}) => (
           <div className="project-list-entry-detail">{project.description}</div>
         </div>
         <div className="col-md-1">
-          <span className="right glyphicon glyphicon-chevron-right"></span>
+          <br />
+          <span className="right fa fa-chevron-right"></span>
         </div>
       </div>
     </div>
