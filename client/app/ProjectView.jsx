@@ -1,6 +1,6 @@
 import React from 'react';
-import Deliverable from './Deliverable.jsx';
-import Resource from './Resource.jsx';
+import Deliverables from './Deliverable.jsx';
+import Resources from './Resource.jsx';
 import ChatApp from './chatRoom.jsx';
 
 var Project = ({project, profile}) => (
@@ -55,44 +55,7 @@ var Project = ({project, profile}) => (
               </div>
             </form>
             <hr />
-            <div id="deliverables">
-              <div className="deliverables-section-header">
-                <h3 id="current">Current Tasks</h3>
-              </div>
-              <div className="deliverables-section-body">
-                {project.currSprint.map((deliverable) =>
-                  <Deliverable deliverable={deliverable} />
-                )}
-              </div>
-              <hr />
-              <div className="deliverables-section-header">
-                <h3 id="backlog">Backlog</h3>
-              </div>
-              <div className="deliverables-section-body">
-                {project.backlog.map((deliverable) =>
-                  <Deliverable deliverable={deliverable} />
-                )}
-              </div>
-              <hr />
-              <div className="deliverables-section-header">
-                <h3 id="icebox">Icebox</h3>
-              </div>
-              <div className="deliverables-section-body">
-                {project.icebox.map((deliverable) =>
-                  <Deliverable deliverable={deliverable} />
-                )}
-              </div>
-              <hr />
-              <div className="deliverables-section-header">
-                <h3 id="completed">Completed Tasks</h3>
-              </div>
-              <hr />
-              <div className="deliverables-section-body">
-                {project.done.map((deliverable) =>
-                  <Deliverable deliverable={deliverable} />
-                )}
-              </div>
-            </div>
+            <Deliverables project={project} />
           </div>
         </div>
         <div className="col">
@@ -107,11 +70,7 @@ var Project = ({project, profile}) => (
               <button type="submit" className="btn btn-primary">Add</button>
             </form>
             <hr />
-            <div className="resources-section-body">
-              {project.resources.map((resource) =>
-                <Resource resource={resource} />
-              )}
-            </div>
+            <Resources project={project} />
           </div>
         </div>
       </div>
