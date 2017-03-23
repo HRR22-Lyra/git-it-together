@@ -1,6 +1,7 @@
 import React from 'react';
 
-//To render in app: <UserRepos repos={this.state.repos} handlerepoClick={this.handleRepoClick}></Search>
+//To render in app: <UserRepos handlerepoClick={this.handleRepoClick}></Search>
+//also import this
 
 var UserRepos = React.createClass({
 
