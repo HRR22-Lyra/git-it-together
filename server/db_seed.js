@@ -14,6 +14,7 @@ var Project = db.models.Project;
 var Resource = db.models.Resource;
 var Deliverable = db.models.Deliverable;
 var UserProjects = db.models.UserProjects;
+var Message = db.models.Message;
 
 // Seed data
 var githubUrl = 'https://api.github.com/repos/';
