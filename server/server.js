@@ -36,8 +36,8 @@ io.on('connection', (socket) => {
     });
 
     socket.on('message', (message) => {
-      console.log('Room Message: ', message);
-      io.to(currentRoom).emit(message);
+      console.log('Room Message: ', message, 'current room: ', currentRoom);
+      io.to(currentRoom).emit('message', message);
     });
 
     //Listen for disconnects from socket
