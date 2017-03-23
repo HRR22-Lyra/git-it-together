@@ -80,16 +80,13 @@ exports.listProjects = (req, res) => {
   db.UserProjects.findAll({where: {user: user} })
   .then( (projects) => {
     //Iterate over projects associated with user.
-    console.log('Projects: ---->', projects);
-    projects.forEach((project, index) => {
-      console.log('Project: ---->', project);
+      projects.forEach((project, index) => {
       var id = project.dataValues.project_id;
       //Get details on all projects associated with user.
       db.Project.findOne({where: {id: id}})
       .then ((project) => {
         if(project) {
           projectData.push(project.dataValues);
-          console.log('Project Data: ', projectData);
         //Send project data once all projects have been added
         }
         if (index === projects.length - 1) {
@@ -235,6 +232,10 @@ exports.listRepos = (req, res) => {
   var user = req.body.username;
   var githubURL = 'https://api.github.com/users/' + user + '/repos';
   request({url: githubURL, headers:{'User-Agent': user}}, (err, response, body) => {
+    //Github has request rate limit of 60 reqs per hours per IP - this conditional checks to see if the rate was exceeded ('https://developer.github.com/v3/#rate-limiting')
+    if (JSON.parse(response.body).hasOwnProperty('message')) {
+      res.status(439).send(['GitHub is overwhelmed! Please try again later.'])
+    }
     if (JSON.parse(response.statusCode) !== 404) {
       var repos = [];
       JSON.parse(response.body).forEach( (repo) => {
@@ -246,4 +247,22 @@ exports.listRepos = (req, res) => {
         res.status(400).send();
       }
   });
+};
+
+//---------------------------------------------------------------------------
+// Note: deleteUserProject only deletes the user's association with a project, not the project itself
+// deleteUserProject input format: {username: 'github_handle, projectID: 1234}
+// Example response: response code 204 for successful deletion
+exports.deleteUserProject = (req, res) => {
+  user = req.body.username;
+  project = req.body.projectID;
+  db.UserProjects.findOne({where: {user: user, project_id: project}})
+  .then( (project) => {
+    if (project) {
+      project.destroy()
+    }
+  })
+    .then( () => {
+      res.status(204).send();
+    })
 };

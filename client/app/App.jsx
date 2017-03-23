@@ -8,7 +8,7 @@ import Project from './ProjectView.jsx';
 import Search from './Search.jsx';
 import ChatApp from './chatRoom.jsx';
 import repoService from '../config/services';
-import UserRepos from './UserRepos.jsx';
+
 
 
 export default class App extends React.Component {
@@ -106,8 +106,7 @@ export default class App extends React.Component {
         return (
           <div>
             <Nav profile={profile} logout={this.logout.bind(this)} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} />
-            <Search projects={this.state.projects} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} />
-            <UserRepos />
+            <Search projects={this.state.projects} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} handleRepoClick={this.addNewProject.bind(this)} />
           </div>
         );
       } else {

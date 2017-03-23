@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ProjectList from './ProjectList.jsx';
+import UserRepos from './UserRepos.jsx';
 
 //To render in app: <Search projects={this.state.projects} handleProjectListEntryClick={this.handleProjectListEntryClick}></Search>
 
@@ -36,13 +37,12 @@ var Search = React.createClass({
                     <div className="row">
                     <div className="col">
                       <form className="form search-repo">
-                          <input type="text" value={this.state.searchString} onChange={this.handleChange}  className="form-control" id="search-repo" placeholder="Search by repo name" />
+                          <input type="text" value={this.state.searchString} onChange={this.handleChange}  className="form-control" id="search-repo" placeholder="Search your project list" />
                       </form>
                     </div>
                     <div className="col">
                           <form className="form-inline search-repo">
-                              <input type="text" className="form-control" id="add-repo" placeholder="Add repo" />
-                              <button type="submit" id="add-button" className="btn btn-primary right"><i className="fa fa-plus"></i></button>
+                              <UserRepos handleRepoClick={this.props.handleRepoClick.bind(this)}/>
                           </form>
                     </div>
                   </div>
@@ -54,6 +54,7 @@ var Search = React.createClass({
                   <div className="col">
                     <ProjectList projects={projects} handleProjectListEntryClick={this.props.handleProjectListEntryClick}></ProjectList>
                   </div>
+
                 </div>
               </div>
             </div>

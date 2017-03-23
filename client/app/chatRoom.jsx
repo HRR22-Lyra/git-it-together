@@ -103,7 +103,7 @@ var ChatApp = React.createClass({
 
   handleMessageSubmit(message) {
     var {messages} = this.state;
-    messages.unshift(message);
+    // messages.push(message);
     this.setState({messages});
     socket.emit('message', message);
   },
@@ -111,13 +111,14 @@ var ChatApp = React.createClass({
   render() {
     return (
       <div>
+        <h3>Chat about {this.props.room}</h3>
+        <MessageList
+          messages={this.state.messages}
+        />
         <MessageForm
           onMessageSubmit={this.handleMessageSubmit}
           user={this.props.user}
           room={this.props.room}
-        />
-        <MessageList
-          messages={this.state.messages}
         />
       </div>
     );
