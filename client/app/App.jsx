@@ -19,14 +19,15 @@ export default class App extends React.Component {
 
     props.auth.on('profile_updated', (newProfile) => {
       this.setState({profile: newProfile})
-      props.repod.getthem();
-
+      props.repod.listUserProjects();
       //this.repod = new repoService();
     })
     props.repod.on('list_updated', (items) => {
       this.setState({projects: items})//.bind(this)
       //this.addNewProject('assignment_jq_ee_sprint');
+      //console.log('projects:', this.state.projects)
     })
+
     props.auth.on('logged_out', (bye) => {
       this.setState({profile: this.props.auth.getProfile()})
       //this.render();
@@ -35,11 +36,15 @@ export default class App extends React.Component {
   }
 
   refreshProjectList() { //bind this to button if we want a refresh button,
-    this.props.repod.getthem();
+    this.props.repod.listUserProjects();
   }
 
   addNewProject(newProjectName) { // assign this to add project click event with the repo name as newProjectName argument
-    this.props.repod.addOne(newProjectName);
+    this.props.repod.addUserProject(newProjectName);
+  }
+
+  deleteProject(projectID) {
+    this.props.repod.deleteUserProject(projectID); //JAMES: pass this down to project view and bind it to the button which deletes a project, with project id as argument which you can get from current project i am pretty sure.
   }
 
   handleProjectListEntryClick(project) {

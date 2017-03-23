@@ -21,6 +21,20 @@ var addProject = function(newProject, callback) {
   })
 };
 
+var deleteProject = function(project, callback) {
+  $.ajax({
+    url: '/api/projectList',
+    type: 'DELETE',
+    data: project,
+    success: function(result) {
+      console.log('response status: ');
+      callback();
+    }
+  });
+}
+
+
+
 // var projectID = req.body.projectID;
 //   var link = req.body.link;
 //   var user = req.body.user;
@@ -39,16 +53,23 @@ export default class repoService extends EventEmitter {
     //this.pList = getPros(this.makeit.bind(this));
   }
 
-  getthem () {
+  listUserProjects () {
     var username = JSON.parse(localStorage.profile).nickname
     getPros({username: username}, this.makeit.bind(this), this.setProjects.bind(this))
   }
 
-  addOne(newProjectName) {
+  addUserProject(newProjectName) {
     var username = JSON.parse(localStorage.profile).nickname
     var newProjectObj ={githubHandle: username, repoName: newProjectName}
     console.log('input', newProjectObj);
-    addProject(newProjectObj, this.getthem.bind(this));
+    addProject(newProjectObj, this.listUserProjects.bind(this));
+  }
+
+  deleteUserProject(projectId) {
+    var username = JSON.parse(localStorage.profile).nickname;
+    var projectObject = {username: username, projectID: projectId};
+    deleteProject(projectObject, this.listUserProjects.bind(this));
+
   }
 
   setProjects(projects){
@@ -60,13 +81,18 @@ export default class repoService extends EventEmitter {
   getProjects() {
     const projects = localStorage.getItem('projects')
     var test = projects ? JSON.parse(localStorage.projects) : [];
-    console.log('test', test)
+    //console.log('test', test)
     return projects ? JSON.parse(localStorage.projects) : []
   }
 
   makeit(items) {
     //console.log('gotpassed', items);
     this.emit('list_updated', items);  //return items;
+  }
+
+  hasBeenAdded() {
+    console.log('HELLO')
+    this.emit('has_been_added');
   }
 }
 
