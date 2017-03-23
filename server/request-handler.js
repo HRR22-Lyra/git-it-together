@@ -117,23 +117,31 @@ exports.addResource = (req, res) => {
   };
 
 //---------------------------------------------------------------------------
-// addDeliverable Request Format: {projectID: 123, user: 'mega_man', status: 'string', dueDate: 'string', progress: 'string', points: 5}
+// addDeliverable Request Format: {projectID: 123, user: 'mega_man', name: 'string', status: 'string', dueDate: 'string', progress: 'string', points: 5}
 // Note - 'user' should be the user's github handle
 // addDeliverable Response Format: 201 status only
 
 exports.addDeliverable = (req, res) => {
   var projectID = req.body.projectID;
   var owner = req.body.user;
+  var name = req.body.name;
   var status = req.body.status;
   var dueDate = req.body.dueDate;
   var progress = req.body.progress;
   var points = req.body.points;
-  db.Deliverable.create({project_id: projectID, owner: owner, status: status, due_date: dueDate, progress: progress, points: points})
+  db.Deliverable.create({project_id: projectID, owner: owner, name: name, status: status, due_date: dueDate, progress: progress, points: points})
     .then( (deliverables) => {
       var deliverableData = deliverables.dataValues;
       res.status(201).send(deliverableData);
     });
   };
+
+exports.listDeliverables = (req, res) => {
+  db.Deliverable.findAll({where: {project_id: req.query.id}, raw: true})
+    .then((deliverables) => {
+      res.status(200).send(deliverables);
+    });
+};
 
 //---------------------------------------------------------------------------
 // fetchProject Request Format: {projectID: 123}

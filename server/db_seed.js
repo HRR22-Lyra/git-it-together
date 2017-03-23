@@ -23,14 +23,14 @@ var projectSeed = [
 var resourceSeed = [
   {project_id: 10034501, user: 'mega_man', link: 'https://www.google.com/'},
   {project_id: 10034501, user: 'Tre', link: 'https://www.yahoo.com/'},
-  {project_id: 10034501, user: 'w10034501nd0wz', link: 'https://www.bing.com/'}
+  {project_id: 10034501, user: 'w1nd0wz', link: 'https://www.bing.com/'}
 ];
 var deliverableSeed = [
-  {project_id: 10034501, owner: 'mega_man', status: 'Done', due_date: 'Tomorrow', progress: 'none', points: 5},
-  {project_id: 10034501, owner: 'w10034501nd0wz', status: 'Done', due_date: 'Today', progress: 'none', points: 100345015},
-  {project_id: 10034501, owner: 'mega_man', status: 'In Progress', due_date: null, progress: 'none', points: 100345010},
-  {project_id: 10034501, owner: 'Tre', status: 'Ready', due_date: '2024', progress: 'none', points: 5},
-  {project_id: 10034501, owner: 'mega_man', status: 'Backlog', due_date: null, progress: 'none', points: 5}
+  {project_id: 10034501, owner: 'mega_man', name: 'I am a deliverable', status: 'Done', due_date: 'Tomorrow', progress: 'none', points: 5},
+  {project_id: 10034501, owner: 'w1nd0wz', name: 'I am a deliverable', status: 'Done', due_date: 'Today', progress: 'none', points: 15},
+  {project_id: 10034501, owner: 'mega_man', name: 'I am a deliverable', status: 'In Progress', due_date: null, progress: 'none', points: 10},
+  {project_id: 10034501, owner: 'Tre', name: 'I am a deliverable', status: 'Ready', due_date: '2024', progress: 'none', points: 5},
+  {project_id: 10034501, owner: 'mega_man', name: 'I am a deliverable', status: 'Backlog', due_date: null, progress: 'none', points: 5}
 ];
 var userProjectsSeed = [
   {id: 12442141, user: 'lmegviar', project_id: 10034501},

@@ -1,6 +1,8 @@
 import React from 'react';
+import Deliverable from './Deliverable.jsx';
+import ChatApp from './chatRoom.jsx';
 
-var Project = ({project}) => (
+var Project = ({project, profile}) => (
 
 
   !project ? <div className="project-view">No project found</div> :
@@ -59,19 +61,42 @@ var Project = ({project}) => (
               <div className="deliverables-section-header">
                 <h3 id="current">Current Sprint</h3>
               </div>
+              <div className="deliverables-section-body">
+                {project.currSprint.map((deliverable) =>
+                  <Deliverable deliverable={deliverable} />
+                )}
+              </div>
               <div className="deliverables-section-header">
                 <h3 id="backlog">Backlog</h3>
+              </div>
+              <div className="deliverables-section-body">
+                {project.backlog.map((deliverable) =>
+                  <Deliverable deliverable={deliverable} />
+                )}
               </div>
               <div className="deliverables-section-header">
                 <h3 id="icebox">Icebox</h3>
               </div>
+              <div className="deliverables-section-body">
+                {project.icebox.map((deliverable) =>
+                  <Deliverable deliverable={deliverable} />
+                )}
+              </div>
               <div className="deliverables-section-header">
                 <h3 id="completed">Completed Sprints</h3>
+              </div>
+              <div className="deliverables-section-body">
+                {project.done.map((deliverable) =>
+                  <Deliverable deliverable={deliverable} />
+                )}
               </div>
             </div>
           </div>
         </div>
         <div classname="col">
+          <div className="chat-section">
+            <ChatApp user={profile.nickname} room={project.name} />
+          </div>
           <div className="resources-section">
             <h2>Resources</h2>
             <hr />

@@ -92,7 +92,7 @@ rem = root-em. 1rem = the value of the root font-size. So if the html element ha
 em. 1em = the value of the font-size of the element on which it is applied. So if the div font-size is 18px, even if the root is 16px, 10em = 180px.
 benefit: their scalability and you don't have to adjust the px value of everything if you want to scale up or down.
 */
-.deliverables-section, .resources-section, .project-details, .project-list-header, .project-list {
+.deliverables-section, .resources-section, .project-details, .chat-section, .project-list-header, .project-list {
   position: relative;
   padding: 1.5rem;
   border: .2rem solid #f7f7f9;
@@ -116,6 +116,10 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   margin: 1rem 0;
 }
 
+.deliverables-section-body {
+  text-align: center;
+}
+
 .project-view h1, .project-view h2, .project-view h3, .project-view h4, .project-view h5 {
   color: #2d2d2d;
 }
@@ -130,8 +134,12 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   overflow-y: scroll;
 }
 
-.resources-section {
+.resources-section, .chat-section {
   margin-right: 1rem;
+}
+
+.chat-section {
+  margin-bottom: 1rem;
 }
 
 .deliverables-section::after, .resources-section::after {
@@ -140,6 +148,12 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 }
 
 /*Chat Room Styles ------------------------------------------------------------------*/
+.messages {
+  height: 12rem;
+  overflow-y: scroll;
+}
+
+/*
 .messages {
   padding: 7px 10px;
   margin: 15px ;
@@ -171,6 +185,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   box-shadow: 0 0 0 4px #fff, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
   font-weight: normal;
 }
+*/
 
 .searchBar input {
   padding: 7px 10px;

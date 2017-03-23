@@ -64,10 +64,12 @@ var MessageForm = React.createClass({
     return(
       <div className='message_form'>
         <h3>Chat about {this.props.room}</h3>
+        <hr />
         <form onSubmit={this.handleSubmit}>
           <input placeholder='Add to the conversation!'
             onChange={this.changeHandler}
             value={this.state.text}
+            className="form-control mb-2 mr-sm-2 mb-sm-0"
           />
         </form>
       </div>
