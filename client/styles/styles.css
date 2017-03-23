@@ -66,6 +66,10 @@ body {
   padding: .5rem 1.5rem;
 }
 
+.search-repos {
+  width: 100%;
+}
+
 .project-list-search input {
   width: 100%;
   z-index: 1;
@@ -162,6 +166,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 .messages {
   height: 12rem;
   overflow-y: scroll;
+  word-wrap: break-word;
 }
 
 .repoAddMessage {
@@ -186,6 +191,49 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 
 /*Breakpoints (for responsive design) ------------------------------------------------------------------*/
 
+/*Super small devices (landscape phones, 350px and up) Is this one necessary? Not even a little bit*/
+@media (min-width: 350px) {
+  .container, .container-fluid {
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  #add-repo {
+    width: 60%;
+  }
+
+  .resources-section, .chat-section {
+    margin: 1em auto;
+  }
+
+  #deliverables {
+    max-height: 25rem;
+    overflow-y: scroll;
+  }
+
+  .deliverables-section {
+    min-width: 300px;
+  }
+
+  .resources-section {
+    height: 25rem;
+    overflow-y: scroll;
+  }
+
+  .chat-section {
+    max-height: 25rem;
+  }
+
+  .messages {
+    overflow-y: scroll;
+  }
+
+  .resources-section input {
+    width: 100%;
+  }
+}
+
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
   .container, .container-fluid {
@@ -199,7 +247,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   }
 
   .resources-section, .chat-section {
-    margin: 1rem auto;
+    margin: 1em auto;
   }
 
   #deliverables {
@@ -245,6 +293,30 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   }
 }
 
+/*Medium devices (tablets, 890px and up)*/
+@media (min-width: 890px) {
+  .container, .container-fluid {
+    max-width: 890px;
+  }
+
+  .chat-section {
+    margin: 0 auto;
+  }
+
+  #add-repo {
+    width: 80%;
+  }
+
+  .deliverables-section {
+    max-width: 890px;
+    height: 810px;
+  }
+
+  #deliverables {
+    height: 35rem;
+  }
+}
+
 /*Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
   .container, .container-fluid {
@@ -256,11 +328,12 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   }
 
   #deliberables {
-    height: 31rem;
+    height: 29rem;
   }
 
   .deliverables-section {
-    height: 800px;
+    height: 775px;
+    margin-bottom: 1rem;
   }
 
   .deliverables-section button {
@@ -287,7 +360,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   }
 
   .deliverables-section {
-    height: 660px;
+    height: 685px;
   }
 
   .resources-section {
@@ -296,7 +369,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   }
 
   .chat-section {
-    min-height: 320px;
-    max-height: 320px;
+    min-height: 345px;
+    max-height: 345px;
   }
 }
