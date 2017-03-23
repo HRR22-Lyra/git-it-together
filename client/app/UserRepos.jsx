@@ -36,12 +36,16 @@ var UserRepos = React.createClass({
             });
         }
 
-        return  <div className="input-group">
-            <input type="text" className="form-control" id="searchg-repo" value={this.state.searchString} onChange={this.handleChange} placeholder="Search your repos to add a project" />
-              {repos.map((repo, index) =>
-                  <div className="repoNamebar" onClick={() => {this.props.handleRepoClick(repo)}}><p className="repoName"> {repo} </p></div>
-              )}
-            </div>
+        return  <div>
+                  <div className="input-group">
+                    <input type="text" className="form-control" id="searchg-repo" value={this.state.searchString} onChange={this.handleChange} placeholder="Search your repos to add a project" />
+                  </div>
+                  <div className="repoList">
+                    {repos.map((repo, index) =>
+                      <div className="repoNamebar" onClick={() => {this.props.handleRepoClick(repo)}}> <button type="submit" className="input-group-addon"><i className="fa fa-plus"></i></button> {repo}  </div>
+                    )}
+                  </div>
+                </div>
     }
 });
 

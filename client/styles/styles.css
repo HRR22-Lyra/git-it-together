@@ -153,24 +153,21 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   overflow-y: scroll;
 }
 
-.repoList .searchBar input {
-  padding: 8px 12px;
-  width: 140%;
-  font-weight: normal;
-  display: flex;
-  flex: 1 1 auto;
-  box-sizing: inherit;
-}
-
 .repoAddMessage {
   font-size: 14px;
   font-weight: bold;
 }
 
-.repoName {
-  color: #2d2d2d;
-  padding: 7px 10px;
-  margin: 0px 15px;
+.repoNamebar {
+  font-color: #2d2d2d;
+  margin: 1px 1px;
   background: #fff;
   font-size: .8em;
+}
+
+.input-group-addon {
+  float: left;
+  margin: 4.5px 5px 0px 0px;
+  padding: 1px;
+  font-size: .6em;
 }
