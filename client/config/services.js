@@ -6,11 +6,7 @@ import { EventEmitter } from 'events';
 //$('#deliverables-section').scrollspy({ target: '#deliverables-nav' });
 
 var getPros = function(input, callback, callback2) {
-<<<<<<< HEAD
   $.post('/api/listProjects', input)
-=======
-  $.post('/api/projectlist', input)
->>>>>>> save before rebase
   .done( function(items) {
     console.log('got items', items);
     callback2(items);
@@ -45,11 +41,7 @@ export default class repoService extends EventEmitter {
   }
 
   getthem () {
-<<<<<<< HEAD
     getPros({username: 'lmegviar'}, this.makeit.bind(this), this.setProjects.bind(this))
-=======
-    getPros({username: 'sdemoor'}, this.makeit.bind(this), this.setProjects.bind(this))
->>>>>>> save before rebase
   }
 
   addOne(newProjectName) {
