@@ -71,10 +71,6 @@ body {
   z-index: 1;
 }
 
-#add-repo {
-  width: 85%;
-}
-
 #add-button {
   margin-left: .5rem;
 }
@@ -157,28 +153,6 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   text-align: center;
 }
 
-#deliverables {
-  min-height: 360px;
-  max-height: 360px;
-  overflow-y: scroll;
-}
-
-.resources-section {
-  min-height: 309px;
-  max-height: 309px;
-  overflow-y: scroll;
-}
-
-.resources-section, .chat-section {
-  margin-right: 1rem;
-}
-
-.chat-section {
-  margin-bottom: 1rem;
-  min-height: 320px;
-  max-height: 320px;
-}
-
 .deliverables-section::after, .resources-section::after, .project-list-header::after, .projects-section::after {
   display: block;
   clear: both;
@@ -254,4 +228,122 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 .repoAddMessage {
   font-size: 14px;
   font-weight: bold;
+}
+
+
+/*Breakpoints (for responsive design) ------------------------------------------------------------------*/
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  .container, .container-fluid {
+    max-width: 576px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  #add-repo {
+    width: 60%;
+  }
+
+  .resources-section, .chat-section {
+    margin: 1rem auto;
+  }
+
+  #deliverables {
+    max-height: 25rem;
+    overflow-y: scroll;
+  }
+
+  .deliverables-section {
+    min-width: 500px;
+  }
+
+  .resources-section {
+    height: 25rem;
+    overflow-y: scroll;
+  }
+
+  .chat-section {
+    max-height: 25rem;
+  }
+
+  .messages {
+    overflow-y: scroll;
+  }
+
+  .resources-section input {
+    width: 100%;
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .container, .container-fluid {
+    max-width: 768px;
+  }
+
+  #add-repo {
+    width: 80%;
+  }
+
+  .deliverables-section {
+    max-width: 768px;
+    height: 685px;
+  }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .container, .container-fluid {
+    max-width: 992px;
+  }
+
+  #add-repo {
+    width: 85%;
+  }
+
+  #deliberables {
+    height: 31rem;
+  }
+
+  .deliverables-section {
+    height: 800px;
+  }
+
+  .deliverables-section button {
+    margin: .5rem 0;
+  }
+
+  .resources-section, .chat-section {
+    margin: 0 0 1rem 0;
+  }
+
+  .resources-section input, .resources-section button {
+    margin: .3rem;
+  }
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  .container, .container-fluid {
+    max-width: 1200px;
+  }
+  #deliverables {
+    min-height: 360px;
+    max-height: 360px;
+  }
+
+  .deliverables-section {
+    height: 660px;
+  }
+
+  .resources-section {
+    min-height: 325px;
+    max-height: 325px;
+  }
+
+  .chat-section {
+    min-height: 320px;
+    max-height: 320px;
+  }
 }

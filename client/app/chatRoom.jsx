@@ -72,6 +72,7 @@ var MessageForm = React.createClass({
             className="form-control mb-2 mr-sm-2 mb-sm-0"
           />
         </form>
+        <hr />
       </div>
     );
   }
