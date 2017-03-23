@@ -37,7 +37,6 @@ var Search = React.createClass({
               <div className="row search-add-repo">
                 <div className="col">
                     <form className="form">
-                      <label className="sr-only" for="search-repo">Search repos</label>
                       <div className="input-group">
                         <input type="text" value={this.state.searchString} onChange={this.handleChange}  className="form-control" id="searchg-repo" placeholder="Search by repo name" />
                       </div>
@@ -45,7 +44,6 @@ var Search = React.createClass({
                 </div>
                 <div className="col">
                     <form className="form-inline">
-                      <label className="sr-only" for="add-repo">Add Repo</label>
                       <div className="input-group">
                         <input type="text" className="form-control" id="add-repo" placeholder="Add repo" />
                         <button type="submit" className="input-group-addon"><i className="fa fa-plus"></i></button>
@@ -59,7 +57,7 @@ var Search = React.createClass({
                 </div>
               </div>
             </div>
-          </div>
+        </div>
         );
     }
 });
