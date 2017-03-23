@@ -116,7 +116,7 @@ rem = root-em. 1rem = the value of the root font-size. So if the html element ha
 em. 1em = the value of the font-size of the element on which it is applied. So if the div font-size is 18px, even if the root is 16px, 10em = 180px.
 benefit: their scalability and you don't have to adjust the px value of everything if you want to scale up or down.
 */
-.deliverables-section, .resources-section, .project-details, .chat-section, .project-list-header, .projects-section {
+.deliverables-section, .resources-section, .project-details, .chat-section, .project-list-header, .projects-section, #deliverables {
   position: relative;
   padding: 1.5rem;
   border: .2rem solid #f7f7f9;
@@ -152,9 +152,15 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   text-align: center;
 }
 
-.deliverables {
-  height: 100%;
-  max-height: 150px;
+#deliverables {
+  min-height: 320px;
+  max-height: 320px;
+  overflow-y: scroll;
+}
+
+.resources-section {
+  min-height: 275px;
+  max-height: 275px;
   overflow-y: scroll;
 }
 
@@ -164,6 +170,8 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 
 .chat-section {
   margin-bottom: 1rem;
+  min-height: 320px;
+  max-height: 320px;
 }
 
 .deliverables-section::after, .resources-section::after, .project-list-header::after, .projects-section::after {
