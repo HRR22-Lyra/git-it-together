@@ -3,8 +3,7 @@ import ProjectListEntry from './ProjectListEntryView.jsx';
 
 
 var ProjectList = ({projects, handleProjectListEntryClick}) => (
-
-  <div className="project-list">
+  <div>
 
     {projects.map((project) =>
       <ProjectListEntry
@@ -12,6 +11,7 @@ var ProjectList = ({projects, handleProjectListEntryClick}) => (
         project = {project}
       handleProjectListEntryClick={handleProjectListEntryClick} />
     )}
+
   </div>
 );
 
