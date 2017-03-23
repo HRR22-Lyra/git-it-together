@@ -39,13 +39,13 @@ var Search = React.createClass({
                 <div className="col">
                     <form className="form">
                       <div className="input-group">
-                        <input type="text" value={this.state.searchString} onChange={this.handleChange}  className="form-control" id="searchg-repo" placeholder="Search by repo name" />
+                        <input type="text" value={this.state.searchString} onChange={this.handleChange}  className="form-control" id="searchg-repo" placeholder="Search your project list" />
                       </div>
                     </form>
                 </div>
                 <div className="col">
                     <form className="form-inline">
-                       <UserRepos />
+                       <UserRepos handleRepoClick={this.props.handleRepoClick.bind(this)}/>
                     </form>
                 </div>
               </div>

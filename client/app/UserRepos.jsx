@@ -37,9 +37,9 @@ var UserRepos = React.createClass({
         }
 
         return  <div className="input-group">
-            <input type="text" className="form-control" id="searchg-repo" value={this.state.searchString} onChange={this.handleChange} placeholder="Search your GitHub repos and click add to projects..." />
+            <input type="text" className="form-control" id="searchg-repo" value={this.state.searchString} onChange={this.handleChange} placeholder="Search your repos to add a project" />
               {repos.map((repo, index) =>
-                  <div className="repoName" onClick={() => handleRepoClick(repo)}> {repo} </div>
+                  <div className="repoNamebar" onClick={() => {this.props.handleRepoClick(repo)}}><p className="repoName"> {repo} </p></div>
               )}
             </div>
     }

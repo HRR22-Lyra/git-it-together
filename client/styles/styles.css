@@ -166,3 +166,11 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   font-size: 14px;
   font-weight: bold;
 }
+
+.repoName {
+  color: #2d2d2d;
+  padding: 7px 10px;
+  margin: 0px 15px;
+  background: #fff;
+  font-size: .8em;
+}
