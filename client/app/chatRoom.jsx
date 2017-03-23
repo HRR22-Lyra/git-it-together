@@ -63,7 +63,7 @@ var MessageForm = React.createClass({
   render() {
     return(
       <div className='message_form'>
-        <h3>Chat about {this.props.room}</h3>
+        <h2>Chat about {this.props.room}</h2>
         <hr />
         <form onSubmit={this.handleSubmit}>
           <input placeholder='Add to the conversation!'
