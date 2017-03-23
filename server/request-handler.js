@@ -80,16 +80,13 @@ exports.listProjects = (req, res) => {
   db.UserProjects.findAll({where: {user: user} })
   .then( (projects) => {
     //Iterate over projects associated with user.
-    console.log('Projects: ---->', projects);
-    projects.forEach((project, index) => {
-      console.log('Project: ---->', project);
+      projects.forEach((project, index) => {
       var id = project.dataValues.project_id;
       //Get details on all projects associated with user.
       db.Project.findOne({where: {id: id}})
       .then ((project) => {
         if(project) {
           projectData.push(project.dataValues);
-          console.log('Project Data: ', projectData);
         //Send project data once all projects have been added
         }
         if (index === projects.length - 1) {
@@ -250,4 +247,22 @@ exports.listRepos = (req, res) => {
         res.status(400).send();
       }
   });
+};
+
+//---------------------------------------------------------------------------
+// Note: deleteUserProject only deletes the user's association with a project, not the project itself
+// deleteUserProject input format: {username: 'github_handle, projectID: 1234}
+// Example response: response code 204 for successful deletion
+exports.deleteUserProject = (req, res) => {
+  user = req.body.username;
+  project = req.body.projectID;
+  db.UserProjects.findOne({where: {user: user, project_id: project}})
+  .then( (project) => {
+    if (project) {
+      project.destroy()
+    }
+  })
+    .then( () => {
+      res.status(204).send();
+    })
 };
