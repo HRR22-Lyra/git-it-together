@@ -2,7 +2,7 @@ import React from 'react';
 
 var Resource = ({resource}) => (
   <div className = "resource">
-    {resource.name}: {resource.url}
+    {resource.user}: <a className="right" href={resource.link}>{resource.link}</a>
   </div>
 );
 

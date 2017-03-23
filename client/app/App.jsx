@@ -7,8 +7,7 @@ import ProjectList from './ProjectList.jsx';
 import Project from './ProjectView.jsx';
 import Search from './Search.jsx';
 import ChatApp from './chatRoom.jsx';
-import repoService from '../config/services';
-
+import repoService from '../config/services.js';
 
 
 export default class App extends React.Component {
@@ -52,8 +51,7 @@ export default class App extends React.Component {
     // this forces the state to wait until it is updated to rerender
     if (project !== null) {
       var context = this;
-      axios.get('/api/deliverables?id=' + project.id)
-      .then(function(response) {
+      context.props.repod.getDeliverables(project.id, function(response) {
         project.currSprint = [];
         project.backlog = [];
         project.ready = [];
@@ -70,8 +68,11 @@ export default class App extends React.Component {
             project.currSprint.push(deliverable);
           }
         });
-        context.state.currentProject = project;
-        context.forceUpdate();
+        context.props.repod.getResources(project.id, function(response) {
+          project.resources = response.data;
+          context.state.currentProject = project;
+          context.forceUpdate();
+        });
       });
     } else {
       this.setState({currentProject: project});

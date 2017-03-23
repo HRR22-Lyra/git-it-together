@@ -1,5 +1,6 @@
 import React from 'react';
 import Deliverable from './Deliverable.jsx';
+import Resource from './Resource.jsx';
 import ChatApp from './chatRoom.jsx';
 
 var Project = ({project, profile}) => (
@@ -106,6 +107,11 @@ var Project = ({project, profile}) => (
               <button type="submit" className="btn btn-primary">Add</button>
             </form>
             <hr />
+            <div className="resources-section-body">
+              {project.resources.map((resource) =>
+                <Resource resource={resource} />
+              )}
+            </div>
           </div>
         </div>
       </div>
