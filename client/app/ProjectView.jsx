@@ -66,6 +66,7 @@ var Project = ({project, profile}) => (
                   <Deliverable deliverable={deliverable} />
                 )}
               </div>
+              <hr />
               <div className="deliverables-section-header">
                 <h3 id="backlog">Backlog</h3>
               </div>
@@ -74,6 +75,7 @@ var Project = ({project, profile}) => (
                   <Deliverable deliverable={deliverable} />
                 )}
               </div>
+              <hr />
               <div className="deliverables-section-header">
                 <h3 id="icebox">Icebox</h3>
               </div>
@@ -82,9 +84,11 @@ var Project = ({project, profile}) => (
                   <Deliverable deliverable={deliverable} />
                 )}
               </div>
+              <hr />
               <div className="deliverables-section-header">
                 <h3 id="completed">Completed Sprints</h3>
               </div>
+              <hr />
               <div className="deliverables-section-body">
                 {project.done.map((deliverable) =>
                   <Deliverable deliverable={deliverable} />

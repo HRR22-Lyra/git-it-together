@@ -8,11 +8,23 @@ body h2 {
   color: white;
 }
 
+/*Login Page   ------------------------------------------------------------------*/
+
+.login {
+  margin: 0 auto;
+  top: 50%;
+}
+
 /*Profile thumb dropdown ------------------------------------------------------------------*/
 
-.profile-picture-nav-thumb {
-  width: 60px;
-  border-radius: 50%;
+.navbar {
+  padding: 0 1rem;
+}
+
+.navbar-brand {
+  width: 100px;
+  margin: 0 auto;
+  cursor: pointer;
 }
 
 .dropdown {
@@ -25,6 +37,7 @@ body h2 {
   position: absolute;
   background-color: #fff;
   z-index: 2;
+  width: 15rem;
 }
 
 .card-block {

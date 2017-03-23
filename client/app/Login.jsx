@@ -10,9 +10,9 @@ export class Login extends React.Component {
     const { auth } = this.props
 
     return (
-      <div >
+      <div className="login">
         <h2>Login</h2>
-        <div className="jumbtron">
+        <div className="jumbotron">
           <ButtonToolbar >
             <Button bsStyle="primary" onClick={auth.login.bind(this)}>Login</Button>
           </ButtonToolbar>
