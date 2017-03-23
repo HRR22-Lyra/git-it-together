@@ -67,9 +67,6 @@ export default class App extends React.Component {
         });
         context.state.currentProject = project;
         context.forceUpdate();
-      })
-      .then(() => {
-        $('body').scrollspy({ target: '#deliverables-nav' });
       });
     } else {
       this.setState({currentProject: project});

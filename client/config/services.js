@@ -2,9 +2,6 @@ import React from 'react'
 import $ from 'jquery';
 import { EventEmitter } from 'events';
 
-// enable scrollspy for the deliverables section
-//$('#deliverables-section').scrollspy({ target: '#deliverables-nav' });
-
 var getPros = function(input, callback, callback2) {
   $.post('/api/listProjects', input)
   .done( function(items) {

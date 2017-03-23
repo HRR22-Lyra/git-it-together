@@ -21,45 +21,43 @@ var Project = ({project, profile}) => (
           <div className="deliverables-section">
             <h2>Deliverables</h2>
             <hr />
-            <form className="form-inline">
-              <div className="col-5">
+            <form className="form">
+              <div className="col">
                 <label className="sr-only" htmlFor="deliverable-input-task">Task</label>
                 <input type="text" className="form-control" id="deliverable-input-task" placeholder="Task" />
               </div>
-              <div className="col-7">
+              <div className="col">
                 <label className="sr-only" htmlFor="deliverable-input-assignment">Assigned To</label>
                 <input type="text" className="form-control" id="deliverable-input-assignment" placeholder="Asignment" />
               </div>
-              <div class="w-100"></div>
-              <div className="col-5">
+              <div className="col inline">
                 <label className="sr-only" htmlFor="deliverable-input-fibbonaci">Task Complexity</label>
-                <input type="number" className="form-control" id="deliverable-input-fibbonaci" placeholder="Complexity" />
-              </div>
-              <div className="col-5">
-                <label className="sr-only" htmlFor="deliverable-input-status">Status</label>
-                <select className="custom-select" id="deliverable-input-status">
-                  <option value="current">Current Sprint</option>
-                  <option value="backlog">Backlog</option>
-                  <option value="icebox">Icebox</option>
-                  <option value="complete">Completed Sprints</option>
+                <select className="custom-select" id="deliverable-input-fibbonaci">
+                  <option>Complexity</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="5">5</option>
+                  <option value="8">8</option>
                 </select>
               </div>
-              <div className="col-2">
+              <div className="col inline">
+                <label className="sr-only" htmlFor="deliverable-input-status">Status</label>
+                <select className="custom-select" id="deliverable-input-status">
+                  <option value="current">Current Tasks</option>
+                  <option value="backlog">Backlog</option>
+                  <option value="icebox">Icebox</option>
+                  <option value="complete">Completed Tasks</option>
+                </select>
+              </div>
+              <div className="col inline">
                 <button type="submit" className="btn btn-primary">Add</button>
               </div>
             </form>
             <hr />
-            <nav id="deliverables-nav" className="navbar navbar-light bg-faded">
-              <ul className="nav nav-pills">
-                <li className="nav-item"><a className="nav-link active" href="#current">Current</a></li>
-                <li className="nav-item" href="#backlog"><a className="nav-link">Backlog</a></li>
-                <li className="nav-item" href="#icebox"><a className="nav-link">Icebox</a></li>
-                <li className="nav-item" href="#completed"><a className="nav-link">Completed</a></li>
-              </ul>
-            </nav>
             <div id="deliverables">
               <div className="deliverables-section-header">
-                <h3 id="current">Current Sprint</h3>
+                <h3 id="current">Current Tasks</h3>
               </div>
               <div className="deliverables-section-body">
                 {project.currSprint.map((deliverable) =>
@@ -86,7 +84,7 @@ var Project = ({project, profile}) => (
               </div>
               <hr />
               <div className="deliverables-section-header">
-                <h3 id="completed">Completed Sprints</h3>
+                <h3 id="completed">Completed Tasks</h3>
               </div>
               <hr />
               <div className="deliverables-section-body">

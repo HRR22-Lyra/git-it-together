@@ -63,7 +63,7 @@ body {
 /*Project list ------------------------------------------------------------------*/
 
 .project-list {
-  padding: 10px 25px;
+  padding: .5rem 1.5rem;
 }
 
 .project-list-search input {
@@ -131,9 +131,14 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   margin: 1rem;
 }
 
+.inline {
+  display: inline;
+  margin: 0 auto;
+}
+
 .deliverables-section input, .project-list-header input {
   width: 100%;
-  margin: 5px 0;
+  margin: .5rem 0;
 }
 
 .deliverables-section-header {
@@ -153,14 +158,14 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 }
 
 #deliverables {
-  min-height: 320px;
-  max-height: 320px;
+  min-height: 360px;
+  max-height: 360px;
   overflow-y: scroll;
 }
 
 .resources-section {
-  min-height: 275px;
-  max-height: 275px;
+  min-height: 309px;
+  max-height: 309px;
   overflow-y: scroll;
 }
 
