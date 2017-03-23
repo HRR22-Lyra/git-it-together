@@ -153,68 +153,21 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   overflow-y: scroll;
 }
 
-/*
-.messages {
-  padding: 7px 10px;
-  margin: 15px ;
-  background: #fff;
-  font-size: 1em;
-  width: 50%;
-  line-height: 1.3em;
-  box-shadow: 0 0 0 4px #fff, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
-  font-weight: normal;
-  width: 25%;
-}
-
-.message_form h3 {
-  font-size: 20px;
-  font-family: inherit;
-  font-weight: 500;
-  line-height: 1.1;
-  color: inherit;
-  margin: 0px 15px ;
-}
-
-.message_form input {
-  padding: 7px 10px;
-  margin: 15px ;
-  background: #fff;
-  font-size: 1em;
-  width: 25%;
-  line-height: 1.3em;
-  box-shadow: 0 0 0 4px #fff, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
-  font-weight: normal;
-}
-*/
-
-.searchBar input {
-  padding: 7px 10px;
-  margin: 15px ;
-  width: 97%;
-  font-weight: normal;
-}
-
-.repoList .searchBar input {
-  padding: 5px 5px;
-  margin: 2px 15px ;
-  width: 97%;
-  font-weight: normal;
-}
-
-.repo-list-entry {
-  padding: 7px 10px;
-  margin: 0px 15px;
-  background: #fff;
-  font-size: 1em;
-  line-height: 1.3em;
-  -moz-box-shadow:    3px 3px 0 0 #ccc;
-  -webkit-box-shadow: 3px 3px 0 0 #ccc;
-  box-shadow:         3px 3px 0 0 #ccc;
-  font-weight: normal;
-  width: 96.8%;
-}
-
 .repoAddMessage {
   font-size: 14px;
   font-weight: bold;
+}
+
+.repoNamebar {
+  font-color: #2d2d2d;
+  margin: 1px 1px;
+  background: #fff;
+  font-size: .8em;
+}
+
+.input-group-addon {
+  float: left;
+  margin: 4.5px 5px 0px 0px;
+  padding: 1px;
+  font-size: .6em;
 }

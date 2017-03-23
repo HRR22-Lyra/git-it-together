@@ -235,6 +235,10 @@ exports.listRepos = (req, res) => {
   var user = req.body.username;
   var githubURL = 'https://api.github.com/users/' + user + '/repos';
   request({url: githubURL, headers:{'User-Agent': user}}, (err, response, body) => {
+    //Github has request rate limit of 60 reqs per hours per IP - this conditional checks to see if the rate was exceeded ('https://developer.github.com/v3/#rate-limiting')
+    if (JSON.parse(response.body).hasOwnProperty('message')) {
+      res.status(439).send(['GitHub is overwhelmed! Please try again later.'])
+    }
     if (JSON.parse(response.statusCode) !== 404) {
       var repos = [];
       JSON.parse(response.body).forEach( (repo) => {
