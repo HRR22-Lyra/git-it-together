@@ -120,7 +120,7 @@ exports.addResource = (req, res) => {
 exports.deleteResource = (req, res) => {
   db.Resource.destroy({where: {id: req.query.id}})
   .then((numRows) => {
-    console.log('deleted: ', numRows, 'row(s)')
+    //console.log('deleted: ', numRows, 'row(s)')
     res.status(200).send();
   });
 };
@@ -139,18 +139,25 @@ exports.listResources = (req, res) => {
 
 exports.addDeliverable = (req, res) => {
   var projectID = req.body.projectID;
-  var owner = req.body.user;
-  var name = req.body.name;
+  var owner = req.body.owner;
+  var task = req.body.task;
   var status = req.body.status;
   var dueDate = req.body.dueDate;
   var progress = req.body.progress;
   var points = req.body.points;
-  db.Deliverable.create({project_id: projectID, owner: owner, name: name, status: status, due_date: dueDate, progress: progress, points: points})
-    .then( (deliverables) => {
-      var deliverableData = deliverables.dataValues;
-      res.status(201).send(deliverableData);
-    });
-  };
+  db.Deliverable.create({project_id: projectID, owner: owner, task: task, status: status, due_date: dueDate, progress: progress, points: points})
+  .then( (deliverables) => {
+    var deliverableData = deliverables.dataValues;
+    res.status(201).send(deliverableData);
+  });
+};
+
+exports.deleteDeliverable = (req, res) => {
+  db.Deliverable.destroy({where: {id: req.query.id}})
+  .then((numRows) => {
+    res.status(200).send();
+  });
+};
 
 exports.listDeliverables = (req, res) => {
   db.Deliverable.findAll({where: {project_id: req.query.id}, raw: true})

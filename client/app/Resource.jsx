@@ -15,7 +15,6 @@ class Form extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    var context = this;
     axios.post('/api/resources', {
       projectID: this.state.id,
       name: this.state.name,
@@ -65,7 +64,7 @@ class List extends React.Component {
 
   deleteResource(resourceID) {
     var context = this;
-    axios.delete('/api/resource?id=' + resourceID)
+    axios.delete('/api/resources?id=' + resourceID)
     .then(function(response) {
       context.getResources();
     });
