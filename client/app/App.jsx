@@ -1,7 +1,6 @@
 import React from 'react';
 import Login from './Login.jsx';
 import AuthService from '../config/AuthService.js'
-import {Button} from 'react-bootstrap'
 import Nav from './Nav.jsx';
 import ProjectList from './ProjectList.jsx';
 import Project from './ProjectView.jsx';

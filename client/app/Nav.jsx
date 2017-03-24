@@ -1,5 +1,4 @@
 import React from 'react';
-import {Row, Col, Image} from 'react-bootstrap';
 
 var Nav = ({profile, logout, handleProjectListEntryClick}) => (
   <nav className='navbar navbar-light bg-faded'>
