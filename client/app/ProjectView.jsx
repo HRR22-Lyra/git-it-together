@@ -11,8 +11,11 @@ var Project = ({project, profile, deleteProject}) => (
     <div className="project-view">
       <div className="row">
         <div className="col project-details">
-          <a className="repo-nav" href={'https://github.com/' + profile.nickname + '/' + project.name.replace(/ /g, '-').toLowerCase()}>{project.name}</a>
+          <a className="repo-nav" href={'https://github.com/' + project.owner + '/' + project.name.replace(/ /g, '-').toLowerCase()}>{project.name}</a>
           <hr />
+          <div class="btn btn-primary">
+          <button type="submit" onClick={() => deleteProject(project.id)}>Delete Project</button>
+          </div>
           <p className="repo-content">{project.description}</p>
         </div>
       </div>
@@ -47,9 +50,7 @@ var Project = ({project, profile, deleteProject}) => (
             <ChatApp user={profile.nickname} room={project.name} />
           </div>
         </div>
-          <div class="btn btn-primary">
-          <button type="submit" onClick={() => deleteProject(project.id)}>Delete Project</button>
-          </div>
+
       </div>
     </div>
   </div>
