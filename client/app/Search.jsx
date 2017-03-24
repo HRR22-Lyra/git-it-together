@@ -49,6 +49,7 @@ var Search = React.createClass({
                   </div>
                 </div>
               </div>
+              {/* DO NOT change this to className. I don't know why but this is just the way it has to be... */}
               <div class="row">
                 <div className="projects-section">
                   <div className="col">
