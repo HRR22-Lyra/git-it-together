@@ -10,7 +10,7 @@ var Project = ({project, profile, deleteProject}) => (
     <div className="project-view">
       <div className="row">
         <div className="col project-details">
-          <h1 className="repo-nav">{project.name}</h1>
+          <a className="repo-nav" href={'https://github.com/' + profile.nickname + '/' + project.name.replace(/ /g, '-').toLowerCase()}>{project.name}</a>
           <hr />
           <h5 className="repo-content">{project.description}</h5>
         </div>
