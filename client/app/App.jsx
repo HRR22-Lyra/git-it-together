@@ -87,6 +87,15 @@ export default class App extends React.Component {
     //this.context.router.push('/login');//
   }
 
+  delete(item){
+    const newState = this.state.projects;
+    if (newState.indexOf(item) > -1) {
+      newState.splice(newState.indexOf(item), 1);
+      this.setState({projects: newState, currentProject: null});
+      console.log('project deleted')
+    }
+  }
+
 
   render() {
     const { profile } = this.state
@@ -111,10 +120,12 @@ export default class App extends React.Component {
         );
       } else {
         return (
+
           <div>
 
             <Nav profile={profile} logout={this.logout.bind(this)} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} />
             <Project project={this.state.currentProject} profile={this.state.profile} />
+            <button type="submit" class="btn btin-primary" onClick={this.delete.bind(this, this.state.currentProject)}>Delete Project</button>
           </div>
         );
       }
