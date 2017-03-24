@@ -13,10 +13,6 @@ h1, h2, h3, h4, h5 {
   vertical-align: middle;
 }
 
-.fa-chevron-right {
-  margin-right: .5rem;
-}
-
 .container, .container-fluid {
   margin: 1rem;
 }
@@ -27,9 +23,27 @@ h1, h2, h3, h4, h5 {
 
 /*Login Page   ------------------------------------------------------------------*/
 
+
 .login {
+  position: fixed;
+  top: 175px;
+  width: 350px;
   margin: 0 auto;
-  top: 50%;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  top: 175px;
+  right: 0;
+}
+
+.login button {
+  width: 125px;
+  margin-top: 1rem;
+}
+
+.login img {
+  width: 175px;
+  margin: 1rem;
 }
 
 /*Profile thumb dropdown ------------------------------------------------------------------*/
@@ -74,6 +88,10 @@ h1, h2, h3, h4, h5 {
 }
 
 /*Project list ------------------------------------------------------------------*/
+
+.fa-chevron-right {
+  margin-right: .5rem;
+}
 
 .search-repos {
   width: 100%;
@@ -153,8 +171,12 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   margin: .5rem 0;
 }
 
+.deliverables-section button, .deliverables-section select {
+  margin: 0 .5rem 0 0;
+}
+
 .deliverables-section-header {
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 }
 
 .deliverables-section-body {
@@ -179,6 +201,11 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   min-height: 12rem;
   overflow-y: scroll;
   word-wrap: break-word;
+  padding: 0 1em;
+}
+
+.message {
+  margin-bottom: .5em;
 }
 
 .repoAddMessage {
