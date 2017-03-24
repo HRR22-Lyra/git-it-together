@@ -43,7 +43,8 @@ export default class App extends React.Component {
 
   deleteProject(projectID) {
     this.props.repod.deleteUserProject(projectID);
-    this.setState({currentProject: null}) //JAMES: pass this down to project view and bind it to the button which deletes a project, with project id as argument which you can get from current project i am pretty sure.
+    this.setState({currentProject: null})
+    console.log(projectID)//JAMES: pass this down to project view and bind it to the button which deletes a project, with project id as argument which you can get from current project i am pretty sure.
   }
 
   handleProjectListEntryClick(project) {
