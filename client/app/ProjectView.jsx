@@ -1,5 +1,5 @@
 import React from 'react';
-import Deliverables from './Deliverable.jsx';
+import Deliverable from './Deliverable.jsx';
 import Resources from './Resource.jsx';
 import ChatApp from './chatRoom.jsx';
 
@@ -21,41 +21,9 @@ var Project = ({project, profile}) => (
           <div className="deliverables-section">
             <h2>Deliverables</h2>
             <hr />
-            <form className="form">
-              <div className="col">
-                <label className="sr-only" htmlFor="deliverable-input-task">Task</label>
-                <input type="text" className="form-control" id="deliverable-input-task" placeholder="Task" />
-              </div>
-              <div className="col">
-                <label className="sr-only" htmlFor="deliverable-input-assignment">Assigned To</label>
-                <input type="text" className="form-control" id="deliverable-input-assignment" placeholder="Asignment" />
-              </div>
-              <div className="col inline">
-                <label className="sr-only" htmlFor="deliverable-input-fibbonaci">Task Complexity</label>
-                <select className="custom-select" id="deliverable-input-fibbonaci">
-                  <option>Complexity</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="5">5</option>
-                  <option value="8">8</option>
-                </select>
-              </div>
-              <div className="col inline">
-                <label className="sr-only" htmlFor="deliverable-input-status">Status</label>
-                <select className="custom-select" id="deliverable-input-status">
-                  <option value="current">Current Tasks</option>
-                  <option value="backlog">Backlog</option>
-                  <option value="icebox">Icebox</option>
-                  <option value="complete">Completed Tasks</option>
-                </select>
-              </div>
-              <div className="col inline">
-                <button type="submit" className="btn btn-primary">Add</button>
-              </div>
-            </form>
+            <Deliverable.Form />
             <hr />
-            <Deliverables project={project} />
+            <Deliverable.List project={project} />
           </div>
         </div>
         <div className="col">
