@@ -1,6 +1,6 @@
 import React from 'react';
 
-var Nav = ({profile, logout, handleProjectListEntryClick}) => (
+var Nav = ({profile, logout, handleProjectListEntryClick, current}) => (
   <nav className='navbar navbar-light bg-faded'>
     <div className='navbar-header'>
       <div className="dropdown">

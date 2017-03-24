@@ -95,7 +95,7 @@ export default class App extends React.Component {
 
         return (
           <div>
-            <Nav profile={profile} logout={this.logout.bind(this)} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} />
+            <Nav profile={profile} logout={this.logout.bind(this)} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} current="" />
             <Search projects={this.state.projects} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} handleRepoClick={this.addNewProject.bind(this)} />
           </div>
         );
@@ -104,7 +104,7 @@ export default class App extends React.Component {
 
           <div>
 
-            <Nav profile={profile} logout={this.logout.bind(this)} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} />
+            <Nav profile={profile} logout={this.logout.bind(this)} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} current={this.state.currentProject} />
             <Project project={this.state.currentProject} profile={this.state.profile} />
             <button type="submit" class="btn btin-primary" onClick={this.delete.bind(this, this.state.currentProject)}>Delete Project</button>
           </div>
