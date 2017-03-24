@@ -3,7 +3,7 @@ import Deliverable from './Deliverable.jsx';
 import Resource from './Resource.jsx';
 import ChatApp from './chatRoom.jsx';
 
-var Project = ({project, profile}) => (
+var Project = ({project, profile, deleteProject}) => (
 
 
   !project ? <div className="project-view">No project found</div> :
@@ -11,7 +11,7 @@ var Project = ({project, profile}) => (
     <div className="project-view">
       <div className="row">
         <div className="col project-details">
-          <h1 className="repo-nav">{project.name}</h1>
+          <a className="repo-nav" href={'https://github.com/' + profile.nickname + '/' + project.name.replace(/ /g, '-').toLowerCase()}>{project.name}</a>
           <hr />
           <p className="repo-content">{project.description}</p>
         </div>
@@ -47,6 +47,9 @@ var Project = ({project, profile}) => (
             <ChatApp user={profile.nickname} room={project.name} />
           </div>
         </div>
+          <div class="btn btn-primary">
+          <button type="submit" onClick={() => deleteProject(project.id)}>Delete Project</button>
+          </div>
       </div>
     </div>
   </div>
