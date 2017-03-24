@@ -1,15 +1,16 @@
 body {
   background: #2d2d2d;
   color: #2d2d2d;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: "Rubik", "Helvetica Nueue", "Helvetica", sans-serif;
+  font-size: 16px;
+}
+
+h1, h2, h3, h4, h5 {
+  /*font-family: "Rock Salt", sans-serif;*/
 }
 
 .fa {
   vertical-align: middle;
-}
-
-.fa-chevron-right {
-  margin-right: .5rem;
 }
 
 .container, .container-fluid {
@@ -22,9 +23,27 @@ body {
 
 /*Login Page   ------------------------------------------------------------------*/
 
+
 .login {
+  position: fixed;
+  top: 175px;
+  width: 350px;
   margin: 0 auto;
-  top: 50%;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  top: 175px;
+  right: 0;
+}
+
+.login button {
+  width: 125px;
+  margin-top: 1rem;
+}
+
+.login img {
+  width: 175px;
+  margin: 1rem;
 }
 
 /*Profile thumb dropdown ------------------------------------------------------------------*/
@@ -70,16 +89,21 @@ body {
 
 /*Project list ------------------------------------------------------------------*/
 
-.search-repos {
-  width: 100%;
+.fa-chevron-right {
+  margin-right: .5rem;
 }
 
-.project-list-search input {
+.repoList {
+  max-height: 150px;
+  overflow-y: scroll;
+}
+.search-repos {
   width: 100%;
 }
 
 #search-repo {
   z-index: 1;
+  margin: 1rem;
 }
 
 #add-button {
@@ -148,8 +172,12 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   margin: .5rem 0;
 }
 
+.deliverables-section button, .deliverables-section select {
+  margin: 0 .5rem 0 0;
+}
+
 .deliverables-section-header {
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 }
 
 .deliverables-section-body {
@@ -171,9 +199,14 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 
 /*Chat Room Styles ------------------------------------------------------------------*/
 .messages {
-  height: 12rem;
+  min-height: 12rem;
   overflow-y: scroll;
   word-wrap: break-word;
+  padding: 0 1em;
+}
+
+.message {
+  margin-bottom: .5em;
 }
 
 .repoAddMessage {
@@ -198,7 +231,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 /*Breakpoints (for responsive design) ------------------------------------------------------------------*/
 
 /*Super small devices (Galaxy S5, iPhone 5/SE, potatoes, up to 360px)*/
-@media (min-width: 320px) {
+@media (min-width: 320px) and (max-width: 991px) {
   .deliverables-section, .video-chat-section, .chat-section, .resources-section {
     min-width: 275px;
     max-width: 320px;
@@ -219,7 +252,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
     height: 100%;
   }
 
-  .resources-section, .chat-section, .messages {
+  .resources-section, .messages {
     overflow-y: scroll;
   }
 
@@ -234,47 +267,48 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 }
 
 /*Small devices (iPhone 6/6 Plus, 375px and up)*/
-@media (min-width: 375px) {
+@media (min-width: 375px) and (max-width: 991px) {
   .deliverables-section, .video-chat-section, .chat-section, .resources-section  {
     min-width: 300px;
     max-width: 375px;
-    padding: 1rem;
   }
 }
 
 /*Small devices (Nexus 5/6, landscape phones, 425px and up)*/
-@media (min-width: 425px) {
+@media (min-width: 425px) and (max-width: 991px) {
   .deliverables-section, .video-chat-section, .chat-section, .resources-section  {
     min-width: 375px;
     max-width: 425px;
-    padding: 1rem;
   }
 }
 
 /*Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) {
+@media (min-width: 576px) and (max-width: 991px) {
   .deliverables-section, .video-chat-section, .chat-section, .resources-section {
     min-width: 500px;
     max-width: 576px;
-    padding: 1rem;
   }
+
   #add-repo {
     width: 60%;
   }
+
   #deliverables {
     max-height: 25rem;
     overflow-y: scroll;
   }
+
   .messages {
     overflow-y: scroll;
   }
+
   .resources-section input {
     width: 100%;
   }
 }
 
 /*Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 991px) {
   .deliverables-section, .video-chat-section, .chat-section, .resources-section {
     min-width: 700px;
     max-width: 768px;
@@ -284,33 +318,38 @@ benefit: their scalability and you don't have to adjust the px value of everythi
     width: 80%;
   }
 
-  .deliverables-section, .video-chat-section  {
-    max-width: 768px;
-    height: 685px;
+  .messages {
+    height: 430px;
   }
 }
 
 /*Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
-  .deliverables-section, .video-chat-section, .chat-section, .resources-section {
-    min-width: 480px;
+  .deliverables-section, .chat-section, .resources-section {
+    margin-top: 1rem;
+    max-width: 100%;
   }
 
   .video-chat-section {
-    padding: 0;
+    padding: 1rem 0 0 0;
   }
 
   .resources-section {
-    margin: 1rem 0 0 1rem;
-    margin-right: 0;
-  }
-
-  .chat-section {
-    margin-top: 1rem;
+    margin: 1em 0 0 1rem;
   }
 
   .deliverables-section {
     margin-right: 0;
+  }
+
+  .chat-section {
+    height: 640px;
+    margin: 1rem 0 0 1rem;
+
+  }
+
+  .video-chat-section {
+    max-width: 100%;
   }
 
   #add-repo {
@@ -325,10 +364,6 @@ benefit: their scalability and you don't have to adjust the px value of everythi
     height: 775px;
   }
 
-  .chat-section {
-    height: 640px;
-  }
-
   .deliverables-section button {
     margin: .5rem 0;
   }
@@ -337,20 +372,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
     margin: .3rem;
   }
 
-  .chat-section {
-    margin: 1rem 0 0 1rem;
-  }
-
-}
-
-/*Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) {
-  #deliverables {
-    min-height: 360px;
-    max-height: 360px;
-  }
-
-  .deliverables-section, .video-chat-section, .resources-section  {
-    height: 685px;
+  .messages {
+    height: 430px;
   }
 }

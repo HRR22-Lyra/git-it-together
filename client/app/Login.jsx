@@ -1,5 +1,4 @@
 import React from 'react'
-import {ButtonToolbar, Button} from 'react-bootstrap' //    "react-bootstrap": "^0.30.0-rc.1",
 import AuthService from '../config/AuthService.js'
 //import styles from './styles.module.css'
 
@@ -10,12 +9,21 @@ export class Login extends React.Component {
     const { auth } = this.props
 
     return (
-      <div className="login">
-        <h2>Login</h2>
+      <div className="container login">
         <div className="jumbotron">
-          <ButtonToolbar >
-            <Button bsStyle="primary" onClick={auth.login.bind(this)}>Login</Button>
-          </ButtonToolbar>
+          <div className="row align-items-center justify-contents-center">
+            <div className="col">
+              <h1>Git It Together</h1>
+            </div>
+            <div className="w-100"></div>
+            <div className="col">
+              <img src="client/assets/unicorn-head-silhouette.png" alt="Git It Together logo" />
+            </div>
+            <div className="w-100"></div>
+            <div className="col">
+              <button className="btn btn-primary" onClick={auth.login.bind(this)}>Login</button>
+            </div>
+          </div>
         </div>
       </div>
     )
