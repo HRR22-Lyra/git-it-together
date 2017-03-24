@@ -12,7 +12,7 @@ var Message = React.createClass({
   render() {
     return (
       <div className="message">
-        <strong>{this.props.user}: </strong>
+        <strong>{this.props.user}</strong><br />
         <span>{this.props.text}</span>
       </div>
     );
@@ -111,6 +111,7 @@ var ChatApp = React.createClass({
     return (
       <div>
         <h2>Chat about {this.props.room}</h2>
+        <hr />
         <MessageList
           messages={this.state.messages}
         />
