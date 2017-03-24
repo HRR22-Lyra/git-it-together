@@ -111,6 +111,7 @@ var ChatApp = React.createClass({
     return (
       <div>
         <h2>Chat about {this.props.room}</h2>
+        <hr />
         <MessageList
           messages={this.state.messages}
         />
