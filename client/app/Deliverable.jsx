@@ -81,7 +81,7 @@ class List extends React.Component {
   render() {
     if (this.state.deliverables === null) {
       return (
-        <div>LOADING DELIVERABLES</div>
+        <div><i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i></div>
       );
     } else {
       return (

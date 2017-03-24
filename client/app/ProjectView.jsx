@@ -21,7 +21,7 @@ var Project = ({project, profile, deleteProject}) => (
           <div className="deliverables-section">
             <h2>Deliverables</h2>
             <hr />
-            <Deliverable.Form />
+            <Deliverable.Form projectid={project.id} user={profile.nickname} />
             <hr />
             <Deliverable.List project={project} />
           </div>
@@ -30,7 +30,7 @@ var Project = ({project, profile, deleteProject}) => (
           <div className="resources-section">
             <h2>Resources</h2>
             <hr />
-            <Resource.Form />
+            <Resource.Form projectid={project.id} user={profile.nickname} />
             <hr />
             <Resource.List project={project} />
           </div>
