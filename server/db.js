@@ -15,6 +15,7 @@ var Resource = db.define('Resource', {
   id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
   project_id: Sequelize.INTEGER,
   user: Sequelize.STRING,
+  name: Sequelize.STRING,
   link: Sequelize.STRING
 });
 

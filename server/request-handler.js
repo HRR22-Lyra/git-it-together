@@ -105,13 +105,25 @@ exports.listProjects = (req, res) => {
 exports.addResource = (req, res) => {
   var projectID = req.body.projectID;
   var link = req.body.link;
+  var name = req.body.name;
   var user = req.body.user;
-  db.Resource.create({project_id: projectID, link: link, user: user})
-    .then( (resources) => {
-      var resourceData = resources.dataValues;
-      res.status(201).send();
-    });
-  };
+  if (!name) {
+    name = link;
+  }
+  db.Resource.create({project_id: projectID, link: link, name: name, user: user})
+  .then( (resources) => {
+    var resourceData = resources.dataValues;
+    res.status(201).send();
+  });
+};
+
+exports.deleteResource = (req, res) => {
+  db.Resource.destroy({where: {id: req.query.id}})
+  .then((numRows) => {
+    console.log('deleted: ', numRows, 'row(s)')
+    res.status(200).send();
+  });
+};
 
 exports.listResources = (req, res) => {
   db.Resource.findAll({where: {project_id: req.query.id}, raw: true})

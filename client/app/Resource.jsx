@@ -63,16 +63,24 @@ class List extends React.Component {
     });
   }
 
+  deleteResource(resourceID) {
+    var context = this;
+    axios.delete('/api/resource?id=' + resourceID)
+    .then(function(response) {
+      context.getResources();
+    });
+  }
+
   render() {
     if (this.state.resources === null) {
       return (
-        <div><i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i></div>
+        <div><i className="fa fa-spinner fa-pulse fa-5x fa-fw"></i></div>
       );
     } else {
       return (
         <div className="resources-section-body">
           {this.state.resources.map((resource) =>
-            <Resource resource={resource} />
+            <Resource resource={resource} deleteResource={this.deleteResource.bind(this)} />
           )}
         </div>
       );
@@ -80,9 +88,11 @@ class List extends React.Component {
   }
 };
 
-var Resource = ({resource}) => (
+var Resource = ({resource, deleteResource}) => (
   <div className = "resource">
-    {resource.user}: <a className="right" href={resource.link}>{resource.link}</a>
+    {resource.user}:
+    <i className="fa fa-times right" aria-hidden="true" onClick={() => deleteResource(resource.id)}></i>
+    <a className="right" href={resource.link}>{resource.link}</a>
   </div>
 );
 
