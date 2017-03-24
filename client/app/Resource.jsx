@@ -1,15 +1,14 @@
 import React from 'react';
-
-var list = null;
-
-var updateList = function() {
-  list.getResources();
-};
+var socket = io.connect('/io/resources');
 
 class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {id: props.projectid, user: props.user, name: null, url: null};
+  }
+
+  componentDidMount() {
+    socket.emit('room', this.props.room);
   }
 
   handleSubmit(event) {
@@ -21,7 +20,7 @@ class Form extends React.Component {
       link: this.state.url,
       user: this.state.user
     }).then(function(response) {
-      updateList();
+      socket.emit('change', 'post');
     });
 
     this.setState({name: null, url: null});
@@ -48,8 +47,11 @@ class List extends React.Component {
     super(props);
     this.state = {project: props.project, resources: null};
 
-    list = this;
     this.getResources();
+  }
+
+  componentDidMount() {
+    socket.on('reload', this.getResources.bind(this));
   }
 
   getResources() {
@@ -63,10 +65,9 @@ class List extends React.Component {
   }
 
   deleteResource(resourceID) {
-    var context = this;
     axios.delete('/api/resources?id=' + resourceID)
     .then(function(response) {
-      context.getResources();
+      socket.emit('change', 'delete');
     });
   }
 

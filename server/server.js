@@ -21,8 +21,9 @@ app.use(express.static(path.join(__dirname, '../')));
 // Routes
 require('./routes.js')(app);
 
-//Listen for connections to io
-io.on('connection', (socket) => {
+//Listen for connections to chatroom
+var chatroom = io.of('/io/chatroom');
+chatroom.on('connection', (socket) => {
   var currentRoom = 'lobby';
   socket.on('room', (room) => {
     // if user is already in a room, leave room
@@ -35,17 +36,49 @@ io.on('connection', (socket) => {
     requestHandler.getMessages(currentRoom).then((messages) => {
       io.to(currentRoom).emit('savedMessages', messages);
     });
-    });
+  });
 
-    socket.on('message', (message) => {
-      requestHandler.saveMessage(message);
-      io.to(currentRoom).emit('message', message);
-    });
+  socket.on('message', (message) => {
+    requestHandler.saveMessage(message);
+    chatroom.to(currentRoom).emit('message', message);
+  });
 
-    //Listen for disconnects from socket
-    socket.on('disconnect', () => {
-      console.log ('A user disconnected');
-    });
+  //Listen for disconnects from socket
+  socket.on('disconnect', () => {
+    console.log ('A user disconnected');
+  });
+});
+
+//Listen for connections to deliverable
+// var deliverable = io.of('/io/deliverables');
+// deliverable.on('connection', (socket) => {
+//   var currentRoom = null;
+//   socket.on('room', (room) => {
+//     // if user is already in a room, leave room
+//     if (socket.room) {
+//       socket.leave(socket.room);
+//     }
+//     socket.join(room);
+//     currentRoom = room;
+//   });
+// });
+
+//Listen for connections to resource
+var resource = io.of('/io/resources');
+resource.on('connection', (socket) => {
+  var currentRoom = null;
+  socket.on('room', (room) => {
+    // if user is already in a room, leave room
+    if (socket.room) {
+      socket.leave(socket.room);
+    }
+    socket.join(room);
+    currentRoom = room;
+  });
+
+  socket.on('change', (change) => {
+    resource.to(currentRoom).emit('reload', change);
+  });
 });
 
 // Listen

@@ -6,13 +6,13 @@
 //TO DO: Set limit on number of messages to display
 
 import React from 'react';
-var socket = io.connect();
+var socket = io('/io/chatroom');
 
 var Message = React.createClass({
   render() {
     return (
       <div className="message">
-        <strong>{this.props.user}</strong><br />
+        <strong>{this.props.user}: </strong>
         <span>{this.props.text}</span>
       </div>
     );
@@ -111,7 +111,6 @@ var ChatApp = React.createClass({
     return (
       <div>
         <h2>Chat about {this.props.room}</h2>
-        <hr />
         <MessageList
           messages={this.state.messages}
         />

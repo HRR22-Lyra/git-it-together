@@ -15,12 +15,6 @@ class Form extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    console.log('projectID:', this.state.id)
-    console.log('task:', this.state.task)
-    console.log('owner:', this.state.owner)
-    console.log('points:', this.state.points)
-    console.log('status:', this.state.status)
-
     axios.post('/api/deliverables', {
       projectID: this.state.id,
       task: this.state.task,
@@ -109,7 +103,6 @@ class List extends React.Component {
           deliverables.current.push(deliverable);
         }
       });
-      console.log(response.data)
       context.forceUpdate();
     });
   }
