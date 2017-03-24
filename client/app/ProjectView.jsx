@@ -3,7 +3,7 @@ import Deliverable from './Deliverable.jsx';
 import Resource from './Resource.jsx';
 import ChatApp from './chatRoom.jsx';
 
-var Project = ({project, profile}) => (
+var Project = ({project, profile, deleteProject}) => (
 
 
   !project ? <div className="project-view">No project found</div> :
@@ -47,6 +47,9 @@ var Project = ({project, profile}) => (
             <ChatApp user={profile.nickname} room={project.name} />
           </div>
         </div>
+          <div class="btn btn-primary">
+          <button type="submit" onClick={() => deleteProject(project.id)}>Delete Project</button>
+          </div>
       </div>
     </div>
   </div>
