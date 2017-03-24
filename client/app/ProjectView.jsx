@@ -15,7 +15,7 @@ var Project = ({project, profile}) => (
           <h5 className="repo-content">{project.description}</h5>
         </div>
       </div>
-      <div className="row">
+      <div className="row deliverables-row">
         <div className="col">
           <div className="deliverables-section">
             <h2>Deliverables</h2>
@@ -95,9 +95,6 @@ var Project = ({project, profile}) => (
           </div>
         </div>
         <div className="col">
-          <div className="chat-section">
-            <ChatApp user={profile.nickname} room={project.name} />
-          </div>
           <div className="resources-section">
             <h2>Resources</h2>
             <hr />
@@ -112,7 +109,18 @@ var Project = ({project, profile}) => (
           </div>
         </div>
       </div>
-      <iframe src={"https://appear.in/git-it-together/" + project.name} width="100%" height="640" frameborder="0"></iframe>
+      <div className="row deliverables-row">
+        <div className="col">
+          <div className="video-chat-section">
+            <iframe src={"https://appear.in/git-it-together/" + project.name} width="100%" height="640" frameborder="0"></iframe>
+          </div>
+        </div>
+        <div className="col">
+          <div className="chat-section">
+            <ChatApp user={profile.nickname} room={project.name} />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 );
