@@ -2,6 +2,10 @@ import React from 'react';
 
 var list = null;
 
+var updateList = function() {
+  list.getDeliverables();
+};
+
 var Form = () => (
   <form className="form">
     <div className="col">
@@ -44,11 +48,12 @@ class List extends React.Component {
     this.state = {project: props.project, deliverables: null};
 
     list = this;
-    this.getDeliverables(this.state.project);
+    this.getDeliverables();
   }
 
-  getDeliverables(project) {
+  getDeliverables() {
     var context = this;
+    var project = this.state.project;
     axios.get('/api/deliverables?id=' + project.id)
     .then(function(response) {
       context.state.deliverables = {};

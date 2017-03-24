@@ -1,6 +1,6 @@
 import React from 'react';
 import Deliverable from './Deliverable.jsx';
-import Resources from './Resource.jsx';
+import Resource from './Resource.jsx';
 import ChatApp from './chatRoom.jsx';
 
 var Project = ({project, profile}) => (
@@ -30,15 +30,9 @@ var Project = ({project, profile}) => (
           <div className="resources-section">
             <h2>Resources</h2>
             <hr />
-            <form className="form-inline">
-              <label className="sr-only" htmlFor="resource-input-name">Resource Name</label>
-              <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="resource-input-name" placeholder="Name" />
-              <label className="sr-only" htmlFor="resource-input-url">Resource Url</label>
-              <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="resource-input-url" placeholder="Url" />
-              <button type="submit" className="btn btn-primary">Add</button>
-            </form>
+            <Resource.Form />
             <hr />
-            <Resources project={project} />
+            <Resource.List project={project} />
           </div>
         </div>
       </div>
