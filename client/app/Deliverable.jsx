@@ -1,15 +1,14 @@
 import React from 'react';
-
-var list = null;
-
-var updateList = function() {
-  list.getDeliverables();
-};
+var socket = io.connect('/io/deliverables');
 
 class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {id: props.projectid, task: null, owner: null, points: null, status: 'current'}
+  }
+
+  componentDidMount() {
+    socket.emit('room', this.props.room);
   }
 
   handleSubmit(event) {
@@ -22,7 +21,7 @@ class Form extends React.Component {
       points: this.state.points,
       status: this.state.status
     }).then(function(response) {
-      updateList();
+      socket.emit('change', 'post');
     });
 
     this.setState({task: null, owner: null, points: null, status: 'current'});
@@ -77,8 +76,11 @@ class List extends React.Component {
     super(props);
     this.state = {project: props.project, deliverables: null};
 
-    list = this;
     this.getDeliverables();
+  }
+
+  componentDidMount() {
+    socket.on('reload', this.getDeliverables.bind(this));
   }
 
   getDeliverables() {
@@ -108,10 +110,9 @@ class List extends React.Component {
   }
 
   deleteDeliverable(deliverableID) {
-    var context = this;
     axios.delete('/api/deliverables?id=' + deliverableID)
     .then(function(response) {
-      context.getDeliverables();
+      socket.emit('change', 'delete');
     });
   }
 

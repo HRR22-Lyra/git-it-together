@@ -34,7 +34,7 @@ chatroom.on('connection', (socket) => {
     console.log('A user has connected to ' + room);
     currentRoom = room;
     requestHandler.getMessages(currentRoom).then((messages) => {
-      io.to(currentRoom).emit('savedMessages', messages);
+      chatroom.to(currentRoom).emit('savedMessages', messages);
     });
   });
 
@@ -50,18 +50,22 @@ chatroom.on('connection', (socket) => {
 });
 
 //Listen for connections to deliverable
-// var deliverable = io.of('/io/deliverables');
-// deliverable.on('connection', (socket) => {
-//   var currentRoom = null;
-//   socket.on('room', (room) => {
-//     // if user is already in a room, leave room
-//     if (socket.room) {
-//       socket.leave(socket.room);
-//     }
-//     socket.join(room);
-//     currentRoom = room;
-//   });
-// });
+var deliverable = io.of('/io/deliverables');
+deliverable.on('connection', (socket) => {
+  var currentRoom = null;
+  socket.on('room', (room) => {
+    // if user is already in a room, leave room
+    if (socket.room) {
+      socket.leave(socket.room);
+    }
+    socket.join(room);
+    currentRoom = room;
+  });
+
+  socket.on('change', (change) => {
+    deliverable.to(currentRoom).emit('reload', change);
+  });
+});
 
 //Listen for connections to resource
 var resource = io.of('/io/resources');
