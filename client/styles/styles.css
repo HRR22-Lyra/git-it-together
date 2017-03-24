@@ -1,7 +1,12 @@
 body {
   background: #2d2d2d;
   color: #2d2d2d;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: "Fira Sans", "Maven Pro", "Helvetica Nueue", "Helvetica", "Arial", sans-serif;
+  font-size: 16px;
+}
+
+h1, h2, h3, h4, h5 {
+  /*font-family: "Rock Salt", sans-serif;*/
 }
 
 .fa {
@@ -171,7 +176,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 
 /*Chat Room Styles ------------------------------------------------------------------*/
 .messages {
-  height: 12rem;
+  min-height: 12rem;
   overflow-y: scroll;
   word-wrap: break-word;
 }
@@ -219,7 +224,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
     height: 100%;
   }
 
-  .resources-section, .chat-section, .messages {
+  .resources-section, .messages {
     overflow-y: scroll;
   }
 
@@ -258,16 +263,20 @@ benefit: their scalability and you don't have to adjust the px value of everythi
     max-width: 576px;
     padding: 1rem;
   }
+
   #add-repo {
     width: 60%;
   }
+
   #deliverables {
     max-height: 25rem;
     overflow-y: scroll;
   }
+
   .messages {
     overflow-y: scroll;
   }
+
   .resources-section input {
     width: 100%;
   }
@@ -282,6 +291,10 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 
   #add-repo {
     width: 80%;
+  }
+
+  .messages {
+    height: 430px;
   }
 
   .deliverables-section, .video-chat-section  {

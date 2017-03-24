@@ -13,7 +13,7 @@ var Project = ({project, profile}) => (
         <div className="col project-details">
           <h1 className="repo-nav">{project.name}</h1>
           <hr />
-          <h5 className="repo-content">{project.description}</h5>
+          <p className="repo-content">{project.description}</p>
         </div>
       </div>
       <div className="row deliverables-row">
@@ -39,7 +39,7 @@ var Project = ({project, profile}) => (
       <div className="row deliverables-row">
         <div className="col">
           <div className="video-chat-section">
-            <iframe src={"https://appear.in/git-it-together/" + project.name} width="100%" height="640" frameborder="0"></iframe>
+            <iframe src={"https://appear.in/git-it-together/" + project.name} width="100%" height="640" frameBorder="0"></iframe>
           </div>
         </div>
         <div className="col">
