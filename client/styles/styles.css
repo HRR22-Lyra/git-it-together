@@ -215,7 +215,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 }
 
 .repoNamebar {
-  margin: 1px 6px;
+  margin: 1px 16px;
   padding: 3px;
   background: #fff;
   font-size: 1em;
@@ -228,6 +228,41 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   font-size: .9em;
 }
 
+.repo-nav {
+  font-family: Rubik;
+  font-size: 40px;
+  font-weight: 500;
+  color: black;
+}
+
+.repo-nav:hover {
+  text-decoration: none;
+  color: #0275d8;
+}
+
+.delete {
+  font-size: 25px;
+  border-radius: .25em;
+}
+
+.deleteBar {
+  display: inline-block;
+  float: right;
+  margin-top: 10px;
+}
+
+a.repoNav {
+  display: inline-block;
+}
+
+.delete:hover {
+  background-color: red;
+  color: white;
+}
+
+.fa-trash {
+  font-size: 1.5em;
+}
 /*Breakpoints (for responsive design) ------------------------------------------------------------------*/
 
 /*Super small devices (Galaxy S5, iPhone 5/SE, potatoes, up to 360px)*/
@@ -264,12 +299,8 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   .resources-section input {
     width: 100%;
   }
-}
 
-  .repo-nav {
-    font-family: Rubik;
-    font-size: 5em;
-  }
+
 /*Small devices (iPhone 6/6 Plus, 375px and up)*/
 @media (min-width: 375px) and (max-width: 991px) {
   .deliverables-section, .video-chat-section, .chat-section, .resources-section  {
