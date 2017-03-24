@@ -1,10 +1,5 @@
 import React from 'react';
-
-var list = null;
-
-var updateList = function() {
-  list.getDeliverables();
-};
+var socket = io.connect('/io/deliverables');
 
 class Form extends React.Component {
   constructor(props) {
@@ -12,14 +7,12 @@ class Form extends React.Component {
     this.state = {id: props.projectid, task: null, owner: null, points: null, status: 'current'}
   }
 
+  componentDidMount() {
+    socket.emit('room', this.props.room);
+  }
+
   handleSubmit(event) {
     event.preventDefault();
-
-    console.log('projectID:', this.state.id)
-    console.log('task:', this.state.task)
-    console.log('owner:', this.state.owner)
-    console.log('points:', this.state.points)
-    console.log('status:', this.state.status)
 
     axios.post('/api/deliverables', {
       projectID: this.state.id,
@@ -28,7 +21,7 @@ class Form extends React.Component {
       points: this.state.points,
       status: this.state.status
     }).then(function(response) {
-      updateList();
+      socket.emit('change', 'post');
     });
 
     this.setState({task: null, owner: null, points: null, status: 'current'});
@@ -83,8 +76,11 @@ class List extends React.Component {
     super(props);
     this.state = {project: props.project, deliverables: null};
 
-    list = this;
     this.getDeliverables();
+  }
+
+  componentDidMount() {
+    socket.on('reload', this.getDeliverables.bind(this));
   }
 
   getDeliverables() {
@@ -109,16 +105,14 @@ class List extends React.Component {
           deliverables.current.push(deliverable);
         }
       });
-      console.log(response.data)
       context.forceUpdate();
     });
   }
 
   deleteDeliverable(deliverableID) {
-    var context = this;
     axios.delete('/api/deliverables?id=' + deliverableID)
     .then(function(response) {
-      context.getDeliverables();
+      socket.emit('change', 'delete');
     });
   }
 

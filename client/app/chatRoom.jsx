@@ -6,7 +6,7 @@
 //TO DO: Set limit on number of messages to display
 
 import React from 'react';
-var socket = io.connect();
+var socket = io('/io/chatroom');
 
 var Message = React.createClass({
   render() {
