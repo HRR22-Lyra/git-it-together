@@ -44,7 +44,8 @@ export default class App extends React.Component {
   }
 
   deleteProject(projectID) {
-    this.props.repod.deleteUserProject(projectID); //JAMES: pass this down to project view and bind it to the button which deletes a project, with project id as argument which you can get from current project i am pretty sure.
+    this.props.repod.deleteUserProject(projectID);
+    this.setState({currentProject: null}) //JAMES: pass this down to project view and bind it to the button which deletes a project, with project id as argument which you can get from current project i am pretty sure.
   }
 
   handleProjectListEntryClick(project) {
@@ -92,16 +93,6 @@ export default class App extends React.Component {
     //this.context.router.push('/login');//
   }
 
-  delete(item){
-    const newState = this.state.projects;
-    if (newState.indexOf(item) > -1) {
-      newState.splice(newState.indexOf(item), 1);
-      this.setState({projects: newState, currentProject: null});
-      console.log('project deleted')
-    }
-  }
-
-
   render() {
     const { profile } = this.state
     const { auth } = this.props
@@ -129,8 +120,7 @@ export default class App extends React.Component {
           <div>
 
             <Nav profile={profile} logout={this.logout.bind(this)} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} />
-            <Project project={this.state.currentProject} profile={this.state.profile} />
-            <button type="submit" class="btn btin-primary" onClick={this.delete.bind(this, this.state.currentProject)}>Delete Project</button>
+            <Project project={this.state.currentProject} profile={this.state.profile} deleteProject={this.deleteProject.bind(this)}/>
           </div>
         );
       }
