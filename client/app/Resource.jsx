@@ -9,7 +9,7 @@ var updateList = function() {
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {id: props.projectid, user: props.user, name: '', url: ''};
+    this.state = {id: props.projectid, user: props.user, name: null, url: null};
   }
 
   handleSubmit(event) {
@@ -25,7 +25,7 @@ class Form extends React.Component {
       updateList();
     });
 
-    this.setState({name: '', url: ''});
+    this.setState({name: null, url: null});
     document.getElementById('resourceForm').reset();
   }
 
