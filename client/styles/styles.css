@@ -266,6 +266,10 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   }
 }
 
+  .repo-nav {
+    font-family: Rubik;
+    font-size: 5em;
+  }
 /*Small devices (iPhone 6/6 Plus, 375px and up)*/
 @media (min-width: 375px) and (max-width: 991px) {
   .deliverables-section, .video-chat-section, .chat-section, .resources-section  {
