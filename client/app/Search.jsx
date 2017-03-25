@@ -52,7 +52,6 @@ var Search = React.createClass({
               <div className="row">
                 <div className="projects-section">
                     <ProjectList projects={projects} handleProjectListEntryClick={this.props.handleProjectListEntryClick}></ProjectList>
-
                 </div>
               </div>
             </div>
