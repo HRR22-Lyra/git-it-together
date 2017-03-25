@@ -7,10 +7,6 @@ body {
   font-size: 16px;
 }
 
-h1, h2, h3, h4, h5 {
-  /*font-family: "Rock Salt", sans-serif;*/
-}
-
 .fa {
   vertical-align: middle;
 }
@@ -31,6 +27,7 @@ button, a {
   cursor: pointer;
 }
 
+/*The only table is in the deliverables section*/
 thead {
   background-color: #DDD;
 }
@@ -41,7 +38,7 @@ tbody {
 
 /*Login Page   ------------------------------------------------------------------*/
 
-
+/*the fixed position, margin, and text-align allow us to center the login window*/
 .login {
   position: fixed;
   top: 175px;
@@ -81,12 +78,14 @@ tbody {
   display: inline-block;
 }
 
+/*by setting the display to none here and block on hover further down, we achieve a drop-down on hover effect*/
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: #fff;
   z-index: 2;
   width: 15rem;
+  /*box shadow cheat sheet: horizontal offset, vertical offset, blur radius (optional), spread radius (optional), color*/
   -webkit-box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.4);
   -moz-box-shadow:    5px 5px 5px 1px rgba(0, 0, 0, 0.4);
   box-shadow:         5px 5px 5px 1px rgba(0, 0, 0, 0.4);
@@ -123,6 +122,7 @@ tbody {
   width: 100%;
 }
 
+/*we need to set the z-index as a number less than the dropdown or the search bar will appear on top of the dropdown*/
 #search-repo {
   z-index: 1;
 }
@@ -174,6 +174,7 @@ rem = root-em. 1rem = the value of the root font-size. So if the html element ha
 em. 1em = the value of the font-size of the element on which it is applied. So if the div font-size is 18px, even if the root is 16px, 10em = 180px.
 benefit: their scalability and you don't have to adjust the px value of everything if you want to scale up or down.
 */
+/*also, we used the same template for each of these sections for uniformity- it's nicer to look at*/
 .deliverables-section, .resources-section, .project-details, .chat-section, .project-list-header, .projects-section, #deliverables {
   position: relative;
   padding: 1.5rem;
@@ -185,6 +186,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   line-height: 1.5;
 }
 
+/*any overflow will be contained within the container and not spill into the containers below, nor will it increase the size of the container*/
 #deliverables, .resources-section {
   overflow-y: scroll;
 }
@@ -206,6 +208,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   color: #2d2d2d;
 }
 
+/*we wanted the deliverables, resources, and chat headers to be centered but not the repo name at the top*/
 .project-view h2, .project-view h3 {
   text-align: center;
 }
@@ -215,6 +218,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   clear: both;
 }
 
+/*the video chat is hardcoded at 640px, so to keep the chat next to it the same height, we also hard code it to match*/
 .chat-section {
   height: 640px;
 }
@@ -228,10 +232,12 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   padding-right: 0;
 }
 
+/*this actually centers the input fields and buttons*/
 #deliverableForm, #resourceForm {
   text-align: center;
 }
 
+/*we decided against inline forms because they're the devil. so each one is set to 100% to fill the container*/
 #deliverableForm input, #resourceForm input {
   width: 100%;
   margin: .5rem;
@@ -250,6 +256,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 }
 
 /*Chat Room Styles ------------------------------------------------------------------*/
+/*this seemed to be the perfect balance so that the messages don't spill over and the input field remains near the bottom*/
 .messages {
   min-height: 460px;
   overflow-y: scroll;
@@ -337,16 +344,16 @@ a.repoNav {
 /*Resources ____________________________________________________________________________________________________*/
 .resource {
   font-size: 1.3em;
-  margin: 5px 0px 0px 0px;
+  margin: 5px 0 0 0;
 }
 
 .deleteResource {
-  margin: 0px 15px 5px 0px;
+  margin: 0 15px 5px 0;
 }
 
 .resourceName {
   font-weight: bold;
-  margin: 0px 8px 0px 8px;
+  margin: 0 8px;
   cursor: pointer;
 }
 
@@ -355,7 +362,7 @@ a.repoNav {
 }
 
 .fa-times {
-  margin: 0px 5px 2px 0px;
+  margin: 0 5px 2px 0;
 }
 
 .fa-times:hover {
@@ -365,7 +372,7 @@ a.repoNav {
 .fa-external-link {
   display: inline;
   width: 10px;
-  margin: 0px 10px 0px 0px;
+  margin: 0 10px 0 0;
   font-size: .9em;
 }
 
@@ -379,13 +386,6 @@ a.repoNav {
   text-align: center;
 }
 
-
-    max-width: 576px;
-  }
-
-  #add-repo {
-    width: 60%;
-  }
 
 /*Breakpoints (for responsive design) ------------------------------------------------------------------*/
  /*Below 991px, page resizes to single-column, so we need to make sure the only space is 1rem above each component for proper spacing*/
