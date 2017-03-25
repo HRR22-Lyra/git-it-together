@@ -277,9 +277,14 @@ a.repoNav {
   background-color: red;
   color: white;
 }
-
+/*Misc ___________________________________________________________________________________________________*/
 .fa-trash {
   font-size: 1.5em;
+}
+
+.fa-spinner {
+  width: 100%;
+  text-align: center;
 }
 /*Breakpoints (for responsive design) ------------------------------------------------------------------*/
 
