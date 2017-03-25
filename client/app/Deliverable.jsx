@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 var socket = io.connect('/io/deliverables');
 
 class Form extends React.Component {
@@ -13,19 +14,22 @@ class Form extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
-    axios.post('/api/deliverables', {
-      projectID: this.state.id,
-      task: this.state.task,
-      owner: this.state.owner,
-      points: this.state.points,
-      status: this.state.status
-    }).then(function(response) {
-      socket.emit('change', 'post');
-    });
-
-    this.setState({task: null, owner: null, points: null, status: 'current'});
-    document.getElementById('deliverableForm').reset();
+    if (this.state.task && this.state.owner && this.state.points && this.state.status) {
+      axios.post('/api/deliverables', {
+        projectID: this.state.id,
+        task: this.state.task,
+        owner: this.state.owner,
+        points: this.state.points,
+        status: this.state.status
+      }).then(function(response) {
+        socket.emit('change', 'post');
+      });
+      this.setState({task: null, owner: null, points: null, status: 'current'});
+      document.getElementById('deliverableForm').reset();
+      $('#deliverableForm').css('border', 'none');
+    } else {
+      $('#deliverableForm').css('border', '2px solid red');
+    }
   }
 
   render() {
@@ -128,37 +132,58 @@ class List extends React.Component {
             <h3 id="current">Current Tasks</h3>
           </div>
           <div className="deliverables-section-body">
-            {this.state.deliverables.current.map((deliverable) =>
-              <Deliverable deliverable={deliverable} deleteDeliverable={this.deleteDeliverable.bind(this)} />
-            )}
+            <table className="table table-hover table-responsive">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Asignee</th>
+                  <th>Description</th>
+                  <th>Complexity</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.deliverables.current.map((deliverable) =>
+                  <Deliverable deliverable={deliverable} deleteDeliverable={this.deleteDeliverable.bind(this)} />
+                )}
+              </tbody>
+            </table>
           </div>
-          <hr />
           <div className="deliverables-section-header">
             <h3 id="backlog">Backlog</h3>
           </div>
           <div className="deliverables-section-body">
-            {this.state.deliverables.backlog.map((deliverable) =>
-              <Deliverable deliverable={deliverable} deleteDeliverable={this.deleteDeliverable.bind(this)} />
-            )}
+            <table className="table table-hover">
+              <tbody>
+                {this.state.deliverables.backlog.map((deliverable) =>
+                  <Deliverable deliverable={deliverable} deleteDeliverable={this.deleteDeliverable.bind(this)} />
+                )}
+              </tbody>
+            </table>
           </div>
-          <hr />
           <div className="deliverables-section-header">
             <h3 id="icebox">Icebox</h3>
           </div>
           <div className="deliverables-section-body">
-            {this.state.deliverables.icebox.map((deliverable) =>
-              <Deliverable deliverable={deliverable} deleteDeliverable={this.deleteDeliverable.bind(this)} />
-            )}
+            <table className="table table-hover">
+              <tbody>
+                {this.state.deliverables.icebox.map((deliverable) =>
+                  <Deliverable deliverable={deliverable} deleteDeliverable={this.deleteDeliverable.bind(this)} />
+                )}
+              </tbody>
+            </table>
           </div>
-          <hr />
           <div className="deliverables-section-header">
             <h3 id="completed">Completed Tasks</h3>
           </div>
-          <hr />
           <div className="deliverables-section-body">
-            {this.state.deliverables.complete.map((deliverable) =>
-              <Deliverable deliverable={deliverable} deleteDeliverable={this.deleteDeliverable.bind(this)} />
-            )}
+            <table className="table table-hover">
+              <tbody>
+                {this.state.deliverables.complete.map((deliverable) =>
+                  <Deliverable deliverable={deliverable} deleteDeliverable={this.deleteDeliverable.bind(this)} />
+                )}
+              </tbody>
+            </table>
           </div>
         </div>
       );
@@ -167,10 +192,13 @@ class List extends React.Component {
 }
 
 var Deliverable = ({deliverable, deleteDeliverable}) => (
-  <div className="deliverable">
-    ID: {deliverable.id} | {deliverable.owner} | {deliverable.task} | {deliverable.points} |
-    <i className="fa fa-times right" aria-hidden="true" onClick={() => deleteDeliverable(deliverable.id)}></i>
-  </div>
+  <tr>
+    <th scope="row">{deliverable.id}</th>
+    <td>{deliverable.owner}</td>
+    <td>{deliverable.task}</td>
+    <td>{deliverable.complexity}</td>
+    <td><i className="fa fa-times right" aria-hidden="true" onClick={() => deleteDeliverable(deliverable.id)}></i></td>
+  </tr>
 );
 
 exports.Form = Form;
