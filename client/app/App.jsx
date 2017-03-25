@@ -9,6 +9,7 @@ import ChatApp from './chatRoom.jsx';
 
 import repoService from '../config/services';
 import About from './About.jsx';
+import Description from './Description.jsx';
 
 
 
@@ -94,6 +95,9 @@ export default class App extends React.Component {
             <Nav profile={profile} logout={this.logout.bind(this)} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} current="" />
 
             <About />
+            <Description />
+
+
             <Search projects={this.state.projects} handleProjectListEntryClick={this.handleProjectListEntryClick.bind(this)} handleRepoClick={this.addNewProject.bind(this)} />
           </div>
         );
