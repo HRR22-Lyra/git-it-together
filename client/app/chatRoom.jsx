@@ -6,6 +6,7 @@
 //TO DO: Set limit on number of messages to display
 
 import React from 'react';
+import ReactDom from 'react-dom';
 var socket = io('/io/chatroom');
 var moment = require('moment-timezone');
 
@@ -22,6 +23,23 @@ var Message = React.createClass({
 });
 
 var MessageList = React.createClass({
+  componentDidUpdate() {
+    this.scrollElement();
+  },
+
+  scrollElement() {
+    var context = this;
+    //Use setTimeout to place this at the bottom of the stack
+    setTimeout(() => {
+      window.requestAnimationFrame(() => {
+        var node = ReactDom.findDOMNode(context);
+        if (node !== undefined) {
+          node.scrollTop = node.scrollHeight;
+        }
+      });
+    }, 0);
+  },
+
   render() {
     return (
       <div className='messages'>
@@ -38,6 +56,7 @@ var MessageList = React.createClass({
             );
           })
         }
+        <span id="bottom"></span>
       </div>
     );
   }
@@ -96,7 +115,7 @@ var ChatApp = React.createClass({
 
   _messageRecieve(message) {
     var {messages} = this.state;
-    messages.unshift(message);
+    messages.push(message);
     this.setState({messages});
     console.log('MESSAGES: ------> ', this.state.messages);
   },
