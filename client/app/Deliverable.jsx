@@ -132,12 +132,12 @@ class List extends React.Component {
             <h3 id="current">Current Tasks</h3>
           </div>
           <div className="deliverables-section-body">
-            <table className="table table-hover table-responsive">
+            <table className="table table-hover">
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Asignee</th>
                   <th>Description</th>
+                  <th>Asignee</th>
                   <th>Complexity</th>
                   <th></th>
                 </tr>
@@ -194,9 +194,9 @@ class List extends React.Component {
 var Deliverable = ({deliverable, deleteDeliverable}) => (
   <tr>
     <th scope="row">{deliverable.id}</th>
-    <td>{deliverable.owner}</td>
     <td>{deliverable.task}</td>
-    <td>{deliverable.complexity}</td>
+    <td>{deliverable.owner}</td>
+    <td>{deliverable.points}</td>
     <td><i className="fa fa-times right" aria-hidden="true" onClick={() => deleteDeliverable(deliverable.id)}></i></td>
   </tr>
 );
