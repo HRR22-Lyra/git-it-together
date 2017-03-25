@@ -33,7 +33,7 @@ var MessageList = React.createClass({
                 user={message.user}
                 text={message.text}
                 room={message.room}
-                date={moment.tz(message.createdAt, moment.tz.guess()).format('MMMM Do YYYY h:mm a')}
+                date={moment.tz(message.createdAt, moment.tz.guess()).startOf('hour').fromNow()}
               />
             );
           })

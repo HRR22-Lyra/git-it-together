@@ -92,7 +92,7 @@ var Resource = ({resource, deleteResource}) => (
   <div className = "resource">
     {resource.user}:
     <i className="fa fa-times right" aria-hidden="true" onClick={() => deleteResource(resource.id)}></i>
-    <a className="right" href={resource.link}>{resource.name}</a>
+    <a className="right" target="_blank" href={resource.link}>{resource.name}</a>
   </div>
 );
 
