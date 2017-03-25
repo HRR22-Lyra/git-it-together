@@ -3,8 +3,8 @@ Consolidate the tools you need to implement agile scrum on existing GitHub repos
 
 ## Table of Contents
 1. [Usage](#Usage)
-  1. [Adding Repositories](#Adding Repositories)
-  1. [Adding and Removing Deliverables or Resources](#Adding and Removing Deliverables or Resources)
+  1. [Adding Repositories](#"Adding Repositories")
+  1. [Adding and Removing Deliverables or Resources](#"Adding and Removing Deliverables or Resources")
 1. [Installation](#Installation)
 1. [Team](#Team)
 
