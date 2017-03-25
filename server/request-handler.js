@@ -306,7 +306,7 @@ exports.getMessages = (room) => {
   .then ((messages) => {
     var savedMessages = [];
     messages.forEach((message) => {
-      savedMessages.unshift(returnMessage = {
+      savedMessages.push(returnMessage = {
         user: message.user,
         text: message.text,
         room: message.room,
