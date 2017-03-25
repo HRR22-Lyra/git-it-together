@@ -30,13 +30,19 @@ class Form extends React.Component {
   render() {
     return (
       <form id="resourceForm" className="form-inline" onSubmit={this.handleSubmit.bind(this)}>
-        <label className="sr-only" htmlFor="resource-input-name">Resource Name</label>
-        <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="resource-input-name" placeholder="Name"
-          onChange={(event) => this.setState({name: event.target.value})} />
-        <label className="sr-only" htmlFor="resource-input-url">Resource Url</label>
-        <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="resource-input-url" placeholder="Url"
-          onChange={(event) => this.setState({url: event.target.value})} />
-        <button type="submit" className="btn btn-primary">Add</button>
+        <div className="col-xs-12 col-md-4 col-lg-5">
+          <label className="sr-only" htmlFor="resource-input-name">Resource Name</label>
+          <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="resource-input-name" placeholder="Name"
+            onChange={(event) => this.setState({name: event.target.value})} />
+        </div>
+        <div className="col-xs-12 col-md-4 col-lg-5">
+          <label className="sr-only" htmlFor="resource-input-url">Resource Url</label>
+          <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="resource-input-url" placeholder="Url"
+            onChange={(event) => this.setState({url: event.target.value})} />
+        </div>
+        <div className="col-xs-12 col-md-4 col-lg-5">
+          <button type="submit" className="btn btn-primary">Add</button>
+        </div>
       </form>
     );
   }

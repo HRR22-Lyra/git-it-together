@@ -1,3 +1,5 @@
+/*Global Styles (not as scary as global variables)   ------------------------------------------------------------------*/
+
 body {
   background: #2d2d2d;
   color: #2d2d2d;
@@ -20,6 +22,11 @@ h1, h2, h3, h4, h5 {
 .col {
   padding: 0;
 }
+
+textarea:focus, input:focus {
+	border: 2px solid #5597F4;
+}
+
 
 /*Login Page   ------------------------------------------------------------------*/
 
@@ -142,6 +149,7 @@ h1, h2, h3, h4, h5 {
 
 .projects-section {
   margin-top: 1rem;
+  width: 100%;
 }
 
 /*Project View ------------------------------------------------------------------*/
@@ -352,6 +360,11 @@ a.repoNav {
   .project-view-component {
     padding: 0;
     margin: 1rem 0 0 0;
+  }
+
+  /*off-set the extra space at the bottom of the appear.in window*/
+  .chat-section {
+    margin-top: -.5rem;
   }
 }
 
