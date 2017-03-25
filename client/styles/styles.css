@@ -208,6 +208,24 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 .message {
   margin-bottom: .5em;
 }
+
+.messageUser {
+  display: inline-block;
+  float: left;
+}
+
+.messageDate {
+  float: left;
+  color: grey;
+  font-style: italic;
+  font-size: 13px;
+  margin: 0.18em .8em 0em;
+}
+
+.messageText {
+  display: inline;
+  margin-top: 1.5em;
+}
 /*Add Repo Styles ------------------------------------------------------------------*/
 .repoAddMessage {
   font-size: 14px;
