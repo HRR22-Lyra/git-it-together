@@ -56,7 +56,6 @@ var MessageList = React.createClass({
             );
           })
         }
-        <span id="bottom"></span>
       </div>
     );
   }
