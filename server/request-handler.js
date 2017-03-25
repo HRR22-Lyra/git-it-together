@@ -120,7 +120,6 @@ exports.addResource = (req, res) => {
 exports.deleteResource = (req, res) => {
   db.Resource.destroy({where: {id: req.query.id}})
   .then((numRows) => {
-    //console.log('deleted: ', numRows, 'row(s)')
     res.status(200).send();
   });
 };
@@ -298,7 +297,6 @@ exports.deleteUserProject = (req, res) => {
 exports.saveMessage = (message) => {
   db.Message.create(message)
   .then (() => {
-    console.log('Message saved: ', message);
   })
 }
 //---------------------------------------------------------------------------

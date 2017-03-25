@@ -101,7 +101,6 @@ var ChatApp = React.createClass({
   },
 
   _savedMessagesReceive(messages) {
-    console.log('Messages: ', messages);
     this.setState({messages});
   },
 
