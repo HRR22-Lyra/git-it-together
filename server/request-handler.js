@@ -294,7 +294,7 @@ exports.deleteUserProject = (req, res) => {
 };
 
 //---------------------------------------------------------------------------
-// saveMessage input format: {user 'github_handle, text: 'message text', room: 'projectName'}
+// saveMessage input format: {user 'github_handle, text: 'message text', room: 'projectName', createdAt: 'MMMM Do YYYY h:mm'}
 exports.saveMessage = (message) => {
   db.Message.create(message)
   .then (() => {
