@@ -15,7 +15,7 @@ var Message = React.createClass({
       <div className="message">
         <strong className="messageUser">{this.props.user}</strong>
         <span className="messageDate">{this.props.date}</span><br />
-        <span className="">{this.props.text}</span>
+        <span className="messageText">{this.props.text}</span>
       </div>
     );
   }
@@ -33,7 +33,7 @@ var MessageList = React.createClass({
                 user={message.user}
                 text={message.text}
                 room={message.room}
-                date={moment.pst(message.createdAt).tz(this.state.tz).startOf('day').fromNow()}
+                date={moment.tz(message.createdAt, moment.tz.guess()).format('MMMM Do YYYY h:mm a')}
               />
             );
           })
@@ -84,7 +84,7 @@ var MessageForm = React.createClass({
 var ChatApp = React.createClass({
 
   getInitialState() {
-    return {messages:[], text: '', tz: moment.tz.guess()};
+    return {messages:[], text: ''};
   },
 
   componentDidMount() {
@@ -123,7 +123,7 @@ var ChatApp = React.createClass({
           onMessageSubmit={this.handleMessageSubmit}
           user={this.props.user}
           room={this.props.room}
-          date={moment.pst().format()}
+          date={moment.tz("America/Los_Angeles").format()}
         />
       </div>
     );
