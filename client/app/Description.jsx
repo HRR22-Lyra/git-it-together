@@ -6,7 +6,7 @@ import {Row, Col, Image, Button, Tooltip, Popover, OverlayTrigger} from 'react-b
 var Description = () => (
   <div>
 
-<button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal">
+<button type="button" className="aboutButton" className="btn btn-primary" data-toggle="modal" data-target="#myModal">
   About
 </button>
 

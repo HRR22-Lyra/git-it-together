@@ -449,6 +449,11 @@ a.repoNav {
   margin-right: 10px;
   margin-left: 20px;
 }
+.aboutButton {
+  float: right;
+  margin-right: 10px;
+  margin-left: 20px;
+}
 
 
 .profiles .name {
