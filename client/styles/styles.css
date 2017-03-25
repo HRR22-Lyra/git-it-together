@@ -237,6 +237,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   padding: 3px;
   background: #fff;
   font-size: 1em;
+  cursor: pointer;
 }
 
 .input-group-addon {
@@ -276,7 +277,40 @@ a.repoNav {
 .delete:hover {
   background-color: red;
   color: white;
+  cursor: pointer;
 }
+
+/*Resources ____________________________________________________________________________________________________*/
+.resource {
+  font-size: 1.3em;
+  margin: 5px 0px 0px 0px;
+}
+
+.deleteResource {
+  margin: 0px 15px 5px 0px;
+}
+
+.resourceName {
+  font-weight: bold;
+  margin: 0px 8px 0px 8px;
+  cursor: pointer;
+}
+
+.fa-times {
+  margin: 0px 5px 2px 0px;
+}
+
+.fa-times:hover {
+  cursor: pointer;
+}
+
+.fa-external-link {
+  display: inline;
+  width: 10px;
+  margin: 0px 10px 0px 0px;
+  font-size: .9em;
+}
+
 /*Misc ___________________________________________________________________________________________________*/
 .fa-trash {
   font-size: 1.5em;
@@ -286,6 +320,8 @@ a.repoNav {
   width: 100%;
   text-align: center;
 }
+
+
 /*Breakpoints (for responsive design) ------------------------------------------------------------------*/
 
 /*Super small devices (Galaxy S5, iPhone 5/SE, potatoes, up to 360px)*/
