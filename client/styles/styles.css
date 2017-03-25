@@ -1,3 +1,5 @@
+/*Global Styles (not as scary as global variables)   ------------------------------------------------------------------*/
+
 body {
   background: #2d2d2d;
   color: #2d2d2d;
@@ -19,6 +21,22 @@ h1, h2, h3, h4, h5 {
 
 .col {
   padding: 0;
+}
+
+textarea:focus, input:focus {
+	border: 2px solid #5597F4;
+}
+
+button, a {
+  cursor: pointer;
+}
+
+thead {
+  background-color: #DDD;
+}
+
+tbody {
+  background-color: #EEE;
 }
 
 /*Login Page   ------------------------------------------------------------------*/
@@ -78,6 +96,10 @@ h1, h2, h3, h4, h5 {
   padding: 12px 10px;
 }
 
+.card-block {
+  text-align: center;
+}
+
 .dropdown:hover .dropdown-content {
   display: block;
 }
@@ -125,6 +147,7 @@ h1, h2, h3, h4, h5 {
 
 .project-list-entry:hover {
   cursor: pointer;
+  border: 2px solid #5597F4;
 }
 
 .project-list-entry-title {
@@ -142,6 +165,7 @@ h1, h2, h3, h4, h5 {
 
 .projects-section {
   margin-top: 1rem;
+  width: 100%;
 }
 
 /*Project View ------------------------------------------------------------------*/
@@ -166,11 +190,6 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   overflow-y: scroll;
 }
 
-.inline {
-  display: inline;
-  margin: 0 auto;
-}
-
 .deliverables-section input, .project-list-header input {
   width: 100%;
   margin: .5rem 0;
@@ -182,10 +201,6 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 
 .deliverables-section-header {
   margin-bottom: 1rem;
-}
-
-.deliverables-section-body {
-  text-align: center;
 }
 
 .project-view h1, .project-view h2, .project-view h3, .project-view h4, .project-view h5 {
@@ -207,6 +222,32 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 
 .resources-section {
   height: 100%;
+}
+
+#deliverables {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#deliverableForm, #resourceForm {
+  text-align: center;
+}
+
+#deliverableForm input, #resourceForm input {
+  width: 100%;
+  margin: .5rem;
+}
+
+#resourceForm button {
+  margin: .5rem;
+}
+
+#deliverableForm {
+  padding: .5rem;
+}
+
+#resourceForm {
+  padding: .5rem .5rem 0 .5rem;
 }
 
 /*Chat Room Styles ------------------------------------------------------------------*/
@@ -352,6 +393,15 @@ a.repoNav {
   .project-view-component {
     padding: 0;
     margin: 1rem 0 0 0;
+  }
+
+  /*off-set the extra space at the bottom of the appear.in window*/
+  .chat-section {
+    margin-top: -.5rem;
+  }
+
+  #deliverableForm input, #deliverableForm button {
+    margin: .25rem;
   }
 }
 
