@@ -11,7 +11,7 @@ var Project = ({project, profile, deleteProject}) => (
     <div className="project-view">
       <div className="row">
         <div className="col project-details">
-          <a className="repo-nav" href={'https://github.com/' + project.owner + '/' + project.name.replace(/ /g, '-').toLowerCase()}>{project.name}</a>
+          <a className="repo-nav" target="_blank" href={'https://github.com/' + project.owner + '/' + project.name.replace(/ /g, '-').toLowerCase()}>{project.name}</a>
           <div className="deleteBar">
           <button type="submit" className="delete" onClick={() => deleteProject(project.id)}><i className="fa fa-trash"></i></button>
           </div>

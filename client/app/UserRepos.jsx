@@ -39,7 +39,7 @@ var UserRepos = React.createClass({
         return  (
           <div className="search-repos">
             <div className="input-group">
-              <input type="text" className="form-control" id="search-repo" value={this.state.searchString} onChange={this.handleChange} placeholder="Search your repos to add a project" />
+              <input type="text" autocomplete="off" className="form-control" id="search-repo" value={this.state.searchString} onChange={this.handleChange} placeholder="Search your repos to add a project" />
             </div>
             <div className="repoList">
               {repos.map((repo, index) =>

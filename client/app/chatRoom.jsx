@@ -14,7 +14,7 @@ var Message = React.createClass({
     return (
       <div className="message">
         <strong className="messageUser">{this.props.user}</strong>
-        <span className="messageDate">{this.props.date}</span><br />
+        <span className="messageDate">{this.props.createdAt}</span><br />
         <span className="messageText">{this.props.text}</span>
       </div>
     );
@@ -33,7 +33,7 @@ var MessageList = React.createClass({
                 user={message.user}
                 text={message.text}
                 room={message.room}
-                date={moment.tz(message.createdAt, moment.tz.guess()).startOf('hour').fromNow()}
+                createdAt={moment.utc(message.createdAt).startOf('second').fromNow()}
               />
             );
           })
@@ -54,7 +54,7 @@ var MessageForm = React.createClass({
       user : this.props.user,
       text : this.state.text,
       room: this.props.room,
-      date: this.props.date
+      createdAt: this.props.createdAt
     }
     this.props.onMessageSubmit(message);
     this.setState({ text: '' });
@@ -98,6 +98,7 @@ var ChatApp = React.createClass({
     var {messages} = this.state;
     messages.unshift(message);
     this.setState({messages});
+    console.log('MESSAGES: ------> ', this.state.messages);
   },
 
   _savedMessagesReceive(messages) {
@@ -122,7 +123,7 @@ var ChatApp = React.createClass({
           onMessageSubmit={this.handleMessageSubmit}
           user={this.props.user}
           room={this.props.room}
-          date={moment.tz("America/Los_Angeles").format()}
+          createdAt={moment.utc().format()}
         />
       </div>
     );
