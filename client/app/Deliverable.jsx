@@ -133,7 +133,7 @@ class List extends React.Component {
                 <tr>
                   <th>ID</th>
                   <th>Description</th>
-                  <th>Asignee</th>
+                  <th>Assignee</th>
                   <th>Complexity</th>
                   <th></th>
                 </tr>
