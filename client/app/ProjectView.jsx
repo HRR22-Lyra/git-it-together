@@ -20,7 +20,7 @@ var Project = ({project, profile, deleteProject}) => (
         </div>
       </div>
       <div className="row deliverables-row">
-        <div className="col">
+        <div className="col-xs-12 col-sm-12 col-lg-6 project-view-component project-view-component-left">
           <div className="deliverables-section">
             <h2>Deliverables</h2>
             <hr />
@@ -29,7 +29,7 @@ var Project = ({project, profile, deleteProject}) => (
             <Deliverable.List project={project} />
           </div>
         </div>
-        <div className="col">
+        <div className="col-xs-12 col-sm-12 col-lg-6 project-view-component project-view-component-right">
           <div className="resources-section">
             <h2>Resources</h2>
             <hr />
@@ -39,13 +39,13 @@ var Project = ({project, profile, deleteProject}) => (
           </div>
         </div>
       </div>
-      <div className="row deliverables-row">
-        <div className="col">
+      <div className="row chat-row">
+        <div className="col-xs-12 col-sm-12 col-lg-6 project-view-component project-view-component-left">
           <div className="video-chat-section">
             <iframe src={"https://appear.in/git-it-together/" + project.name} width="100%" height="640" frameBorder="0"></iframe>
           </div>
         </div>
-        <div className="col">
+        <div className="col-xs-12 col-sm-12 col-lg-6 project-view-component project-view-component-right">
           <div className="chat-section">
             <ChatApp user={profile.nickname} room={project.name} />
           </div>
