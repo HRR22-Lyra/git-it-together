@@ -14,17 +14,23 @@ class Form extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    axios.post('/api/resources', {
-      projectID: this.state.id,
-      name: this.state.name,
-      link: this.state.url,
-      user: this.state.user
-    }).then(function(response) {
-      socket.emit('change', 'post');
-    });
 
-    this.setState({name: null, url: null});
-    document.getElementById('resourceForm').reset();
+    if (this.state.name && this.state.url) {
+      axios.post('/api/resources', {
+        projectID: this.state.id,
+        name: this.state.name,
+        link: this.state.url,
+        user: this.state.user
+      }).then(function(response) {
+        socket.emit('change', 'post');
+      });
+
+      this.setState({name: null, url: null});
+      document.getElementById('resourceForm').reset();
+      $('#resourceForm').css('border', 'none');
+    } else {
+      $('#resourceForm').css('border', '2px solid red');
+    }
   }
 
   render() {
