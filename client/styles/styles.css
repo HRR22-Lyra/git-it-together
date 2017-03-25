@@ -27,14 +27,10 @@ button, a {
   cursor: pointer;
 }
 
-/*The only table is in the deliverables section*/
-thead {
-  background-color: #DDD;
+.hideMe {
+  display: none;
 }
 
-tbody {
-  background-color: #EEE;
-}
 
 /*Login Page   ------------------------------------------------------------------*/
 
@@ -191,6 +187,10 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   overflow-y: scroll;
 }
 
+#deliverables {
+  max-height: 35rem;
+}
+
 .deliverables-section input, .project-list-header input {
   width: 100%;
   margin: .5rem 0;
@@ -200,12 +200,20 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   margin: 0 .5rem 0 0;
 }
 
-.deliverables-section-header {
-  margin-bottom: 1rem;
-}
-
 .project-view h1, .project-view h2, .project-view h3, .project-view h4, .project-view h5 {
   color: #2d2d2d;
+}
+
+/*Overwrite the default heading color we just chose since we're changing the background*/
+.deliverables-section-header h3 {
+  margin: 0;
+  color: #fff;
+}
+
+.deliverables-section-header {
+  padding: .5rem 0;
+  background-color: #66A8F5;
+  font-weight: 400;
 }
 
 /*we wanted the deliverables, resources, and chat headers to be centered but not the repo name at the top*/
@@ -228,8 +236,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 }
 
 #deliverables {
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0;
 }
 
 /*this actually centers the input fields and buttons*/

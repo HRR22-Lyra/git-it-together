@@ -128,12 +128,12 @@ class List extends React.Component {
             <h3 id="current">Current Tasks</h3>
           </div>
           <div className="deliverables-section-body">
-            <table className="table table-hover">
+            <table className="table table-hover table-bordered table-sm">
               <thead>
                 <tr>
                   <th>ID</th>
                   <th>Description</th>
-                  <th>Asignee</th>
+                  <th>Assignee</th>
                   <th>Complexity</th>
                   <th></th>
                 </tr>
@@ -149,7 +149,16 @@ class List extends React.Component {
             <h3 id="backlog">Backlog</h3>
           </div>
           <div className="deliverables-section-body">
-            <table className="table table-hover">
+            <table className="table table-hover table-bordered table-sm">
+              <thead className="hideMe">
+                <tr>
+                  <th>ID</th>
+                  <th>Description</th>
+                  <th>Asignee</th>
+                  <th>Complexity</th>
+                  <th></th>
+                </tr>
+              </thead>
               <tbody>
                 {this.state.deliverables.backlog.map((deliverable) =>
                   <Deliverable deliverable={deliverable} deleteDeliverable={this.deleteDeliverable.bind(this)} />
@@ -161,7 +170,16 @@ class List extends React.Component {
             <h3 id="icebox">Icebox</h3>
           </div>
           <div className="deliverables-section-body">
-            <table className="table table-hover">
+            <table className="table table-hover table-bordered table-sm">
+              <thead className="hideMe">
+                <tr>
+                  <th>ID</th>
+                  <th>Description</th>
+                  <th>Asignee</th>
+                  <th>Complexity</th>
+                  <th></th>
+                </tr>
+              </thead>
               <tbody>
                 {this.state.deliverables.icebox.map((deliverable) =>
                   <Deliverable deliverable={deliverable} deleteDeliverable={this.deleteDeliverable.bind(this)} />
@@ -173,7 +191,16 @@ class List extends React.Component {
             <h3 id="completed">Completed Tasks</h3>
           </div>
           <div className="deliverables-section-body">
-            <table className="table table-hover">
+            <table className="table table-hover table-bordered table-sm">
+              <thead className="hideMe">
+                <tr>
+                  <th>ID</th>
+                  <th>Description</th>
+                  <th>Asignee</th>
+                  <th>Complexity</th>
+                  <th></th>
+                </tr>
+              </thead>
               <tbody>
                 {this.state.deliverables.complete.map((deliverable) =>
                   <Deliverable deliverable={deliverable} deleteDeliverable={this.deleteDeliverable.bind(this)} />
