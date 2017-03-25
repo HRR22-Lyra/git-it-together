@@ -7,13 +7,15 @@
 
 import React from 'react';
 var socket = io('/io/chatroom');
+var moment = require('moment-timezone');
 
 var Message = React.createClass({
   render() {
     return (
       <div className="message">
-        <strong>{this.props.user}</strong><br />
-        <span>{this.props.text}</span>
+        <strong className="messageUser">{this.props.user}</strong>
+        <span className="messageDate">{this.props.date}</span><br />
+        <span className="messageText">{this.props.text}</span>
       </div>
     );
   }
@@ -31,6 +33,7 @@ var MessageList = React.createClass({
                 user={message.user}
                 text={message.text}
                 room={message.room}
+                date={moment.tz(message.createdAt, moment.tz.guess()).startOf('hour').fromNow()}
               />
             );
           })
@@ -50,7 +53,8 @@ var MessageForm = React.createClass({
     var message = {
       user : this.props.user,
       text : this.state.text,
-      room: this.props.room
+      room: this.props.room,
+      date: this.props.date
     }
     this.props.onMessageSubmit(message);
     this.setState({ text: '' });
@@ -119,6 +123,7 @@ var ChatApp = React.createClass({
           onMessageSubmit={this.handleMessageSubmit}
           user={this.props.user}
           room={this.props.room}
+          date={moment.tz("America/Los_Angeles").format()}
         />
       </div>
     );

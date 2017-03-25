@@ -43,7 +43,7 @@ var UserRepos = React.createClass({
             </div>
             <div className="repoList">
               {repos.map((repo, index) =>
-                <div className="repoNamebar" onClick={() => {this.props.handleRepoClick(repo)}}> <button type="submit" className="input-group-addon" onClick={() => {this.props.handleRepoClick(repo)}}><i className="fa fa-plus"></i></button> {repo}  </div>
+                <div className="repoNamebar" onClick={() => {this.props.handleRepoClick(repo).bind(this)}}> <button type="submit" className="input-group-addon" onClick={() => {this.props.handleRepoClick(repo).bind(this)}}><i className="fa fa-plus"></i></button> {repo}  </div>
               )}
             </div>
           </div>

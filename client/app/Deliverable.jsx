@@ -38,7 +38,7 @@ class Form extends React.Component {
         </div>
         <div className="col">
           <label className="sr-only" htmlFor="deliverable-input-assignment">Assigned To</label>
-          <input type="text" className="form-control" id="deliverable-input-assignment" placeholder="Asignment"
+          <input type="text" className="form-control" id="deliverable-input-assignment" placeholder="Team Member"
             onChange={(event) => this.setState({owner: event.target.value})} />
         </div>
         <div className="col inline">
