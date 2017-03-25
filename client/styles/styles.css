@@ -190,11 +190,6 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   overflow-y: scroll;
 }
 
-.inline {
-  display: inline;
-  margin: 0 auto;
-}
-
 .deliverables-section input, .project-list-header input {
   width: 100%;
   margin: .5rem 0;
@@ -229,13 +224,30 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   height: 100%;
 }
 
+#deliverables {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#deliverableForm, #resourceForm {
+  text-align: center;
+}
+
+#deliverableForm input, #resourceForm input {
+  width: 100%;
+  margin: .5rem;
+}
+
+#resourceForm button {
+  margin: .5rem;
+}
+
 #deliverableForm {
   padding: .5rem;
 }
 
-#deliverables {
-  padding-left: 0;
-  padding-right: 0;
+#resourceForm {
+  padding: .5rem .5rem 0 .5rem;
 }
 
 /*Chat Room Styles ------------------------------------------------------------------*/
@@ -386,6 +398,10 @@ a.repoNav {
   /*off-set the extra space at the bottom of the appear.in window*/
   .chat-section {
     margin-top: -.5rem;
+  }
+
+  #deliverableForm input, #deliverableForm button {
+    margin: .25rem;
   }
 }
 

@@ -35,17 +35,17 @@ class Form extends React.Component {
   render() {
     return (
       <form id="deliverableForm" className="form" onSubmit={this.handleSubmit.bind(this)}>
-        <div className="col">
+        <div className="col-12">
           <label className="sr-only" htmlFor="deliverable-input-task">Task</label>
           <input type="text" className="form-control" id="deliverable-input-task" placeholder="Task"
             onChange={(event) => this.setState({task: event.target.value})} />
         </div>
-        <div className="col">
+        <div className="col-12">
           <label className="sr-only" htmlFor="deliverable-input-assignment">Assigned To</label>
           <input type="text" className="form-control" id="deliverable-input-assignment" placeholder="Team Member"
             onChange={(event) => this.setState({owner: event.target.value})} />
         </div>
-        <div className="col inline">
+        <div className="col-12">
           <label className="sr-only" htmlFor="deliverable-input-fibbonaci">Task Complexity</label>
           <select className="custom-select" id="deliverable-input-fibbonaci"
             onChange={(event) => this.setState({points: event.target.value})}>
@@ -56,8 +56,6 @@ class Form extends React.Component {
             <option value="5">5</option>
             <option value="8">8</option>
           </select>
-        </div>
-        <div className="col inline">
           <label className="sr-only" htmlFor="deliverable-input-status">Status</label>
           <select className="custom-select" id="deliverable-input-status"
             onChange={(event) => this.setState({status: event.target.value})}>
@@ -66,8 +64,6 @@ class Form extends React.Component {
             <option value="icebox">Icebox</option>
             <option value="complete">Completed Tasks</option>
           </select>
-        </div>
-        <div className="col inline">
           <button type="submit" className="btn btn-primary">Add</button>
         </div>
       </form>
