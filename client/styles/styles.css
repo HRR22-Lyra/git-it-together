@@ -27,6 +27,9 @@ textarea:focus, input:focus {
 	border: 2px solid #5597F4;
 }
 
+button, a {
+  cursor: pointer;
+}
 
 /*Login Page   ------------------------------------------------------------------*/
 
@@ -85,6 +88,10 @@ textarea:focus, input:focus {
   padding: 12px 10px;
 }
 
+.card-block {
+  text-align: center;
+}
+
 .dropdown:hover .dropdown-content {
   display: block;
 }
@@ -132,6 +139,7 @@ textarea:focus, input:focus {
 
 .project-list-entry:hover {
   cursor: pointer;
+  border: 2px solid #5597F4;
 }
 
 .project-list-entry-title {
