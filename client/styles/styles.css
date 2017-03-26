@@ -393,8 +393,62 @@ a.repoNav {
   text-align: center;
 }
 
+/*About modal---------------------------------------------------------------------------------------------*/
+
+.our-team {
+  padding: 0;
+  text-align: right;
+}
+
+.name {
+  float: right;
+}
+
+.profiles {
+  clear: both;
+  margin-bottom: 5px;
+  padding: 5px;
+  min-height: 100px;
+  background-color: #E9F7FF;
+}
+
+.profiles:hover {
+  background-color: #efe;
+}
+
+.profiles img {
+  float: left;
+  margin: 0 5px;
+  height: 90px;
+}
+
+.profiles .description {
+  float: right;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+.aboutButton {
+  float: right;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+
+.profiles .name {
+  font-size: 20px;
+  font-weight: 600;
+}
+
 
 /*Breakpoints (for responsive design) ------------------------------------------------------------------*/
+
+/*We don't want to push a modal to super small devices*/
+@media (max-width: 766px) {
+  .our-team {
+    display: none;
+  }
+}
+
  /*Below 991px, page resizes to single-column, so we need to make sure the only space is 1rem above each component for proper spacing*/
 @media (max-width: 991px) {
   .project-view-component {
@@ -424,40 +478,3 @@ a.repoNav {
     padding: 0 0 0 .5rem;
   }
 }
-
-.profiles {
-  clear: both;
-  margin-bottom: 5px;
-  padding: 5px;
-  min-height: 100px;
-  background-color: #E9F7FF;
-}
-
-.profiles:hover {
-  background-color: #efe;
-}
-
-.profiles img {
-  float: left;
-  margin: 0 5px;
-  max-height: 100px;
-
-}
-
-.profiles .description {
-  float: right;
-  margin-right: 10px;
-  margin-left: 20px;
-}
-.aboutButton {
-  float: right;
-  margin-right: 10px;
-  margin-left: 20px;
-}
-
-
-.profiles .name {
-  font-size: 20px;
-  font-weight: 600;
-}
-
