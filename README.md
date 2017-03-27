@@ -52,6 +52,8 @@ UserProjects [id (integer), user (string), project_id (integer, foreign key from
 
 Message [id (integer), user (string), text (string), room (string)]
 
+Note: owner and user fields should always be a GitHub handle
+
 ### GitHub API
 Git It Together uses the GitHub API to obtain information about repositories. For more infomation see the [GitHub Developer Guide.](https://developer.github.com/v3/)
 
