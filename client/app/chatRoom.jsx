@@ -73,7 +73,7 @@ var MessageForm = React.createClass({
       user : this.props.user,
       text : this.state.text,
       room: this.props.room,
-      createdAt: this.props.createdAt
+      createdAt: moment.utc().format()
     }
     this.props.onMessageSubmit(message);
     this.setState({ text: '' });
@@ -142,7 +142,6 @@ var ChatApp = React.createClass({
           onMessageSubmit={this.handleMessageSubmit}
           user={this.props.user}
           room={this.props.room}
-          createdAt={moment.utc().format()}
         />
       </div>
     );
