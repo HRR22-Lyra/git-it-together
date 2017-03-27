@@ -3,27 +3,31 @@ Consolidate the tools you need to implement agile scrum on existing GitHub repos
 
 ## Table of Contents
 1. [Usage](#Usage)
+    1. [Login](#Login)
     1. [Adding Repositories](#Adding-Repositories)
     1. [Adding and Removing Deliverables or Resources](#Adding-and-Removing-Deliverables-or-Resources)
     1. [Deleting User Projects](#Deleting-User-Projects)
     1. [Utilizing Live Chat](#Utilizing-Live-Chat)
-    1. [Using Live Video Chat](#Using-Live-Video-Chat)
+    1. [Using Video Chat](#Using-Video-Chat)
 1. [Installation](#Installation)
-1. [Database and GitHub API](#Database and GitHub API)
+1. [Database and GitHub API](#Database-and-GitHub-API)
   1. [Database Schema](#Database-Schema)
-  1. [GitHub API](#GitHub API)
+  1. [GitHub API](#GitHub-API)
+1. [Ideas for Future Contributions](#Ideas-for-Future-Contributions)
 1. [Team](#Team)
 
+## Login
+Login through Auth O using your GitHub account. If you create an account instead of using GitHub, you will not be able to access your repositories.
 ## Usage
 ### Adding Repositories
 Search your GitHub repos and add them using the drop-down list. Once added, your repos will be accessible from your profile. Note that if your repo is forked from a parent, the parent repo will be used as the source for the project. This allows you to collaborate with other users who forked the same repo.
 ### Adding and Removing Deliverables or Resources
 Fill out the form entirely and then submit, the lists will automatically update when you or anyone else adds/deletes deliverables/resources. To delete an item press the X that is located next to it.
 ### Deleting User Projects
-Click the trash icon to the right of the project name in the project view. This removes the project from your list, but does not delete the project itself. If you delete a project by mistake, you can always re-add it in the project view.
+Click the trash icon to the right of the project name in the project view. This removes it from your list, but does not delete the project itself. If you delete a project by mistake, you can always re-add it in the project list view.
 ### Utilizing Live Chat
-Simply enter a message into the chat input and hit enter. Your message will be emitted to all other users in the same project and saved to the database. Your messages will persist even after you leave the project.
-### Using Live Video Chat
+Simply enter a message into the chat input bar and hit enter. Your message will be emitted to all other users in the same project and saved to the database. Your messages will persist even after you leave the project.
+### Using Video Chat
 Each project comes equipped with a dynamically created Appear.in room. Simply click "enter room" to join your teammates in a live chat.
 
 ## Installation
@@ -38,43 +42,27 @@ or `npm run quick` which builds then runs.
 
 ## Database and GitHub API
 ### Database Schema
-Project
-  id: INTEGER
-  owner: STRING
-  get_repo: STRING
-  name: STRING
-  description: STRING
+Project [id (integer), owner (string), get_repo (string), name (string), description (string)]
 
-Resource
-  id: INTEGER
-  project_id: INTEGER (foreign key from Project)
-  user: STRING
-  name: STRING
-  link: STRING
+Resource [id (integer), project_id (integer, foreign key from Project), user (string), name (string), link (string)]
 
-Deliverable
-  id: INTEGER
-  project_id: INTEGER (foreign key from Project)
-  owner: STRING
-  task: STRING
-  status: STRING
-  due_date: STRING
-  progress: STRING
-  points: INTEGER
+Deliverable [id (integer), project_id (integer, foreign key from Project), owner (string), task (string), status (string), due_date (string), progress (string), points (integer)]
 
-UserProjects
-  id: INTEGER
-  user: STRING
-  project_id: INTEGER (foreign key from Project)
+UserProjects [id (integer), user (string), project_id (integer, foreign key from Project)]
 
-Message
-  id: INTEGER
-  user: STRING
-  text: STRING
-  room: STRING
+Message [id (integer), user (string), text (string), room (string)]
 
 ### GitHub API
-Git It Together uses the GitHub API to obtain information about repositories. For more infomation see the [GitHub Developer Guide](https://developer.github.com/v3/)
+Git It Together uses the GitHub API to obtain information about repositories. For more infomation see the [GitHub Developer Guide.](https://developer.github.com/v3/)
+
+## Ideas for Future Contributions
+- Display summaries and thumbnails of resources using [Open Graph](http://ogp.me/)
+- Create a custom video chat module
+- Integrate Git It Together with GitHub issues
+- Add ability to change deliverable categories
+- Make assign deliverables a dropdown of users connected to the project (currently a text input)
+- Display users connected to a project
+- Give repo owners admin access over projects, including adding and removing users
 
 ## Team
 - __Product Owner__: [James Mitchell](https://github.com/Jimmy6strings)
