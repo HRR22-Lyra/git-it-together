@@ -8,6 +8,7 @@ class Form extends React.Component {
   }
 
   componentDidMount() {
+    // Tell other clients a change occured
     socket.emit('room', this.props.room);
   }
 
@@ -63,6 +64,7 @@ class List extends React.Component {
   }
 
   componentDidMount() {
+    // Listen for a call to rerender the list
     socket.on('reload', this.getResources.bind(this));
   }
 
@@ -79,6 +81,7 @@ class List extends React.Component {
   deleteResource(resourceID) {
     axios.delete('/api/resources?id=' + resourceID)
     .then(function(response) {
+      // Tell other clients a change occured
       socket.emit('change', 'delete');
     });
   }
