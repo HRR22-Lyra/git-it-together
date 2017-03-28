@@ -27,6 +27,7 @@ var MessageList = React.createClass({
     this.scrollElement();
   },
 
+  //This keeps the scroll in the chatroom at the bottom
   scrollElement() {
     var context = this;
     //Use setTimeout to place this at the bottom of the stack
