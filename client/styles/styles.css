@@ -191,6 +191,10 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   max-height: 35rem;
 }
 
+#resources {
+  max-height: 33rem;
+}
+
 .deliverables-section input, .project-list-header input {
   width: 100%;
   margin: .5rem 0;
