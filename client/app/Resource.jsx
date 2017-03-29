@@ -90,7 +90,7 @@ class List extends React.Component {
       );
     } else {
       return (
-        <div className="resources-section-body">
+        <div id="resources">
           {this.state.resources.map((resource) =>
             <Resource resource={resource} deleteResource={this.deleteResource.bind(this)} />
           )}

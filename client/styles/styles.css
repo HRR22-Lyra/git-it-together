@@ -183,7 +183,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 }
 
 /*any overflow will be contained within the container and not spill into the containers below, nor will it increase the size of the container*/
-#deliverables, .resources-section {
+#deliverables, #resources {
   overflow-y: scroll;
 }
 
@@ -231,7 +231,7 @@ benefit: their scalability and you don't have to adjust the px value of everythi
 }
 
 /*the video chat is hardcoded at 640px, so to keep the chat next to it the same height, we also hard code it to match*/
-.chat-section {
+.chat-section, .deliverables-section, .resources-section {
   height: 640px;
 }
 
