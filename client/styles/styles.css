@@ -187,8 +187,12 @@ benefit: their scalability and you don't have to adjust the px value of everythi
   overflow-y: scroll;
 }
 
-#deliverables, #resources {
+#deliverables {
   max-height: 35rem;
+}
+
+#resources {
+  max-height: 33rem;
 }
 
 .deliverables-section input, .project-list-header input {
