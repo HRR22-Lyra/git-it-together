@@ -70,3 +70,18 @@ Git It Together uses the GitHub API to obtain information about repositories. Fo
 - __Product Owner__: [James Mitchell](https://github.com/Jimmy6strings)
 - __Scrum Master__: [Meg Viar](https://github.com/lmegviar)
 - __Development Team Members__: [Kyle Anson](https://github.com/Riski24), [Simon de Moor](https://github.com/sdemoor), [Jordan Stubblefield](https://github.com/JStubb7939)
+
+## Screenshots
+
+
+<img src="https://cloud.githubusercontent.com/assets/23217560/26078025/24890792-398c-11e7-813b-ac160e98e1bd.png" width="800"/>
+
+<img src="https://cloud.githubusercontent.com/assets/23217560/26078040/35a11d8a-398c-11e7-8da7-2b642f1d1a57.png" width="800"/>
+
+<img src="https://cloud.githubusercontent.com/assets/23217560/26078043/3788f582-398c-11e7-89bf-240dd8017b53.png" width="800"/>
+
+<img src="https://cloud.githubusercontent.com/assets/23217560/26078047/38c3cf80-398c-11e7-8052-4b869e473e1b.png" width="800"/>
+
+<img src="https://cloud.githubusercontent.com/assets/23217560/26078061/3f61e7fa-398c-11e7-88d9-efcb01798e6b.png" width="400"/>
+
+<img src="https://cloud.githubusercontent.com/assets/23217560/26078063/40dfd60a-398c-11e7-95fb-f1af2f456163.png" width="400"/>
