@@ -120,11 +120,11 @@ class List extends React.Component {
   }
 
   render() {
-//     if (this.state.deliverables === null) {
-//       return (
-//         <div><i className="fa fa-spinner fa-pulse fa-5x fa-fw"></i></div>
-//       );
-//     } else {
+    if (this.state.deliverables === null) {
+      return (
+        <div><i className="fa fa-spinner fa-pulse fa-5x fa-fw"></i></div>
+      );
+    } else {
       return (
         <div id="deliverables">
           <div className="deliverables-section-header">
@@ -215,7 +215,7 @@ class List extends React.Component {
       );
     }
   }
-// }
+}
 
 var Deliverable = ({deliverable, deleteDeliverable}) => (
   <tr>
